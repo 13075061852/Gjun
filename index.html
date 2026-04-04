@@ -3,958 +3,1483 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>高性能改性塑料 | 工程塑料解决方案供应商</title>
-<meta name="description" content="专注改性塑料研发、生产、销售，提供PP、PE、ABS、PA6/PA66、PBT、PC/ABS等高性能工程塑料解决方案，通过ISO9001、IATF16949认证。">
+<title>广俊塑料 - 专业改性塑料解决方案提供商</title>
+<meta name="description" content="广俊塑料专注于改性塑料研发、生产与销售，为汽车、电子电器、新能源等行业提供高性能材料解决方案。">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 
 :root {
-  --deep-blue: #0A2463;
-  --dark-gray: #2D3142;
-  --light-gray: #F0F2F5;
-  --accent: #3E92CC;
-  --accent-light: #5BA8D9;
-  --white: #FFFFFF;
-  --text: #1A1A2E;
-  --text-light: #6B7280;
-  --card-shadow: 0 2px 16px rgba(10,36,99,0.08);
-  --card-hover: 0 8px 32px rgba(10,36,99,0.15);
+  --primary: #0a1628;
+  --accent: #00d4aa;
+  --accent2: #0099ff;
+  --warm: #ff6b35;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.08);
+  --text: #e8ecf1;
+  --text-dim: #8a95a8;
+  --gradient-1: linear-gradient(135deg, #00d4aa 0%, #0099ff 100%);
+  --gradient-2: linear-gradient(135deg, #ff6b35 0%, #ff3366 100%);
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--primary);
   color: var(--text);
-  background: var(--white);
   line-height: 1.7;
   overflow-x: hidden;
 }
 
-/* ===== NAVIGATION ===== */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(10,36,99,0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(62,146,204,0.15);
-  transition: box-shadow 0.3s;
-}
-.nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
-.nav-inner {
-  max-width: 1280px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: 64px;
-}
-.nav-logo {
-  font-size: 1.25rem; font-weight: 700; color: var(--white);
-  letter-spacing: 2px; text-decoration: none;
-}
-.nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 0.25rem; list-style: none; }
-.nav-links a {
-  color: rgba(255,255,255,0.8); text-decoration: none;
-  font-size: 0.875rem; padding: 0.5rem 1rem; border-radius: 6px;
-  transition: all 0.2s; font-weight: 500;
-}
-.nav-links a:hover, .nav-links a.active {
-  color: var(--white); background: rgba(62,146,204,0.15);
-}
-.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-.nav-toggle span {
-  display: block; width: 22px; height: 2px; background: var(--white);
-  margin: 5px 0; transition: 0.3s; border-radius: 2px;
-}
+/* ====== Scrollbar ====== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--primary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative; min-height: 100vh;
-  background: linear-gradient(135deg, var(--deep-blue) 0%, #0D2E6B 30%, var(--dark-gray) 100%);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
+/* ====== Utility ====== */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .75rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+  font-weight: 500;
 }
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(62,146,204,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(62,146,204,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(10,36,99,0.3) 0%, transparent 60%);
+.section-label::before {
+  content: ''; display: block; width: 32px; height: 1px; background: var(--accent);
 }
-.hero-grid {
-  position: absolute; inset: 0; opacity: 0.04;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.hero-particles {
-  position: absolute; inset: 0; overflow: hidden;
-}
-.particle {
-  position: absolute; border-radius: 50%;
-  background: rgba(62,146,204,0.15);
-  animation: float-particle linear infinite;
-}
-@keyframes float-particle {
-  0% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-}
-.hero-content {
-  position: relative; z-index: 2; text-align: center;
-  max-width: 900px; padding: 0 2rem;
-}
-.hero-badge {
-  display: inline-block; padding: 0.375rem 1.25rem;
-  border: 1px solid rgba(62,146,204,0.4); border-radius: 100px;
-  color: var(--accent); font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 3px; text-transform: uppercase;
-  margin-bottom: 2rem;
-}
-.hero h1 {
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
-  font-weight: 800; color: var(--white);
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
   line-height: 1.2; margin-bottom: 1.5rem;
-  letter-spacing: -0.5px;
 }
-.hero h1 .highlight {
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+.section-desc {
+  font-size: 1.05rem; color: var(--text-dim);
+  max-width: 640px; line-height: 1.8;
 }
-.hero p {
-  font-size: 1.125rem; color: rgba(255,255,255,0.65);
-  max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.8;
+.gradient-text {
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
 }
-.hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.875rem 2rem; border-radius: 8px;
-  font-size: 0.9375rem; font-weight: 600; text-decoration: none;
-  transition: all 0.25s; cursor: pointer; border: none;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .875rem 2rem; border-radius: 50px; font-size: .95rem;
+  font-weight: 500; text-decoration: none; transition: all .3s ease;
+  cursor: pointer; border: none; font-family: inherit;
 }
 .btn-primary {
-  background: var(--accent); color: var(--white);
-  box-shadow: 0 4px 16px rgba(62,146,204,0.3);
+  background: var(--gradient-1); color: #000;
+  box-shadow: 0 4px 24px rgba(0,212,170,.25);
 }
-.btn-primary:hover {
-  background: var(--accent-light); transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(62,146,204,0.4);
-}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,170,.35); }
 .btn-outline {
-  background: transparent; color: var(--white);
-  border: 1.5px solid rgba(255,255,255,0.3);
+  background: transparent; color: var(--text);
+  border: 1px solid rgba(255,255,255,.15);
 }
-.btn-outline:hover {
-  border-color: var(--accent); color: var(--accent);
-  transform: translateY(-2px);
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ====== Particle Background ====== */
+#particles {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
 }
+
+/* ====== Navigation ====== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 0; transition: all .4s ease;
+}
+.nav.scrolled {
+  background: rgba(10,22,40,.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: .6rem 0;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .75rem;
+  text-decoration: none; color: var(--text);
+}
+.nav-logo-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: var(--gradient-1); display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.1rem; color: #000;
+}
+.nav-logo-text { font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-dim); text-decoration: none; font-size: .9rem;
+  font-weight: 400; transition: color .3s; position: relative;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: var(--accent);
+  transition: width .3s;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  padding: .6rem 1.5rem; font-size: .85rem;
+  background: var(--gradient-1); color: #000;
+  border-radius: 50px; text-decoration: none;
+  font-weight: 600; transition: all .3s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,170,.3); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+.nav-toggle span {
+  display: block; width: 22px; height: 2px; background: var(--text);
+  margin: 5px 0; transition: all .3s;
+}
+
+/* ====== Hero ====== */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; padding-top: 5rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,212,170,.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(0,153,255,.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(255,107,53,.04) 0%, transparent 40%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+.hero-content {
+  position: relative; z-index: 1; max-width: 720px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .5rem 1rem; border-radius: 50px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  font-size: .8rem; color: var(--accent); margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 900;
+  line-height: 1.15; margin-bottom: 1.5rem;
+}
+.hero p {
+  font-size: 1.15rem; color: var(--text-dim);
+  max-width: 560px; margin-bottom: 2.5rem; line-height: 1.8;
+}
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-stats {
-  display: flex; justify-content: center; gap: 3rem;
-  margin-top: 4rem; padding-top: 2.5rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  position: relative; z-index: 1; display: flex; gap: 3rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--glass-border);
 }
-.hero-stat { text-align: center; }
-.hero-stat .num {
-  font-size: 2.25rem; font-weight: 800; color: var(--accent);
-  display: block; line-height: 1;
+.hero-stat-value {
+  font-size: 2.5rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.hero-stat .label {
-  font-size: 0.8rem; color: rgba(255,255,255,0.5);
-  margin-top: 0.5rem; display: block;
-}
+.hero-stat-label { font-size: .85rem; color: var(--text-dim); margin-top: .25rem; }
 
-/* ===== SECTIONS ===== */
-section { padding: 6rem 0; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.section-header { text-align: center; margin-bottom: 3.5rem; }
-.section-header .overline {
-  display: inline-block; font-size: 0.75rem; font-weight: 600;
-  color: var(--accent); letter-spacing: 4px; text-transform: uppercase;
-  margin-bottom: 0.75rem;
+.hero-visual {
+  position: absolute; right: -2%; top: 50%; transform: translateY(-50%);
+  width: 50%; max-width: 640px; z-index: 1;
 }
-.section-header h2 {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800; color: var(--deep-blue);
-  margin-bottom: 1rem; letter-spacing: -0.3px;
+.hero-molecule {
+  width: 100%; aspect-ratio: 1; position: relative;
 }
-.section-header p {
-  font-size: 1.0625rem; color: var(--text-light);
-  max-width: 600px; margin: 0 auto;
+.mol-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(0,212,170,.12);
+  animation: rotate 30s linear infinite;
 }
-.section-alt { background: var(--light-gray); }
-.section-dark {
-  background: linear-gradient(135deg, var(--deep-blue), var(--dark-gray));
-  color: var(--white);
+.mol-ring:nth-child(1) { inset: 10%; }
+.mol-ring:nth-child(2) { inset: 25%; animation-direction: reverse; animation-duration: 25s; }
+.mol-ring:nth-child(3) { inset: 40%; animation-duration: 20s; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.mol-node {
+  position: absolute; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 20px rgba(0,212,170,.4);
 }
-.section-dark .section-header h2 { color: var(--white); }
-.section-dark .section-header p { color: rgba(255,255,255,0.6); }
+.mol-node:nth-child(4) { top: 10%; left: 50%; }
+.mol-node:nth-child(5) { top: 30%; right: 15%; }
+.mol-node:nth-child(6) { bottom: 25%; right: 20%; }
+.mol-node:nth-child(7) { bottom: 15%; left: 30%; }
+.mol-node:nth-child(8) { top: 45%; left: 10%; }
+.mol-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 100px; height: 100px; border-radius: 50%;
+  background: var(--gradient-1); opacity: .15;
+  filter: blur(30px); animation: breathe 4s ease-in-out infinite;
+}
+@keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.2); } }
 
-/* ===== ADVANTAGES ===== */
-.advantages { background: var(--white); }
-.adv-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+/* ====== Marquee ====== */
+.marquee-section {
+  padding: 2rem 0; border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  overflow: hidden; position: relative; z-index: 1;
 }
-.adv-card {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; padding: 2rem 1.5rem;
-  text-align: center; transition: all 0.3s;
+.marquee-track {
+  display: flex; gap: 3rem; animation: marquee 40s linear infinite;
+  width: max-content;
 }
-.adv-card:hover {
-  transform: translateY(-6px); box-shadow: var(--card-hover);
-  border-color: var(--accent);
+.marquee-item {
+  display: flex; align-items: center; gap: .75rem;
+  white-space: nowrap; color: var(--text-dim); font-size: .9rem;
+  font-weight: 300;
 }
-.adv-icon {
-  width: 56px; height: 56px; border-radius: 12px;
-  background: linear-gradient(135deg, rgba(62,146,204,0.1), rgba(62,146,204,0.05));
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.25rem; font-size: 1.5rem;
-}
-.adv-card h3 {
-  font-size: 1.0625rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 0.625rem;
-}
-.adv-card p {
-  font-size: 0.875rem; color: var(--text-light); line-height: 1.6;
-}
+.marquee-item .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ===== ABOUT ===== */
+/* ====== About ====== */
+.about { padding: 8rem 0; position: relative; z-index: 1; }
 .about-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 4rem; align-items: center;
 }
 .about-visual {
-  position: relative; border-radius: 16px; overflow: hidden;
-  background: linear-gradient(135deg, var(--deep-blue), var(--dark-gray));
-  aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+  position: relative; aspect-ratio: 4/3; border-radius: 24px;
+  overflow: visible;
 }
-.about-visual-inner {
-  text-align: center; color: var(--white); padding: 2rem;
+.about-visual-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,170,.1), rgba(0,153,255,.06));
+  border-radius: 24px;
 }
-.about-visual-inner .big-num {
-  font-size: 5rem; font-weight: 900; line-height: 1;
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+.about-hero-img {
+  position: absolute; inset: 8px; border-radius: 20px;
+  background: linear-gradient(160deg, rgba(10,22,40,.95), rgba(15,30,50,.9));
+  border: 1px solid var(--glass-border);
+  overflow: hidden; z-index: 0;
 }
-.about-visual-inner .big-text {
-  font-size: 1rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7);
+.about-img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 2rem 1.5rem;
+  background: linear-gradient(to top, rgba(10,22,40,.95) 40%, transparent);
+  z-index: 2;
 }
+.about-img-tag {
+  display: inline-block; padding: .25rem .75rem;
+  border-radius: 50px; font-size: .7rem; font-weight: 700;
+  letter-spacing: 2px; color: var(--accent);
+  background: rgba(0,212,170,.1); border: 1px solid rgba(0,212,170,.2);
+  margin-bottom: .75rem;
+}
+.about-img-title {
+  font-size: 2.2rem; font-weight: 900; line-height: 1.1;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-img-sub {
+  font-size: .9rem; color: var(--text-dim); margin-top: .25rem;
+}
+.about-img-decor {
+  position: absolute; inset: 0; z-index: 1;
+}
+.about-img-decor svg { width: 100%; height: 100%; }
+
+/* Floating stat cards */
+.about-float-card {
+  position: absolute; z-index: 5;
+  display: flex; align-items: center; gap: .75rem;
+  padding: .75rem 1.15rem; border-radius: 14px;
+  background: rgba(10,22,40,.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+  animation: floatCard 6s ease-in-out infinite;
+  white-space: nowrap;
+}
+.about-float-1 { top: 8%; right: -8%; animation-delay: 0s; }
+.about-float-2 { bottom: 32%; left: -6%; animation-delay: 2s; }
+.about-float-3 { bottom: 8%; right: -4%; animation-delay: 4s; }
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.afc-icon { font-size: 1.4rem; }
+.afc-val { font-size: 1.05rem; font-weight: 800; color: var(--text); line-height: 1.2; }
+.afc-label { font-size: .72rem; color: var(--text-dim); }
 .about-features {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1rem; margin-top: 2rem;
+  gap: 1.5rem; margin-top: 2rem;
 }
-.about-feat {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.75rem 1rem; background: rgba(62,146,204,0.06);
-  border-radius: 8px; font-size: 0.875rem; font-weight: 500;
-  color: var(--deep-blue);
+.about-feature {
+  padding: 1.25rem; border-radius: 16px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .3s;
 }
-.about-feat .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
+.about-feature:hover { border-color: rgba(0,212,170,.2); transform: translateY(-2px); }
+.about-feature-num {
+  font-size: 1.5rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.about-feature-text { font-size: .85rem; color: var(--text-dim); margin-top: .25rem; }
 
-/* ===== PRODUCTS ===== */
-.product-filter {
-  display: flex; justify-content: center; gap: 0.5rem;
-  margin-bottom: 2.5rem; flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 0.5rem 1.25rem; border: 1.5px solid #E0E4EA;
-  border-radius: 100px; background: var(--white);
-  font-size: 0.8125rem; font-weight: 500; color: var(--text-light);
-  cursor: pointer; transition: all 0.2s;
-}
-.filter-btn:hover, .filter-btn.active {
-  border-color: var(--accent); color: var(--accent);
-  background: rgba(62,146,204,0.05);
-}
-.product-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.product-card {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; overflow: hidden; transition: all 0.3s;
-}
-.product-card:hover {
-  transform: translateY(-4px); box-shadow: var(--card-hover);
-  border-color: var(--accent);
-}
-.product-img {
-  height: 180px;
-  background: linear-gradient(135deg, #E8ECF1, #D1D5DB);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.product-img::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(10,36,99,0.03), rgba(62,146,204,0.06));
-}
-.pellet-icon {
-  display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;
-  max-width: 80px;
-}
-.pellet-icon .pellet {
-  width: 12px; height: 12px; border-radius: 3px;
-  opacity: 0.5;
-}
-.product-body { padding: 1.5rem; }
-.product-body h3 {
-  font-size: 1.0625rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 0.75rem;
-}
-.product-specs {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-.spec {
-  font-size: 0.75rem; color: var(--text-light);
-  display: flex; align-items: center; gap: 0.375rem;
-}
-.spec .spec-dot {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
-}
+/* ====== Products ====== */
+.products { padding: 8rem 0; position: relative; z-index: 1; }
 
-/* ===== APPLICATIONS ===== */
-.app-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+/* Featured hero card */
+.prod-hero {
+  position: relative; border-radius: 24px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  margin-bottom: 2rem;
 }
-.app-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; padding: 2rem;
-  text-align: center; transition: all 0.3s;
+.prod-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.prod-hero-content {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.3fr 1fr;
+  gap: 2rem; padding: 3rem;
 }
-.app-card:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--accent); transform: translateY(-4px);
+.prod-hero-badge {
+  display: inline-flex; padding: .35rem 1rem;
+  border-radius: 50px; font-size: .78rem; font-weight: 600;
+  color: var(--warm); background: rgba(255,107,53,.08);
+  border: 1px solid rgba(255,107,53,.15); margin-bottom: 1.25rem;
 }
-.app-icon {
-  width: 56px; height: 56px; border-radius: 12px;
-  background: rgba(62,146,204,0.15);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.25rem; font-size: 1.5rem;
+.prod-hero-left h3 {
+  font-size: 1.6rem; font-weight: 800; margin-bottom: .75rem;
 }
-.app-card h3 {
-  font-size: 1.0625rem; font-weight: 700;
-  color: var(--white); margin-bottom: 0.5rem;
+.prod-hero-left p {
+  font-size: .92rem; color: var(--text-dim); line-height: 1.75;
+  margin-bottom: 1.5rem; max-width: 520px;
 }
-.app-card p {
-  font-size: 0.8125rem; color: rgba(255,255,255,0.55); line-height: 1.6;
-}
-
-/* ===== R&D ===== */
-.rd-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.rd-card {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; padding: 2rem;
-  transition: all 0.3s;
-}
-.rd-card:hover {
-  box-shadow: var(--card-hover); border-color: var(--accent);
-}
-.rd-card h3 {
-  font-size: 1.125rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 0.75rem;
-}
-.rd-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0.625rem;
-}
-.rd-list li {
-  font-size: 0.875rem; color: var(--text-light);
-  display: flex; align-items: center; gap: 0.625rem;
-}
-.rd-list li::before {
-  content: ''; width: 6px; height: 6px;
-  border-radius: 50%; background: var(--accent);
-  flex-shrink: 0;
-}
-
-/* ===== PRODUCTION ===== */
-.prod-grid {
+.prod-hero-specs {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 1rem; margin-bottom: 1.5rem;
 }
-.prod-item {
-  text-align: center; padding: 2rem 1.5rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; transition: all 0.3s;
+.phs-item {
+  padding: 1rem; border-radius: 14px;
+  background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  text-align: center;
 }
-.prod-item:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--accent);
+.phs-val {
+  font-size: 1.25rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.prod-num {
-  font-size: 2.5rem; font-weight: 900; color: var(--accent);
-  line-height: 1; margin-bottom: 0.5rem;
+.phs-label { font-size: .7rem; color: var(--text-dim); margin-top: .2rem; }
+.prod-hero-apps {
+  display: flex; flex-wrap: wrap; gap: .5rem;
 }
-.prod-label {
-  font-size: 0.9375rem; color: var(--white); font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-.prod-desc {
-  font-size: 0.8125rem; color: rgba(255,255,255,0.5);
+.prod-hero-apps span {
+  padding: .3rem .75rem; border-radius: 50px; font-size: .78rem;
+  color: var(--text-dim); background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
 }
 
-/* ===== QUALITY ===== */
-.quality-flow {
-  display: flex; justify-content: center; gap: 1rem;
-  flex-wrap: wrap;
-}
-.quality-step {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; padding: 1.75rem 1.5rem;
-  text-align: center; flex: 1; min-width: 180px; max-width: 220px;
-  transition: all 0.3s; position: relative;
-}
-.quality-step:hover {
-  transform: translateY(-4px); box-shadow: var(--card-hover);
-  border-color: var(--accent);
-}
-.quality-step .step-num {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: var(--accent); color: var(--white);
-  width: 28px; height: 28px; border-radius: 50%;
+/* Hero right: molecule model */
+.prod-hero-right {
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.75rem; font-weight: 700;
 }
-.quality-step h4 {
-  font-size: 0.9375rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+.prod-hero-model {
+  position: relative; width: 260px; height: 260px;
 }
-.quality-step p {
-  font-size: 0.8125rem; color: var(--text-light); line-height: 1.6;
+.phm-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: phmRotate 20s linear infinite;
 }
-.cert-badges {
-  display: flex; justify-content: center; gap: 2rem;
-  margin-top: 3rem;
+.phm-1 { width: 240px; height: 240px; border-color: rgba(0,212,170,.1); animation-duration: 25s; }
+.phm-2 { width: 180px; height: 180px; border-color: rgba(0,153,255,.12); animation-direction: reverse; animation-duration: 20s; }
+.phm-3 { width: 120px; height: 120px; border-color: rgba(255,107,53,.1); animation-duration: 15s; }
+@keyframes phmRotate { from { transform: translate(-50%,-50%) rotate(0); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+.phm-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-size: 2.5rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.cert-badge {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 1rem 1.5rem; background: rgba(62,146,204,0.06);
-  border-radius: 8px; border: 1px solid rgba(62,146,204,0.15);
+.phm-label {
+  position: absolute; padding: .2rem .5rem; border-radius: 50px;
+  font-size: .65rem; color: var(--text-dim); background: var(--glass);
+  border: 1px solid var(--glass-border); white-space: nowrap;
 }
-.cert-badge .badge-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--accent); color: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.875rem; font-weight: 700;
-}
-.cert-badge span {
-  font-size: 0.9375rem; font-weight: 700; color: var(--deep-blue);
-}
+.phm-l1 { top: 8%; left: 50%; transform: translateX(-50%); }
+.phm-l2 { top: 50%; right: 0; transform: translateY(-50%); }
+.phm-l3 { bottom: 8%; left: 50%; transform: translateX(-50%); }
+.phm-l4 { top: 50%; left: 0; transform: translateY(-50%); }
 
-/* ===== NEWS ===== */
-.news-grid {
+/* Product grid */
+.prod-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem; margin-bottom: 2rem;
 }
-.news-card {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; overflow: hidden; transition: all 0.3s;
+.prod-card {
+  position: relative; padding: 1.75rem 1.5rem;
+  border-radius: 18px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .4s;
 }
-.news-card:hover {
-  transform: translateY(-4px); box-shadow: var(--card-hover);
+.prod-card:hover {
+  border-color: rgba(0,212,170,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.25);
 }
-.news-img {
-  height: 160px;
-  background: linear-gradient(135deg, var(--deep-blue), var(--dark-gray));
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.3); font-size: 0.875rem;
+.prod-card-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
 }
-.news-body { padding: 1.5rem; }
-.news-date {
-  font-size: 0.75rem; color: var(--accent);
-  font-weight: 500; margin-bottom: 0.5rem;
+.prod-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: .75rem;
 }
-.news-body h3 {
-  font-size: 1rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 0.5rem;
-  line-height: 1.5;
+.prod-card-emoji { font-size: 1.5rem; }
+.prod-card-series {
+  font-size: .7rem; letter-spacing: 1px; font-weight: 600;
+  color: var(--accent); opacity: .6;
 }
-.news-body p {
-  font-size: 0.8125rem; color: var(--text-light); line-height: 1.6;
+.prod-card h3 {
+  font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem;
+}
+.prod-card > p {
+  font-size: .82rem; color: var(--text-dim); line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
-/* ===== CONTACT ===== */
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+/* Specs table */
+.prod-card-specs {
+  margin-bottom: 1rem; padding: .75rem;
+  border-radius: 10px; background: rgba(255,255,255,.02);
+  border: 1px solid var(--glass-border);
 }
-.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-.contact-item {
-  display: flex; gap: 1rem; align-items: flex-start;
+.pcs-row {
+  display: flex; justify-content: space-between;
+  padding: .35rem 0; font-size: .78rem;
 }
-.contact-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  background: rgba(62,146,204,0.1);
+.pcs-row:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,.03); }
+.pcs-key { color: var(--text-dim); }
+.pcs-val { font-weight: 600; color: var(--text); }
+
+.prod-card-tags {
+  display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .75rem;
+}
+.prod-card-tags span {
+  padding: .15rem .55rem; border-radius: 50px; font-size: .7rem;
+  color: var(--accent); background: rgba(0,212,170,.06);
+  border: 1px solid rgba(0,212,170,.08);
+}
+.prod-card-app {
+  font-size: .72rem; color: var(--text-dim); opacity: .7;
+  padding-top: .6rem; border-top: 1px solid var(--glass-border);
+}
+
+/* Bottom stats */
+.prod-stats {
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 1.125rem;
+  gap: 2.5rem; padding: 2rem;
+  border-radius: 16px; background: var(--glass);
+  border: 1px solid var(--glass-border);
 }
-.contact-item h4 {
-  font-size: 0.875rem; font-weight: 700;
-  color: var(--deep-blue); margin-bottom: 0.25rem;
+.prod-stat { text-align: center; }
+.prod-stat-val {
+  font-size: 1.5rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.contact-item p {
-  font-size: 0.8125rem; color: var(--text-light);
+.prod-stat-label { font-size: .78rem; color: var(--text-dim); margin-top: .15rem; }
+.prod-stat-sep {
+  width: 1px; height: 36px; background: var(--glass-border);
 }
+
+/* ====== Capabilities ====== */
+.capabilities { padding: 8rem 0; position: relative; z-index: 1; }
+
+/* Core layout: left hero + right 2x2 grid */
+.cap-core {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* Left hero card */
+.cap-hero {
+  position: relative; border-radius: 24px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+}
+.cap-hero-glow {
+  position: absolute; top: -40%; right: -20%;
+  width: 80%; height: 180%;
+  background: radial-gradient(ellipse, rgba(0,212,170,.06), transparent 60%);
+  pointer-events: none;
+}
+.cap-hero-inner {
+  position: relative; z-index: 1; padding: 2.5rem;
+}
+.cap-hero-tag {
+  display: inline-block; padding: .25rem .75rem;
+  border-radius: 50px; font-size: .65rem; font-weight: 700;
+  letter-spacing: 2px; color: var(--accent);
+  background: rgba(0,212,170,.08); border: 1px solid rgba(0,212,170,.15);
+  margin-bottom: 1rem;
+}
+.cap-hero-inner h3 {
+  font-size: 1.35rem; font-weight: 800; margin-bottom: .6rem;
+}
+.cap-hero-inner > p {
+  font-size: .88rem; color: var(--text-dim); line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Equipment list */
+.cap-hero-equip {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: .75rem; margin-bottom: 1.5rem;
+}
+.che-item {
+  display: flex; gap: .75rem; align-items: flex-start;
+  padding: .75rem; border-radius: 12px;
+  background: rgba(255,255,255,.02); border: 1px solid var(--glass-border);
+}
+.che-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+.che-name { font-size: .8rem; font-weight: 600; }
+.che-desc { font-size: .68rem; color: var(--text-dim); }
+
+/* Hero stats */
+.cap-hero-stats {
+  display: flex; gap: 2rem;
+  padding-top: 1.25rem; border-top: 1px solid var(--glass-border);
+}
+.chs-item { text-align: center; }
+.chs-val {
+  font-size: 1.3rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.chs-label { font-size: .7rem; color: var(--text-dim); }
+
+/* Right 2x2 grid */
+.cap-right-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* Capability card (new style) */
+.cap-card {
+  position: relative; padding: 1.5rem;
+  border-radius: 18px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .4s;
+}
+.cap-card:hover {
+  border-color: rgba(0,212,170,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.2);
+}
+.cap-card-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.cap-card-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: .75rem;
+}
+.cap-icon { font-size: 1.6rem; }
+.cap-card-metric {
+  font-size: .75rem; font-weight: 800;
+  color: var(--accent); opacity: .7;
+}
+.cap-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+.cap-card p {
+  font-size: .8rem; color: var(--text-dim); line-height: 1.55;
+  margin-bottom: .75rem;
+}
+.cap-card-detail {
+  display: flex; flex-wrap: wrap; gap: .3rem;
+}
+.cap-card-detail span {
+  padding: .15rem .5rem; border-radius: 50px; font-size: .68rem;
+  color: var(--text-dim); background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
+}
+
+/* Extended capabilities row */
+.cap-extended {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.cap-ext-card {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.5rem; border-radius: 16px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .4s;
+}
+.cap-ext-card:hover {
+  border-color: rgba(0,212,170,.15);
+  transform: translateY(-2px);
+}
+.cap-ext-num {
+  font-size: .6rem; letter-spacing: 2px; font-weight: 700;
+  color: var(--accent); opacity: .4; flex-shrink: 0;
+  padding-top: .15rem;
+}
+.cap-ext-icon { font-size: 1.3rem; flex-shrink: 0; }
+.cap-ext-body h4 { font-size: .9rem; font-weight: 700; margin-bottom: .3rem; }
+.cap-ext-body p {
+  font-size: .78rem; color: var(--text-dim); line-height: 1.55;
+}
+
+/* Equipment showcase */
+.cap-equip-section { margin-top: 2rem; }
+.cap-equip-title {
+  display: flex; align-items: center; gap: 1.5rem;
+  justify-content: center; margin-bottom: 2rem;
+}
+.cap-equip-title h3 { font-size: 1.1rem; font-weight: 700; white-space: nowrap; }
+.cap-equip-line {
+  flex: 1; max-width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border));
+}
+.cap-equip-line:last-child {
+  background: linear-gradient(90deg, var(--glass-border), transparent);
+}
+.cap-equip-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.cap-equip-card {
+  border-radius: 18px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .4s;
+}
+.cap-equip-card:hover {
+  border-color: rgba(0,212,170,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.2);
+}
+.cec-visual {
+  position: relative; width: 100%; aspect-ratio: 280/180;
+  background: rgba(255,255,255,.01);
+  display: flex; align-items: center; justify-content: center;
+}
+.cec-visual svg { width: 100%; height: 100%; }
+.cec-badge {
+  position: absolute; top: .75rem; left: .75rem;
+  padding: .2rem .6rem; border-radius: 50px;
+  font-size: .65rem; font-weight: 600;
+  background: rgba(0,212,170,.1); color: var(--accent);
+  border: 1px solid rgba(0,212,170,.15);
+}
+.cec-info { padding: 1.25rem; }
+.cec-info h4 { font-size: .95rem; font-weight: 700; margin-bottom: .2rem; }
+.cec-brand {
+  font-size: .72rem; color: var(--accent); opacity: .7;
+  margin-bottom: .5rem; font-weight: 500;
+}
+.cec-info p {
+  font-size: .78rem; color: var(--text-dim); line-height: 1.55;
+  margin-bottom: .75rem;
+}
+.cec-specs {
+  display: flex; flex-wrap: wrap; gap: .3rem;
+}
+.cec-specs span {
+  padding: .15rem .5rem; border-radius: 50px; font-size: .65rem;
+  color: var(--text-dim); background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
+}
+
+/* ====== Industries ====== */
+.industries { padding: 8rem 0; position: relative; z-index: 1; }
+
+/* Top grid: 2 large featured cards */
+.ind-grid-top {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin-bottom: 1.5rem;
+}
+/* Bottom grid: 4 smaller cards */
+.ind-grid-bottom {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; margin-bottom: 2.5rem;
+}
+
+/* Shared card base */
+.ind-card {
+  position: relative; border-radius: 20px; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .45s cubic-bezier(.16,1,.3,1);
+}
+.ind-card:hover {
+  border-color: rgba(0,212,170,.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  transform: translateY(-4px);
+}
+.ind-card-bg-grad {
+  position: absolute; inset: 0; z-index: 0;
+  transition: opacity .4s; opacity: .6;
+}
+.ind-card:hover .ind-card-bg-grad { opacity: 1; }
+
+/* Large card specific */
+.ind-card-lg {
+  min-height: 340px; padding: 2.5rem;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.ind-card-svg {
+  position: absolute; top: 0; right: 0; width: 70%; opacity: .6;
+  z-index: 0; pointer-events: none;
+}
+.ind-card-content { position: relative; z-index: 1; }
+.ind-card-num {
+  font-size: .7rem; letter-spacing: 3px; font-weight: 700;
+  color: var(--accent); opacity: .5; margin-bottom: .75rem;
+}
+.ind-card-icon {
+  font-size: 2rem; margin-bottom: .75rem;
+}
+.ind-card-lg h3 {
+  font-size: 1.4rem; font-weight: 800; margin-bottom: .6rem;
+}
+.ind-card-lg p {
+  font-size: .9rem; color: var(--text-dim); line-height: 1.7;
+  max-width: 380px; margin-bottom: 1rem;
+}
+.ind-card-tags {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.ind-card-tags span {
+  padding: .2rem .65rem; border-radius: 50px; font-size: .72rem;
+  color: var(--accent); background: rgba(0,212,170,.06);
+  border: 1px solid rgba(0,212,170,.1);
+}
+.ind-card-stat {
+  position: absolute; top: 2rem; right: 2rem; z-index: 2;
+  text-align: right;
+}
+.ics-val {
+  font-size: 1.8rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ics-label { font-size: .72rem; color: var(--text-dim); }
+
+/* Small card specific */
+.ind-card-sm {
+  padding: 1.75rem 1.5rem;
+}
+.ind-card-sm-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.ind-card-icon-sm {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.ind-card-sm h3 {
+  font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem;
+}
+.ind-card-sm p {
+  font-size: .85rem; color: var(--text-dim); line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.ind-card-sm ul {
+  list-style: none; padding: 0;
+  border-top: 1px solid var(--glass-border); padding-top: .75rem;
+}
+.ind-card-sm li {
+  font-size: .8rem; color: var(--text-dim); padding: .3rem 0;
+  display: flex; align-items: center; gap: .5rem;
+}
+.ind-card-sm li::before {
+  content: ''; width: 3px; height: 3px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+
+/* Stats bar */
+.ind-stats-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 3rem; padding: 2.5rem 2rem;
+  border-radius: 20px; background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+.ind-stat-item { text-align: center; }
+.ind-stat-val {
+  font-size: 1.6rem; font-weight: 900;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ind-stat-label { font-size: .8rem; color: var(--text-dim); margin-top: .2rem; }
+.ind-stat-divider {
+  width: 1px; height: 40px; background: var(--glass-border);
+}
+
+/* ====== Process ====== */
+.process { padding: 8rem 0; position: relative; z-index: 1; }
+
+.proc-h-wrap {
+  position: relative; overflow-x: auto; padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal connecting line */
+.proc-h-line {
+  position: absolute; top: 28px; left: 5%; right: 5%;
+  height: 2px; z-index: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,212,170,.12) 5%,
+    rgba(0,153,255,.12) 35%,
+    rgba(255,107,53,.12) 55%,
+    rgba(168,85,247,.12) 75%,
+    rgba(255,200,0,.12) 95%,
+    transparent 100%
+  );
+}
+
+/* Steps row */
+.proc-h-steps {
+  display: flex; align-items: flex-start;
+  justify-content: center; gap: 0;
+  position: relative; z-index: 1;
+  min-width: max-content;
+}
+
+/* Each step */
+.proc-h-step {
+  display: flex; flex-direction: column; align-items: center;
+  width: 180px; flex-shrink: 0;
+}
+
+/* Node area */
+.proc-h-top {
+  height: 56px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+.proc-h-node {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.proc-h-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--dot-color);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--dot-color) 40%, transparent);
+  position: relative; z-index: 2;
+  animation: procPulse 3s ease-in-out infinite;
+}
+@keyframes procPulse {
+  0%, 100% { box-shadow: 0 0 12px color-mix(in srgb, var(--dot-color) 30%, transparent); }
+  50% { box-shadow: 0 0 24px color-mix(in srgb, var(--dot-color) 50%, transparent); }
+}
+.proc-h-ring {
+  position: absolute; width: 32px; height: 32px;
+  border-radius: 50%; border: 1.5px solid var(--ring-color);
+  opacity: .2;
+}
+
+/* Card */
+.proc-h-card {
+  width: 100%; padding: 1.5rem 1.25rem;
+  border-radius: 16px; position: relative; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .4s;
+}
+.proc-h-card:hover {
+  border-color: rgba(0,212,170,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.2);
+}
+.proc-h-card-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.proc-h-num {
+  font-size: .65rem; letter-spacing: 2px; font-weight: 700;
+  color: var(--accent); opacity: .6; margin-bottom: .75rem;
+}
+.proc-h-icon { font-size: 1.5rem; margin-bottom: .75rem; }
+.proc-h-card h3 {
+  font-size: 1rem; font-weight: 700; margin-bottom: .5rem;
+}
+.proc-h-card p {
+  font-size: .82rem; color: var(--text-dim); line-height: 1.65;
+  margin-bottom: .75rem;
+}
+.proc-h-tags {
+  display: flex; flex-wrap: wrap; gap: .35rem;
+}
+.proc-h-tags span {
+  padding: .15rem .5rem; border-radius: 50px; font-size: .68rem;
+  color: var(--text-dim); background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
+}
+
+/* Arrow between steps */
+.proc-h-arrow {
+  display: flex; align-items: center; padding-top: 44px;
+  flex-shrink: 0; width: 40px; justify-content: center;
+}
+
+/* CTA bar */
+.proc-cta-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 3rem; padding: 1.5rem 2rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0,212,170,.06), rgba(0,153,255,.04));
+  border: 1px solid rgba(0,212,170,.1);
+}
+.proc-cta-left {
+  display: flex; align-items: center; gap: 1rem;
+}
+.proc-cta-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(0,212,170,.1); display: flex;
+  align-items: center; justify-content: center; font-size: 1.3rem;
+}
+.proc-cta-title { font-size: .95rem; font-weight: 600; }
+.proc-cta-desc { font-size: .8rem; color: var(--text-dim); }
+
+/* ====== Quality ====== */
+.quality { padding: 8rem 0; position: relative; z-index: 1; }
+
+/* Cert ribbon */
+.qual-certs-ribbon {
+  display: flex; gap: 1rem; justify-content: center;
+  margin-bottom: 4rem; flex-wrap: wrap;
+}
+.qual-cert-item {
+  position: relative; text-align: center;
+  padding: 1.5rem 1.25rem; border-radius: 16px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  width: 150px; transition: all .4s; overflow: hidden;
+}
+.qual-cert-item:hover {
+  border-color: rgba(0,212,170,.2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.2);
+}
+.qual-cert-glow {
+  position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--glow); filter: blur(24px);
+  pointer-events: none;
+}
+.qual-cert-badge { font-size: 2rem; margin-bottom: .75rem; position: relative; z-index: 1; }
+.qual-cert-name {
+  font-size: .9rem; font-weight: 700; margin-bottom: .2rem;
+  position: relative; z-index: 1;
+}
+.qual-cert-desc {
+  font-size: .72rem; color: var(--text-dim);
+  position: relative; z-index: 1;
+}
+
+/* Quality process section */
+.qual-process { margin-bottom: 2.5rem; }
+.qual-proc-title {
+  display: flex; align-items: center; gap: 1.5rem;
+  justify-content: center; margin-bottom: 2.5rem;
+}
+.qual-proc-title h3 {
+  font-size: 1.1rem; font-weight: 700; white-space: nowrap;
+}
+.qual-proc-line {
+  flex: 1; max-width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border));
+}
+.qual-proc-line:last-child {
+  background: linear-gradient(90deg, var(--glass-border), transparent);
+}
+
+/* Process cards grid */
+.qual-proc-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+.qual-proc-card {
+  padding: 1.75rem 1.25rem; border-radius: 18px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  position: relative; overflow: hidden; transition: all .4s;
+}
+.qual-proc-card:hover {
+  border-color: rgba(0,212,170,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.2);
+}
+.qual-proc-num {
+  font-size: .6rem; letter-spacing: 2px; font-weight: 700;
+  color: var(--accent); opacity: .4; margin-bottom: 1rem;
+}
+.qual-proc-icon-wrap {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--icon-bg); border: 1px solid var(--icon-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1rem;
+}
+.qual-proc-card h4 {
+  font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
+}
+.qual-proc-card p {
+  font-size: .8rem; color: var(--text-dim); line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+.qual-proc-metric {
+  padding-top: .75rem; border-top: 1px solid var(--glass-border);
+}
+.qpm-val {
+  font-size: 1.15rem; font-weight: 800;
+  background: var(--gradient-1); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.qpm-label { font-size: .7rem; color: var(--text-dim); margin-top: .1rem; }
+
+/* Trust bar */
+.qual-trust-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; padding: 2rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0,212,170,.04), rgba(0,153,255,.03));
+  border: 1px solid var(--glass-border); flex-wrap: wrap;
+}
+.qual-trust-item {
+  display: flex; align-items: center; gap: .6rem;
+}
+.qt-icon { font-size: 1.2rem; }
+.qt-text { font-size: .85rem; font-weight: 500; color: var(--text-dim); }
+.qual-trust-sep {
+  width: 1px; height: 24px; background: var(--glass-border);
+}
+
+/* ====== Testimonials ====== */
+.testimonials { padding: 8rem 0; position: relative; z-index: 1; }
+.testimonial-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.testimonial-card {
+  padding: 2rem; border-radius: 20px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  transition: all .3s;
+}
+.testimonial-card:hover { border-color: rgba(0,212,170,.15); }
+.testimonial-stars { color: #ffc800; font-size: .9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+.testimonial-text {
+  font-size: .95rem; color: var(--text-dim);
+  line-height: 1.8; margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.testimonial-author { display: flex; align-items: center; gap: .75rem; }
+.testimonial-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gradient-1); display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 700; font-size: .85rem; color: #000;
+}
+.testimonial-name { font-size: .9rem; font-weight: 600; }
+.testimonial-role { font-size: .78rem; color: var(--text-dim); }
+
+/* ====== CTA ====== */
+.cta-section {
+  padding: 8rem 0; position: relative; z-index: 1;
+}
+.cta-box {
+  border-radius: 32px; padding: 4rem;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,212,170,.08), rgba(0,153,255,.06));
+  border: 1px solid rgba(0,212,170,.12);
+}
+.cta-box::before {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(ellipse, rgba(0,212,170,.06), transparent 60%);
+  pointer-events: none;
+}
+.cta-content { position: relative; z-index: 1; text-align: center; max-width: 640px; margin: 0 auto; }
+.cta-content h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800; margin-bottom: 1rem;
+}
+.cta-content p {
+  color: var(--text-dim); margin-bottom: 2rem;
+  font-size: 1.05rem; line-height: 1.7;
+}
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ====== Contact ====== */
+.contact { padding: 8rem 0; position: relative; z-index: 1; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 3rem; margin-top: 3rem;
+}
+.contact-info-list { list-style: none; margin-top: 2rem; }
+.contact-info-item {
+  display: flex; gap: 1rem; padding: 1.25rem 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+.contact-info-item:last-child { border-bottom: none; }
+.contact-info-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.contact-info-label { font-size: .78rem; color: var(--text-dim); margin-bottom: .25rem; }
+.contact-info-value { font-size: .95rem; font-weight: 500; }
 .contact-form {
-  background: var(--white); border: 1px solid #E8ECF1;
-  border-radius: 12px; padding: 2rem;
+  padding: 2.5rem; border-radius: 24px;
+  background: var(--glass); border: 1px solid var(--glass-border);
 }
+.contact-form h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
 .form-group { margin-bottom: 1rem; }
 .form-group label {
-  display: block; font-size: 0.8125rem; font-weight: 600;
-  color: var(--deep-blue); margin-bottom: 0.375rem;
+  display: block; font-size: .82rem; color: var(--text-dim);
+  margin-bottom: .5rem; font-weight: 500;
 }
-.form-group input, .form-group textarea, .form-group select {
-  width: 100%; padding: 0.75rem 1rem;
-  border: 1.5px solid #E0E4EA; border-radius: 8px;
-  font-size: 0.875rem; color: var(--text);
-  background: var(--light-gray); transition: all 0.2s;
-  font-family: inherit;
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: .75rem 1rem; border-radius: 12px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--glass-border);
+  color: var(--text); font-size: .9rem; font-family: inherit;
+  transition: border-color .3s; outline: none;
 }
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-  outline: none; border-color: var(--accent);
-  background: var(--white);
-  box-shadow: 0 0 0 3px rgba(62,146,204,0.1);
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--accent);
 }
 .form-group textarea { resize: vertical; min-height: 120px; }
-.btn-submit {
-  width: 100%; padding: 0.875rem;
-  background: var(--accent); color: var(--white);
-  border: none; border-radius: 8px; font-size: 0.9375rem;
-  font-weight: 600; cursor: pointer; transition: all 0.2s;
-}
-.btn-submit:hover {
-  background: var(--accent-light);
-  box-shadow: 0 4px 16px rgba(62,146,204,0.3);
-}
+.form-group select option { background: var(--primary); }
+.form-submit { width: 100%; justify-content: center; }
 
-/* ===== FOOTER ===== */
+/* ====== Footer ====== */
 .footer {
-  background: var(--deep-blue); color: rgba(255,255,255,0.7);
-  padding: 4rem 0 2rem;
+  padding: 4rem 0 2rem; position: relative; z-index: 1;
+  border-top: 1px solid var(--glass-border);
 }
 .footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 3rem; margin-bottom: 3rem;
 }
-.footer-brand p {
-  font-size: 0.875rem; line-height: 1.7;
-  margin-top: 1rem;
+.footer-brand p { color: var(--text-dim); font-size: .88rem; margin-top: 1rem; line-height: 1.7; }
+.footer-col h4 {
+  font-size: .85rem; font-weight: 600; margin-bottom: 1.25rem;
+  color: var(--text);
 }
-.footer h4 {
-  font-size: 0.9375rem; font-weight: 700;
-  color: var(--white); margin-bottom: 1.25rem;
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: .6rem; }
+.footer-col a {
+  color: var(--text-dim); text-decoration: none;
+  font-size: .85rem; transition: color .3s;
 }
-.footer-links {
-  list-style: none; display: flex; flex-direction: column; gap: 0.625rem;
-}
-.footer-links a {
-  color: rgba(255,255,255,0.6); text-decoration: none;
-  font-size: 0.8125rem; transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--accent); }
+.footer-col a:hover { color: var(--accent); }
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 1.5rem;
+  padding-top: 2rem; border-top: 1px solid var(--glass-border);
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.75rem; color: rgba(255,255,255,0.4);
+  flex-wrap: wrap; gap: 1rem;
 }
+.footer-bottom p { font-size: .8rem; color: var(--text-dim); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: .8rem; color: var(--text-dim); text-decoration: none; }
+.footer-bottom-links a:hover { color: var(--accent); }
 
-/* ===== SCROLL ANIMATIONS ===== */
+/* ====== Animations ====== */
 .reveal {
   opacity: 0; transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: all .8s cubic-bezier(.16,1,.3,1);
 }
-.reveal.visible {
-  opacity: 1; transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
 
-/* ===== BACK TO TOP ===== */
-.back-top {
-  position: fixed; bottom: 2rem; right: 2rem;
-  width: 44px; height: 44px; border-radius: 10px;
-  background: var(--accent); color: var(--white);
-  border: none; cursor: pointer; font-size: 1.125rem;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transform: translateY(10px);
-  transition: all 0.3s; z-index: 900;
-  box-shadow: 0 4px 12px rgba(62,146,204,0.3);
-}
-.back-top.show { opacity: 1; transform: translateY(0); }
-.back-top:hover { background: var(--accent-light); transform: translateY(-2px); }
-
-/* ===== RESPONSIVE ===== */
+/* ====== Responsive ====== */
 @media (max-width: 1024px) {
-  .adv-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-visual { display: none; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .prod-hero-content { grid-template-columns: 1fr; }
+  .prod-hero-right { display: none; }
+  .prod-hero-specs { grid-template-columns: repeat(2, 1fr); }
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .prod-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .prod-stat-sep { display: none; }
+  .cap-core { grid-template-columns: 1fr; }
+  .cap-right-grid { grid-template-columns: repeat(2, 1fr); }
+  .cap-extended { grid-template-columns: repeat(2, 1fr); }
+  .cap-equip-grid { grid-template-columns: repeat(2, 1fr); }
+  .cap-hero-equip { grid-template-columns: 1fr; }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
+  .ind-grid-top { grid-template-columns: 1fr; }
+  .ind-grid-bottom { grid-template-columns: repeat(2, 1fr); }
+  .ind-stats-bar { gap: 2rem; flex-wrap: wrap; }
+  .process-steps { grid-template-columns: repeat(3, 1fr); }
+  .process-steps::before { display: none; }
+  .proc-h-line { display: none; }
+  .proc-h-steps { flex-wrap: wrap; gap: 1rem; justify-content: center; min-width: unset; }
+  .proc-h-step { width: 160px; }
+  .proc-h-arrow { display: none; }
+  .proc-cta-bar { flex-direction: column; gap: 1rem; text-align: center; }
+  .quality-grid { grid-template-columns: 1fr; }
+  .qual-certs-ribbon { gap: .75rem; }
+  .qual-cert-item { width: 130px; padding: 1.25rem 1rem; }
+  .qual-proc-grid { grid-template-columns: repeat(3, 1fr); }
+  .qual-trust-bar { gap: 1.5rem; }
+  .qual-trust-sep { display: none; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-links.open {
-    display: flex; flex-direction: column;
-    position: absolute; top: 64px; left: 0; right: 0;
-    background: rgba(10,36,99,0.98);
-    padding: 1rem; gap: 0.25rem;
-    border-bottom: 1px solid rgba(62,146,204,0.15);
-  }
+  .nav-cta { display: none; }
   .nav-toggle { display: block; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .product-grid { grid-template-columns: 1fr; }
-  .app-grid { grid-template-columns: 1fr; }
-  .rd-grid { grid-template-columns: 1fr; }
-  .prod-grid { grid-template-columns: 1fr 1fr; }
-  .news-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { min-height: 320px; }
+  .about-float-1 { right: 4%; top: 4%; }
+  .about-float-2 { left: 4%; bottom: 28%; }
+  .about-float-3 { right: 4%; bottom: 4%; }
+  .about-features { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .prod-grid { grid-template-columns: 1fr; }
+  .prod-hero-specs { grid-template-columns: repeat(2, 1fr); }
+  .prod-hero-content { padding: 2rem 1.5rem; }
+  .cap-right-grid { grid-template-columns: 1fr; }
+  .cap-extended { grid-template-columns: 1fr; }
+  .cap-equip-grid { grid-template-columns: 1fr; }
+  .cap-hero-stats { gap: 1rem; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .ind-grid-top { grid-template-columns: 1fr; }
+  .ind-grid-bottom { grid-template-columns: 1fr; }
+  .ind-stats-bar { flex-direction: column; gap: 1.5rem; }
+  .ind-stat-divider { width: 40px; height: 1px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .proc-h-steps { flex-direction: column; align-items: center; }
+  .proc-h-step { width: 100%; max-width: 320px; }
+  .proc-h-arrow { display: none; }
+  .proc-h-line { display: none; }
+  .testimonial-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  .quality-flow { flex-direction: column; align-items: center; }
-  .quality-step { max-width: 100%; width: 100%; }
-  .cert-badges { flex-direction: column; align-items: center; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .form-row { grid-template-columns: 1fr; }
-  section { padding: 4rem 0; }
+  .cta-box { padding: 2.5rem 1.5rem; }
+  .qual-proc-grid { grid-template-columns: 1fr; }
+  .qual-certs-ribbon { gap: .5rem; }
+  .qual-cert-item { width: calc(33% - .5rem); min-width: 100px; padding: 1rem .5rem; }
+  .qual-cert-badge { font-size: 1.5rem; margin-bottom: .5rem; }
+  .qual-cert-name { font-size: .78rem; }
+  .qual-cert-desc { font-size: .65rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.8rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- Particles -->
+<canvas id="particles"></canvas>
+
+<!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">POLY<span>TECH</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">首页</a></li>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">广</div>
+      <span class="nav-logo-text">广俊塑料</span>
+    </a>
+    <ul class="nav-links">
       <li><a href="#about">关于我们</a></li>
       <li><a href="#products">产品中心</a></li>
-      <li><a href="#applications">应用领域</a></li>
-      <li><a href="#rd">技术研发</a></li>
-      <li><a href="#production">生产实力</a></li>
-      <li><a href="#quality">品质控制</a></li>
-      <li><a href="#news">新闻动态</a></li>
+      <li><a href="#capabilities">技术实力</a></li>
+      <li><a href="#industries">应用领域</a></li>
+      <li><a href="#process">服务流程</a></li>
+      <li><a href="#quality">质量体系</a></li>
       <li><a href="#contact">联系我们</a></li>
     </ul>
+    <a href="#contact" class="nav-cta">获取报价</a>
     <button class="nav-toggle" id="navToggle" aria-label="菜单">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-grid"></div>
-  <div class="hero-particles" id="particles"></div>
-  <div class="hero-content">
-    <div class="hero-badge">高性能材料解决方案</div>
-    <h1>专注改性塑料<br><span class="highlight">驱动工业创新</span></h1>
-    <p>以技术研发为核心，为汽车、家电、电子电气等行业提供稳定可靠的改性塑料定制方案，助力客户实现产品升级与价值突破。</p>
-    <div class="hero-buttons">
-      <a href="#products" class="btn btn-primary">探索产品 →</a>
-      <a href="#contact" class="btn btn-outline">在线咨询</a>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        国家高新技术企业 · 专注改性塑料 15 年
+      </div>
+      <h1>以材料创新<br>驱动<span class="gradient-text">产业升级</span></h1>
+      <p>广俊塑料深耕改性塑料领域，为汽车、电子电器、新能源等行业提供高性能材料解决方案。从配方研发到规模化生产，全程赋能客户产品竞争力。</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">探索产品 →</a>
+        <a href="#contact" class="btn btn-outline">在线咨询</a>
+      </div>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="num">15+</span><span class="label">年行业经验</span></div>
-      <div class="hero-stat"><span class="num">500+</span><span class="label">配方数据库</span></div>
-      <div class="hero-stat"><span class="num">50,000</span><span class="label">吨年产能</span></div>
-      <div class="hero-stat"><span class="num">200+</span><span class="label">合作客户</span></div>
+      <div>
+        <div class="hero-stat-value" data-count="15">0</div>
+        <div class="hero-stat-label">年行业深耕</div>
+      </div>
+      <div>
+        <div class="hero-stat-value" data-count="500">0</div>
+        <div class="hero-stat-label">+ 配方储备</div>
+      </div>
+      <div>
+        <div class="hero-stat-value" data-count="2000">0</div>
+        <div class="hero-stat-label">+ 合作客户</div>
+      </div>
+      <div>
+        <div class="hero-stat-value" data-count="50000">0</div>
+        <div class="hero-stat-label">吨 年产能</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-molecule">
+      <div class="mol-ring"></div>
+      <div class="mol-ring"></div>
+      <div class="mol-ring"></div>
+      <div class="mol-node"></div>
+      <div class="mol-node"></div>
+      <div class="mol-node"></div>
+      <div class="mol-node"></div>
+      <div class="mol-node"></div>
+      <div class="mol-center"></div>
     </div>
   </div>
 </section>
 
-<!-- ADVANTAGES -->
-<section class="advantages" id="advantages">
-  <div class="container">
-    <div class="section-header">
-      <span class="overline">Why Choose Us</span>
-      <h2>核心优势</h2>
-      <p>以技术驱动价值，以品质赢得信赖</p>
-    </div>
-    <div class="adv-grid">
-      <div class="adv-card reveal">
-        <div class="adv-icon">💰</div>
-        <h3>高性价比</h3>
-        <p>规模化生产与精细化成本管控，为客户提供极具竞争力的材料方案</p>
-      </div>
-      <div class="adv-card reveal">
-        <div class="adv-icon">⚡</div>
-        <h3>稳定性能</h3>
-        <p>严格的过程控制与出厂全检体系，确保每批次性能一致性</p>
-      </div>
-      <div class="adv-card reveal">
-        <div class="adv-icon">🔧</div>
-        <h3>定制化服务</h3>
-        <p>500+成熟配方库，可根据客户需求快速开发定制化改性方案</p>
-      </div>
-      <div class="adv-card reveal">
-        <div class="adv-icon">🏭</div>
-        <h3>规模化生产</h3>
-        <p>多条双螺杆挤出生产线，年产能50,000吨，保障稳定供货</p>
-      </div>
-    </div>
+<!-- Marquee -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>改性PBT（核心产品）</span>
+    <span class="marquee-item"><span class="dot"></span>改性PET</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚酰胺 PA6/PA66</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚丙烯 (PP)</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚碳酸酯 (PC)</span>
+    <span class="marquee-item"><span class="dot"></span>改性 ABS</span>
+    <span class="marquee-item"><span class="dot"></span>PC/ABS合金</span>
+    <span class="marquee-item"><span class="dot"></span>阻燃增强材料</span>
+    <span class="marquee-item"><span class="dot"></span>导电/抗静电材料</span>
+    <span class="marquee-item"><span class="dot"></span>导热材料</span>
+    <span class="marquee-item"><span class="dot"></span>特种工程塑料</span>
+    <span class="marquee-item"><span class="dot"></span>功能改性材料</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><span class="dot"></span>改性PBT（核心产品）</span>
+    <span class="marquee-item"><span class="dot"></span>改性PET</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚酰胺 PA6/PA66</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚丙烯 (PP)</span>
+    <span class="marquee-item"><span class="dot"></span>改性聚碳酸酯 (PC)</span>
+    <span class="marquee-item"><span class="dot"></span>改性 ABS</span>
+    <span class="marquee-item"><span class="dot"></span>PC/ABS合金</span>
+    <span class="marquee-item"><span class="dot"></span>阻燃增强材料</span>
+    <span class="marquee-item"><span class="dot"></span>导电/抗静电材料</span>
+    <span class="marquee-item"><span class="dot"></span>导热材料</span>
+    <span class="marquee-item"><span class="dot"></span>特种工程塑料</span>
+    <span class="marquee-item"><span class="dot"></span>功能改性材料</span>
   </div>
-</section>
+</div>
 
-<!-- ABOUT -->
-<section class="section-alt" id="about">
+<!-- About -->
+<section class="about" id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-visual reveal">
-        <div class="about-visual-inner">
-          <div class="big-num">15+</div>
-          <div class="big-text">年专注改性塑料领域</div>
+        <div class="about-visual-bg"></div>
+        <!-- Hero image area -->
+        <div class="about-hero-img">
+          <div class="about-img-overlay">
+            <div class="about-img-tag">SINCE 2011</div>
+            <div class="about-img-title">30,000 m²</div>
+            <div class="about-img-sub">现代化生产基地</div>
+          </div>
+          <div class="about-img-decor">
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Abstract factory / molecular structure -->
+              <rect x="40" y="120" width="120" height="80" rx="8" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="none"/>
+              <rect x="60" y="100" width="80" height="100" rx="6" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="rgba(0,212,170,0.03)"/>
+              <circle cx="100" cy="85" r="15" stroke="rgba(0,212,170,0.4)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
+              <line x1="100" y1="100" x2="100" y2="85" stroke="rgba(0,212,170,0.3)" stroke-width="1"/>
+              <rect x="200" y="80" width="160" height="120" rx="10" stroke="rgba(0,153,255,0.25)" stroke-width="1.5" fill="rgba(0,153,255,0.02)"/>
+              <rect x="220" y="100" width="50" height="35" rx="4" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
+              <rect x="285" y="100" width="50" height="35" rx="4" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
+              <rect x="220" y="150" width="120" height="30" rx="4" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
+              <!-- Conveyor -->
+              <line x1="160" y1="200" x2="200" y2="200" stroke="rgba(0,212,170,0.4)" stroke-width="2" stroke-dasharray="4 3"/>
+              <circle cx="160" cy="200" r="4" fill="rgba(0,212,170,0.3)"/>
+              <circle cx="200" cy="200" r="4" fill="rgba(0,153,255,0.3)"/>
+              <!-- Molecular chain -->
+              <circle cx="300" cy="50" r="6" fill="rgba(0,212,170,0.2)" stroke="rgba(0,212,170,0.4)" stroke-width="1"/>
+              <circle cx="340" cy="35" r="5" fill="rgba(0,153,255,0.2)" stroke="rgba(0,153,255,0.4)" stroke-width="1"/>
+              <circle cx="320" cy="65" r="4" fill="rgba(255,107,53,0.2)" stroke="rgba(255,107,53,0.3)" stroke-width="1"/>
+              <line x1="300" y1="50" x2="340" y2="35" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+              <line x1="300" y1="50" x2="320" y2="65" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+              <!-- Ground -->
+              <line x1="20" y1="220" x2="380" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <!-- Data bars -->
+              <rect x="30" y="240" width="8" height="30" rx="2" fill="rgba(0,212,170,0.15)"/>
+              <rect x="45" y="235" width="8" height="35" rx="2" fill="rgba(0,212,170,0.2)"/>
+              <rect x="60" y="245" width="8" height="25" rx="2" fill="rgba(0,212,170,0.12)"/>
+              <rect x="75" y="230" width="8" height="40" rx="2" fill="rgba(0,153,255,0.2)"/>
+              <rect x="90" y="238" width="8" height="32" rx="2" fill="rgba(0,153,255,0.15)"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Floating stat cards -->
+        <div class="about-float-card about-float-1">
+          <div class="afc-icon">🔬</div>
+          <div class="afc-text">
+            <div class="afc-val">60+</div>
+            <div class="afc-label">研发团队</div>
+          </div>
+        </div>
+        <div class="about-float-card about-float-2">
+          <div class="afc-icon">⚙️</div>
+          <div class="afc-text">
+            <div class="afc-val">20+</div>
+            <div class="afc-label">生产线</div>
+          </div>
+        </div>
+        <div class="about-float-card about-float-3">
+          <div class="afc-icon">🏆</div>
+          <div class="afc-text">
+            <div class="afc-val">国家高新</div>
+            <div class="afc-label">技术企业</div>
+          </div>
         </div>
       </div>
-      <div class="reveal">
-        <span class="overline" style="display:inline-block;font-size:0.75rem;font-weight:600;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;">About Us</span>
-        <h2 style="font-size:2rem;font-weight:800;color:var(--deep-blue);margin-bottom:1.25rem;">专注改性塑料<br>研发 · 生产 · 销售</h2>
-        <p style="font-size:0.9375rem;color:var(--text-light);margin-bottom:1.5rem;line-height:1.8;">
-          我们是一家专注于改性塑料研发、生产与销售的技术型企业。公司拥有先进的双螺杆挤出生产线、自动化配料系统与无尘生产车间，配备完善的物性检测与品质管控体系，已通过ISO9001质量管理体系及IATF16949汽车行业质量管理认证。
+      <div class="reveal reveal-delay-1">
+        <div class="section-label">关于我们</div>
+        <h2 class="section-title">深耕改性塑料<br><span class="gradient-text">十五载匠心铸品质</span></h2>
+        <p class="section-desc">
+          广俊塑料成立于2011年，是一家集改性塑料研发、生产、销售及技术服务于一体的国家高新技术企业。公司坐落于珠三角核心区域，拥有现代化生产基地30,000余平方米，配备国际先进的双螺杆挤出生产线20余条。
         </p>
-        <p style="font-size:0.9375rem;color:var(--text-light);margin-bottom:2rem;line-height:1.8;">
-          凭借丰富的配方研发经验与快速响应的服务能力，公司产品广泛应用于汽车、家电、电子电气、电动工具等领域，致力于成为客户最信赖的改性塑料合作伙伴。
+        <p class="section-desc" style="margin-top: 1rem;">
+          我们以"材料赋能制造"为使命，与多所高校及科研院所建立产学研合作关系，持续推动改性塑料技术革新，为客户提供从概念验证到量产交付的一站式材料解决方案。
         </p>
         <div class="about-features">
-          <div class="about-feat"><span class="dot"></span>ISO9001 认证</div>
-          <div class="about-feat"><span class="dot"></span>IATF16949 认证</div>
-          <div class="about-feat"><span class="dot"></span>自动化配料系统</div>
-          <div class="about-feat"><span class="dot"></span>无尘生产车间</div>
-          <div class="about-feat"><span class="dot"></span>完善的检测实验室</div>
-          <div class="about-feat"><span class="dot"></span>专业技术团队</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="container">
-    <div class="section-header">
-      <span class="overline">Products</span>
-      <h2>产品中心</h2>
-      <p>覆盖主流工程塑料品类，满足多样化应用需求</p>
-    </div>
-    <div class="product-filter">
-      <button class="filter-btn active" data-filter="all">全部</button>
-      <button class="filter-btn" data-filter="pp">改性PP</button>
-      <button class="filter-btn" data-filter="abs">ABS</button>
-      <button class="filter-btn" data-filter="pa">PA系列</button>
-      <button class="filter-btn" data-filter="pet">PBT/PET</button>
-      <button class="filter-btn" data-filter="pc">PC合金</button>
-      <button class="filter-btn" data-filter="special">特种改性</button>
-    </div>
-    <div class="product-grid">
-      <!-- PP -->
-      <div class="product-card reveal" data-cat="pp">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#E8DCC8"></div>
-            <div class="pellet" style="background:#F0E6D0"></div>
-            <div class="pellet" style="background:#E8DCC8"></div>
-            <div class="pellet" style="background:#F0E6D0"></div>
-            <div class="pellet" style="background:#E8DCC8"></div>
-            <div class="pellet" style="background:#F0E6D0"></div>
+          <div class="about-feature">
+            <div class="about-feature-num">30,000+</div>
+            <div class="about-feature-text">平方米生产基地</div>
           </div>
-        </div>
-        <div class="product-body">
-          <h3>改性PP</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 25-45 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 5-40 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>密度: 0.90-1.20 g/cm³</div>
-            <div class="spec"><span class="spec-dot"></span>熔指: 8-25 g/10min</div>
+          <div class="about-feature">
+            <div class="about-feature-num">20+</div>
+            <div class="about-feature-text">先进生产线</div>
           </div>
-        </div>
-      </div>
-      <!-- PE -->
-      <div class="product-card reveal" data-cat="pp">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#E5E5E5"></div>
-            <div class="pellet" style="background:#F2F2F2"></div>
-            <div class="pellet" style="background:#E5E5E5"></div>
-            <div class="pellet" style="background:#F2F2F2"></div>
-            <div class="pellet" style="background:#E5E5E5"></div>
-            <div class="pellet" style="background:#F2F2F2"></div>
+          <div class="about-feature">
+            <div class="about-feature-num">98.5%</div>
+            <div class="about-feature-text">客户满意度</div>
           </div>
-        </div>
-        <div class="product-body">
-          <h3>改性PE</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 15-35 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 10-60 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>密度: 0.94-1.15 g/cm³</div>
-            <div class="spec"><span class="spec-dot"></span>耐候性优异</div>
-          </div>
-        </div>
-      </div>
-      <!-- ABS -->
-      <div class="product-card reveal" data-cat="abs">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#F5F0E8"></div>
-            <div class="pellet" style="background:#FFF8ED"></div>
-            <div class="pellet" style="background:#F5F0E8"></div>
-            <div class="pellet" style="background:#FFF8ED"></div>
-            <div class="pellet" style="background:#F5F0E8"></div>
-            <div class="pellet" style="background:#FFF8ED"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>改性ABS</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 40-60 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 15-35 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>高光/亚光可选</div>
-            <div class="spec"><span class="spec-dot"></span>阻燃 V0-V2</div>
-          </div>
-        </div>
-      </div>
-      <!-- PA6/PA66 -->
-      <div class="product-card reveal" data-cat="pa">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#D4E5F7"></div>
-            <div class="pellet" style="background:#E0EDFC"></div>
-            <div class="pellet" style="background:#D4E5F7"></div>
-            <div class="pellet" style="background:#E0EDFC"></div>
-            <div class="pellet" style="background:#D4E5F7"></div>
-            <div class="pellet" style="background:#E0EDFC"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>PA6 / PA66 玻纤增强</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 80-180 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 8-25 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>玻纤含量 15%-50%</div>
-            <div class="spec"><span class="spec-dot"></span>耐温可达 260°C</div>
-          </div>
-        </div>
-      </div>
-      <!-- PBT -->
-      <div class="product-card reveal" data-cat="pet">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#E8E0F0"></div>
-            <div class="pellet" style="background:#F0E8F5"></div>
-            <div class="pellet" style="background:#E8E0F0"></div>
-            <div class="pellet" style="background:#F0E8F5"></div>
-            <div class="pellet" style="background:#E8E0F0"></div>
-            <div class="pellet" style="background:#F0E8F5"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>改性PBT / PET</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 55-140 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>阻燃 V0 (0.8mm)</div>
-            <div class="spec"><span class="spec-dot"></span>CTI ≥ 250V</div>
-            <div class="spec"><span class="spec-dot"></span>尺寸稳定性佳</div>
-          </div>
-        </div>
-      </div>
-      <!-- PC/ABS -->
-      <div class="product-card reveal" data-cat="pc">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#D8E8E0"></div>
-            <div class="pellet" style="background:#E4F0EA"></div>
-            <div class="pellet" style="background:#D8E8E0"></div>
-            <div class="pellet" style="background:#E4F0EA"></div>
-            <div class="pellet" style="background:#D8E8E0"></div>
-            <div class="pellet" style="background:#E4F0EA"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>PC/ABS 合金</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>拉伸强度: 50-65 MPa</div>
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 35-55 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>耐热性优异</div>
-            <div class="spec"><span class="spec-dot"></span>阻燃可选</div>
-          </div>
-        </div>
-      </div>
-      <!-- 阻燃 -->
-      <div class="product-card reveal" data-cat="special">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#F7D4D4"></div>
-            <div class="pellet" style="background:#FCE0E0"></div>
-            <div class="pellet" style="background:#F7D4D4"></div>
-            <div class="pellet" style="background:#FCE0E0"></div>
-            <div class="pellet" style="background:#F7D4D4"></div>
-            <div class="pellet" style="background:#FCE0E0"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>阻燃改性系列</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>UL94 V0-V2</div>
-            <div class="spec"><span class="spec-dot"></span>无卤阻燃可选</div>
-            <div class="spec"><span class="spec-dot"></span>灼热丝 ≥ 750°C</div>
-            <div class="spec"><span class="spec-dot"></span>CTI ≥ 250V</div>
-          </div>
-        </div>
-      </div>
-      <!-- 增韧 -->
-      <div class="product-card reveal" data-cat="special">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#D4F0D4"></div>
-            <div class="pellet" style="background:#E0FCE0"></div>
-            <div class="pellet" style="background:#D4F0D4"></div>
-            <div class="pellet" style="background:#E0FCE0"></div>
-            <div class="pellet" style="background:#D4F0D4"></div>
-            <div class="pellet" style="background:#E0FCE0"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>增韧改性系列</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>冲击强度: 30-60 kJ/m²</div>
-            <div class="spec"><span class="spec-dot"></span>低温韧性优异</div>
-            <div class="spec"><span class="spec-dot"></span>耐寒 -40°C</div>
-            <div class="spec"><span class="spec-dot"></span>多基材可选</div>
-          </div>
-        </div>
-      </div>
-      <!-- 耐候 -->
-      <div class="product-card reveal" data-cat="special">
-        <div class="product-img">
-          <div class="pellet-icon">
-            <div class="pellet" style="background:#F0E8D4"></div>
-            <div class="pellet" style="background:#F5EFE0"></div>
-            <div class="pellet" style="background:#F0E8D4"></div>
-            <div class="pellet" style="background:#F5EFE0"></div>
-            <div class="pellet" style="background:#F0E8D4"></div>
-            <div class="pellet" style="background:#F5EFE0"></div>
-          </div>
-        </div>
-        <div class="product-body">
-          <h3>耐候 / 高光系列</h3>
-          <div class="product-specs">
-            <div class="spec"><span class="spec-dot"></span>UV稳定剂体系</div>
-            <div class="spec"><span class="spec-dot"></span>户外耐候 ≥ 3年</div>
-            <div class="spec"><span class="spec-dot"></span>高光泽度 ≥ 95%</div>
-            <div class="spec"><span class="spec-dot"></span>颜色稳定性佳</div>
+          <div class="about-feature">
+            <div class="about-feature-num">48h</div>
+            <div class="about-feature-text">快速响应服务</div>
           </div>
         </div>
       </div>
@@ -962,416 +1487,1302 @@ section { padding: 6rem 0; }
   </div>
 </section>
 
-<!-- APPLICATIONS -->
-<section class="section-dark" id="applications">
+<!-- Products -->
+<section class="products" id="products">
   <div class="container">
-    <div class="section-header">
-      <span class="overline" style="color:var(--accent);">Applications</span>
-      <h2>应用领域</h2>
-      <p>深耕六大核心行业，提供精准材料解决方案</p>
+    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
+      <div class="section-label" style="justify-content: center;">产品中心</div>
+      <h2 class="section-title">高性能改性塑料<br><span class="gradient-text">全品类覆盖</span></h2>
+      <p class="section-desc" style="margin: 0 auto;">覆盖通用塑料到特种工程塑料全产品线，500+成熟配方库，为不同工况和行业提供精准材料方案</p>
     </div>
-    <div class="app-grid">
-      <div class="app-card reveal">
-        <div class="app-icon">🏠</div>
-        <h3>家电</h3>
-        <p>空调、冰箱、洗衣机外壳及内部结构件，高光、阻燃、耐候改性方案</p>
-      </div>
-      <div class="app-card reveal">
-        <div class="app-icon">🚗</div>
-        <h3>汽车</h3>
-        <p>内饰件、保险杠、发动机周边部件，满足IATF16949体系要求</p>
-      </div>
-      <div class="app-card reveal">
-        <div class="app-icon">⚡</div>
-        <h3>电子电气</h3>
-        <p>连接器、开关、插座壳体，高CTI、阻燃、耐热材料方案</p>
-      </div>
-      <div class="app-card reveal">
-        <div class="app-icon">🔧</div>
-        <h3>电动工具</h3>
-        <p>工具外壳、齿轮、结构件，高刚性、耐冲击、阻燃改性</p>
-      </div>
-      <div class="app-card reveal">
-        <div class="app-icon">💡</div>
-        <h3>智能家居</h3>
-        <p>智能面板、网关壳体、传感器外壳，高光外观、阻燃安全</p>
-      </div>
-      <div class="app-card reveal">
-        <div class="app-icon">🏭</div>
-        <h3>通用工业</h3>
-        <p>工业零部件、管道配件、机械设备结构件，耐磨、耐化学腐蚀</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- R&D -->
-<section class="section-alt" id="rd">
-  <div class="container">
-    <div class="section-header">
-      <span class="overline">R&D</span>
-      <h2>技术研发</h2>
-      <p>完善的研发体系与检测能力，为产品性能保驾护航</p>
+    <!-- Featured product: large hero card -->
+    <div class="prod-hero reveal">
+      <div class="prod-hero-bg">
+        <svg viewBox="0 0 800 400" fill="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.5;">
+          <circle cx="650" cy="80" r="120" stroke="rgba(0,212,170,0.08)" stroke-width="1"/>
+          <circle cx="650" cy="80" r="80" stroke="rgba(0,212,170,0.06)" stroke-width="1"/>
+          <circle cx="650" cy="80" r="40" stroke="rgba(0,212,170,0.1)" stroke-width="1"/>
+          <circle cx="100" cy="350" r="60" stroke="rgba(0,153,255,0.06)" stroke-width="1"/>
+          <path d="M200 380 Q400 300 600 340" stroke="rgba(0,212,170,0.05)" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div class="prod-hero-content">
+        <div class="prod-hero-left">
+          <div class="prod-hero-badge">🔥 明星产品</div>
+          <h3>改性聚对苯二甲酸丁二醇酯 (PBT) 系列</h3>
+          <p>PBT是广俊塑料的核心优势产品。凭借优异的电气绝缘性、尺寸稳定性、耐化学性和快速结晶成型特性，广泛应用于电子连接器、汽车零部件、家电等领域。年出货量超20,000吨，是国内PBT改性领域的领先供应商。</p>
+          <div class="prod-hero-specs">
+            <div class="phs-item">
+              <div class="phs-val">250°C</div>
+              <div class="phs-label">热变形温度</div>
+            </div>
+            <div class="phs-item">
+              <div class="phs-val">V-0</div>
+              <div class="phs-label">阻燃等级 (0.8mm)</div>
+            </div>
+            <div class="phs-item">
+              <div class="phs-val">≥60</div>
+              <div class="phs-label">MPa 拉伸强度</div>
+            </div>
+            <div class="phs-item">
+              <div class="phs-val">CTI≥600V</div>
+              <div class="phs-label">耐漏电起痕</div>
+            </div>
+          </div>
+          <div class="prod-hero-apps">
+            <span>🔌 电子连接器</span>
+            <span>🚗 汽车接插件</span>
+            <span>💡 LED灯座</span>
+            <span>🏠 继电器外壳</span>
+          </div>
+        </div>
+        <div class="prod-hero-right">
+          <div class="prod-hero-model">
+            <div class="phm-circle phm-1"></div>
+            <div class="phm-circle phm-2"></div>
+            <div class="phm-circle phm-3"></div>
+            <div class="phm-center">PBT</div>
+            <div class="phm-label phm-l1">玻纤增强</div>
+            <div class="phm-label phm-l2">阻燃体系</div>
+            <div class="phm-label phm-l3">耐水解</div>
+            <div class="phm-label phm-l4">低翘曲</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="rd-grid">
-      <div class="rd-card reveal">
-        <h3>🔬 配方研发</h3>
-        <ul class="rd-list">
-          <li>500+成熟配方数据库</li>
-          <li>改性PP/PE/ABS/PA/PBT/PC全系列</li>
-          <li>增强、增韧、阻燃、耐候、高光</li>
-          <li>快速打样，7天内交付试料</li>
-          <li>定制化开发，全流程技术支持</li>
-        </ul>
-      </div>
-      <div class="rd-card reveal">
-        <h3>📊 物性检测</h3>
-        <ul class="rd-list">
-          <li>拉伸/弯曲/冲击强度测试</li>
-          <li>熔融指数 (MFI) 测试</li>
-          <li>密度/硬度/收缩率测试</li>
-          <li>热变形温度 (HDT) 测试</li>
-          <li>熔点/结晶温度 DSC分析</li>
-        </ul>
-      </div>
-      <div class="rd-card reveal">
-        <h3>🔥 阻燃与安全测试</h3>
-        <ul class="rd-list">
-          <li>UL94 垂直/水平燃烧测试</li>
-          <li>灼热丝起燃温度 (GWFI/GWIT)</li>
-          <li>漏电起痕指数 (CTI) 测试</li>
-          <li>氧指数 (LOI) 测试</li>
-          <li>无卤阻燃体系验证</li>
-        </ul>
-      </div>
-      <div class="rd-card reveal">
-        <h3>⏰ 老化与环境测试</h3>
-        <ul class="rd-list">
-          <li>紫外老化 (QUV) 测试</li>
-          <li>氙灯老化测试</li>
-          <li>热氧老化测试</li>
-          <li>耐化学品浸泡测试</li>
-          <li>高低温循环测试</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PRODUCTION -->
-<section class="section-dark" id="production">
-  <div class="container">
-    <div class="section-header">
-      <span class="overline" style="color:var(--accent);">Production</span>
-      <h2>生产实力</h2>
-      <p>先进装备、智能产线，保障高效稳定供货</p>
-    </div>
+    <!-- Product grid -->
     <div class="prod-grid">
-      <div class="prod-item reveal">
-        <div class="prod-num">8+</div>
-        <div class="prod-label">双螺杆挤出线</div>
-        <div class="prod-desc">Φ35-Φ75 多规格配置</div>
+      <!-- PET -->
+      <div class="prod-card reveal">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">🧬</div>
+          <div class="prod-card-series">PET / PET+GF</div>
+        </div>
+        <h3>改性聚对苯二甲酸乙二醇酯 (PET)</h3>
+        <p>与PBT同属聚酯家族，耐热性更优，尺寸精度出色，是电子电器和汽车领域的高性价比之选</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">60-160 MPa</span></div>
+          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥220°C</span></div>
+          <div class="pcs-row"><span class="pcs-key">玻纤含量</span><span class="pcs-val">15%-45%</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>耐热</span><span>尺寸稳定</span><span>高光泽</span><span>阻燃</span>
+        </div>
+        <div class="prod-card-app">典型应用：线圈骨架、开关壳体、汽车灯座、变压器骨架</div>
       </div>
-      <div class="prod-item reveal">
-        <div class="prod-num">5万吨</div>
-        <div class="prod-label">年产能</div>
-        <div class="prod-desc">满负荷连续生产</div>
+
+      <!-- PA 尼龙 -->
+      <div class="prod-card reveal reveal-delay-1">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">🔧</div>
+          <div class="prod-card-series">PA6 / PA66 / PA46</div>
+        </div>
+        <h3>改性聚酰胺 (PA/尼龙)</h3>
+        <p>卓越的耐磨性、耐化学性和韧性，以塑代钢的首选材料</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">80-200 MPa</span></div>
+          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥200°C</span></div>
+          <div class="pcs-row"><span class="pcs-key">玻纤含量</span><span class="pcs-val">15%-50%</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>耐磨</span><span>高流动</span><span>增韧</span><span>阻燃</span>
+        </div>
+        <div class="prod-card-app">典型应用：齿轮、轴承、发动机罩盖、扎带、线圈骨架</div>
       </div>
-      <div class="prod-item reveal">
-        <div class="prod-num">100%</div>
-        <div class="prod-label">自动化配料</div>
-        <div class="prod-desc">精确配比，批次稳定</div>
+
+      <!-- PP -->
+      <div class="prod-card reveal reveal-delay-2">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">⚡</div>
+          <div class="prod-card-series">PP / PP+GF</div>
+        </div>
+        <h3>改性聚丙烯 (PP)</h3>
+        <p>性价比之王，通过改性实现高抗冲、耐热、阻燃，覆盖汽车与家电主流需求</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">30-120 MPa</span></div>
+          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥150°C</span></div>
+          <div class="pcs-row"><span class="pcs-key">缺口冲击</span><span class="pcs-val">≥45 kJ/m²</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>高抗冲</span><span>矿物填充</span><span>耐热</span><span>低VOC</span>
+        </div>
+        <div class="prod-card-app">典型应用：保险杠、仪表板、电池包壳体、家电外壳</div>
       </div>
-      <div class="prod-item reveal">
-        <div class="prod-num">万级</div>
-        <div class="prod-label">无尘车间</div>
-        <div class="prod-desc">满足高端客户要求</div>
+
+      <!-- PC -->
+      <div class="prod-card reveal">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">💎</div>
+          <div class="prod-card-series">PC / PC+ABS</div>
+        </div>
+        <h3>改性聚碳酸酯 (PC)</h3>
+        <p>高透光、高抗冲、优异阻燃性，精密电子部件首选</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">透光率</span><span class="pcs-val">≥88%</span></div>
+          <div class="pcs-row"><span class="pcs-key">冲击强度</span><span class="pcs-val">≥60 kJ/m²</span></div>
+          <div class="pcs-row"><span class="pcs-key">阻燃等级</span><span class="pcs-val">V-0 (0.8mm)</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>高透光</span><span>阻燃V0</span><span>抗UV</span><span>薄壁</span>
+        </div>
+        <div class="prod-card-app">典型应用：LED灯罩、充电器外壳、仪表盘面罩</div>
+      </div>
+
+      <!-- ABS -->
+      <div class="prod-card reveal reveal-delay-1">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ffc800, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">🛡️</div>
+          <div class="prod-card-series">ABS / AES</div>
+        </div>
+        <h3>改性 ABS</h3>
+        <p>高光泽、高抗冲、电镀级，外观件品质之选</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">光泽度</span><span class="pcs-val">≥95 GU</span></div>
+          <div class="pcs-row"><span class="pcs-key">冲击强度</span><span class="pcs-val">≥25 kJ/m²</span></div>
+          <div class="pcs-row"><span class="pcs-key">耐候性</span><span class="pcs-val">AES级可达</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>高光泽</span><span>电镀级</span><span>消光</span><span>耐候</span>
+        </div>
+        <div class="prod-card-app">典型应用：汽车格栅、家电面板、遥控器外壳</div>
+      </div>
+
+      <!-- Functional -->
+      <div class="prod-card reveal reveal-delay-2">
+        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ec4899, transparent);"></div>
+        <div class="prod-card-head">
+          <div class="prod-card-emoji">🔌</div>
+          <div class="prod-card-series">定制开发</div>
+        </div>
+        <h3>功能改性材料</h3>
+        <p>导电、抗静电、电磁屏蔽、导热，为新兴产业量身定制</p>
+        <div class="prod-card-specs">
+          <div class="pcs-row"><span class="pcs-key">表面电阻</span><span class="pcs-val">10⁶-10⁹ Ω</span></div>
+          <div class="pcs-row"><span class="pcs-key">导热系数</span><span class="pcs-val">1-5 W/m·K</span></div>
+          <div class="pcs-row"><span class="pcs-key">EMI屏蔽</span><span class="pcs-val">60-80 dB</span></div>
+        </div>
+        <div class="prod-card-tags">
+          <span>导电</span><span>抗静电</span><span>导热</span><span>EMI屏蔽</span>
+        </div>
+        <div class="prod-card-app">典型应用：芯片托盘、5G天线罩、充电桩散热件</div>
+      </div>
+    </div>
+
+    <!-- Bottom stats -->
+    <div class="prod-stats reveal">
+      <div class="prod-stat">
+        <div class="prod-stat-val">500+</div>
+        <div class="prod-stat-label">成熟配方</div>
+      </div>
+      <div class="prod-stat-sep"></div>
+      <div class="prod-stat">
+        <div class="prod-stat-val">200+</div>
+        <div class="prod-stat-label">常备牌号</div>
+      </div>
+      <div class="prod-stat-sep"></div>
+      <div class="prod-stat">
+        <div class="prod-stat-val">7天</div>
+        <div class="prod-stat-label">最快打样周期</div>
+      </div>
+      <div class="prod-stat-sep"></div>
+      <div class="prod-stat">
+        <div class="prod-stat-val">50,000吨</div>
+        <div class="prod-stat-label">年产能</div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- Capabilities -->
+<section class="capabilities" id="capabilities">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
+      <div class="section-label" style="justify-content: center;">技术实力</div>
+      <h2 class="section-title">从配方到产品<br><span class="gradient-text">全链路技术覆盖</span></h2>
+      <p class="section-desc" style="margin: 0 auto;">
+        拥有60余人的研发团队与CNAS认可实验室，从分子设计到终端应用实现全链路技术自主可控
+      </p>
+    </div>
+
+    <!-- Core area: left hero + right capabilities -->
+    <div class="cap-core">
+      <!-- Left: R&D center showcase -->
+      <div class="cap-hero reveal">
+        <div class="cap-hero-glow"></div>
+        <div class="cap-hero-inner">
+          <div class="cap-hero-tag">R&D CENTER</div>
+          <h3>省级工程技术研究中心</h3>
+          <p>占地3,000m² 独立研发中心，配备国际一流材料分析与测试设备，60余位工程师组成的研发团队年均开发新配方80+。</p>
+          <div class="cap-hero-equip">
+            <div class="che-item">
+              <div class="che-icon">🔬</div>
+              <div class="che-text">
+                <div class="che-name">DSC / TGA 热分析仪</div>
+                <div class="che-desc">差示扫描量热 / 热重分析</div>
+              </div>
+            </div>
+            <div class="che-item">
+              <div class="che-icon">📐</div>
+              <div class="che-text">
+                <div class="che-name">万能材料试验机</div>
+                <div class="che-desc">拉伸 / 弯曲 / 冲击 / 压缩</div>
+              </div>
+            </div>
+            <div class="che-item">
+              <div class="che-icon">🔥</div>
+              <div class="che-text">
+                <div class="che-name">锥形量热仪 / UL94</div>
+                <div class="che-desc">阻燃性能全面表征</div>
+              </div>
+            </div>
+            <div class="che-item">
+              <div class="che-icon">🧬</div>
+              <div class="che-text">
+                <div class="che-name">SEM 扫描电镜</div>
+                <div class="che-desc">微观形貌与断面分析</div>
+              </div>
+            </div>
+          </div>
+          <div class="cap-hero-stats">
+            <div class="chs-item"><div class="chs-val">60+</div><div class="chs-label">研发工程师</div></div>
+            <div class="chs-item"><div class="chs-val">80+</div><div class="chs-label">年新增配方</div></div>
+            <div class="chs-item"><div class="chs-val">15+</div><div class="chs-label">发明专利</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 4 core capabilities -->
+      <div class="cap-right-grid">
+        <div class="cap-card reveal">
+          <div class="cap-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
+          <div class="cap-card-top">
+            <div class="cap-icon">🧪</div>
+            <div class="cap-card-metric">500+</div>
+          </div>
+          <h4>配方研发</h4>
+          <p>成熟配方数据库快速匹配，新配方开发周期最短7个工作日</p>
+          <div class="cap-card-detail">
+            <span>树脂选型</span><span>助剂复配</span><span>工艺窗口优化</span>
+          </div>
+        </div>
+        <div class="cap-card reveal reveal-delay-1">
+          <div class="cap-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
+          <div class="cap-card-top">
+            <div class="cap-icon">⚙️</div>
+            <div class="cap-card-metric">20+</div>
+          </div>
+          <h4>共混改性</h4>
+          <p>双螺杆/三螺杆挤出工艺精准控制，实现多维度改性</p>
+          <div class="cap-card-detail">
+            <span>玻纤增强</span><span>增韧改性</span><span>阻燃体系</span>
+          </div>
+        </div>
+        <div class="cap-card reveal reveal-delay-2">
+          <div class="cap-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
+          <div class="cap-card-top">
+            <div class="cap-icon">📊</div>
+            <div class="cap-card-metric">30+</div>
+          </div>
+          <h4>检测分析</h4>
+          <p>DSC、TGA、SEM、力学、阻燃等全套材料表征能力</p>
+          <div class="cap-card-detail">
+            <span>力学性能</span><span>热学分析</span><span>阻燃测试</span>
+          </div>
+        </div>
+        <div class="cap-card reveal reveal-delay-3">
+          <div class="cap-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
+          <div class="cap-card-top">
+            <div class="cap-icon">🎯</div>
+            <div class="cap-card-metric">全链</div>
+          </div>
+          <h4>应用工程</h4>
+          <p>Moldflow模流分析、注塑工艺优化、失效分析全程技术支持</p>
+          <div class="cap-card-detail">
+            <span>模流分析</span><span>注塑优化</span><span>失效分析</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row: 4 extended capabilities -->
+    <div class="cap-extended">
+      <div class="cap-ext-card reveal">
+        <div class="cap-ext-num">05</div>
+        <div class="cap-ext-icon">📐</div>
+        <div class="cap-ext-body">
+          <h4>定制开发</h4>
+          <p>根据产品工况（温度、载荷、化学环境等）量身定制材料方案</p>
+        </div>
+      </div>
+      <div class="cap-ext-card reveal reveal-delay-1">
+        <div class="cap-ext-num">06</div>
+        <div class="cap-ext-icon">🔄</div>
+        <div class="cap-ext-body">
+          <h4>快速打样</h4>
+          <p>需求确认到样品交付5-10个工作日，小批量试产灵活响应</p>
+        </div>
+      </div>
+      <div class="cap-ext-card reveal reveal-delay-2">
+        <div class="cap-ext-num">07</div>
+        <div class="cap-ext-icon">📦</div>
+        <div class="cap-ext-body">
+          <h4>规模化生产</h4>
+          <p>年产能50,000+吨，20余条自动化产线，保障大批量稳定交付</p>
+        </div>
+      </div>
+      <div class="cap-ext-card reveal reveal-delay-3">
+        <div class="cap-ext-num">08</div>
+        <div class="cap-ext-icon">🌱</div>
+        <div class="cap-ext-body">
+          <h4>可持续方案</h4>
+          <p>生物基/再生塑料改性技术，助力客户碳减排与ESG目标</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipment & Workshop Showcase -->
+    <div class="cap-equip-section reveal">
+      <div class="cap-equip-title">
+        <span class="cap-equip-line"></span>
+        <h3>核心生产设备</h3>
+        <span class="cap-equip-line"></span>
+      </div>
+      <div class="cap-equip-grid">
+        <!-- Equipment 1 -->
+        <div class="cap-equip-card">
+          <div class="cec-visual">
+            <svg viewBox="0 0 280 180" fill="none">
+              <!-- Twin-screw extruder -->
+              <rect x="30" y="60" width="220" height="80" rx="10" stroke="rgba(0,212,170,0.25)" stroke-width="1.5" fill="rgba(0,212,170,0.03)"/>
+              <rect x="50" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
+              <rect x="110" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
+              <rect x="170" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
+              <circle cx="70" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
+              <circle cx="130" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
+              <circle cx="190" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
+              <line x1="250" y1="100" x2="270" y2="100" stroke="rgba(0,212,170,0.3)" stroke-width="2" stroke-dasharray="3 3"/>
+              <rect x="5" y="80" width="25" height="40" rx="5" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="rgba(0,153,255,0.03)"/>
+              <line x1="5" y1="145" x2="275" y2="145" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </svg>
+            <div class="cec-badge">主力设备</div>
+          </div>
+          <div class="cec-info">
+            <h4>双螺杆挤出机组</h4>
+            <div class="cec-brand">科倍隆 / 南京创博</div>
+            <p>20余条产线，螺杆直径Φ35-Φ95mm，年产能50,000+吨</p>
+            <div class="cec-specs">
+              <span>Φ35-95mm</span><span>300-1200kg/h</span><span>L/D 40-52</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment 2 -->
+        <div class="cap-equip-card">
+          <div class="cec-visual">
+            <svg viewBox="0 0 280 180" fill="none">
+              <!-- Injection molding -->
+              <rect x="60" y="30" width="160" height="110" rx="12" stroke="rgba(0,153,255,0.25)" stroke-width="1.5" fill="rgba(0,153,255,0.03)"/>
+              <rect x="80" y="50" width="50" height="70" rx="6" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
+              <rect x="150" y="50" width="50" height="70" rx="6" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
+              <line x1="130" y1="85" x2="150" y2="85" stroke="rgba(0,153,255,0.3)" stroke-width="2"/>
+              <rect x="20" y="60" width="40" height="50" rx="8" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="rgba(0,153,255,0.02)"/>
+              <circle cx="40" cy="85" r="8" stroke="rgba(0,153,255,0.3)" stroke-width="1" fill="none"/>
+              <line x1="220" y1="85" x2="265" y2="85" stroke="rgba(0,153,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <rect x="240" y="70" width="25" height="30" rx="4" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
+              <line x1="10" y1="145" x2="270" y2="145" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </svg>
+            <div class="cec-badge" style="background: rgba(0,153,255,.12); color: var(--accent2); border-color: rgba(0,153,255,.2);">试模中心</div>
+          </div>
+          <div class="cec-info">
+            <h4>精密注塑成型机</h4>
+            <div class="cec-brand">海天 / 震雄 / 住友</div>
+            <p>80T-2000T全系列，为客户提供注塑工艺验证与小批量生产</p>
+            <div class="cec-specs">
+              <span>80-2000T</span><span>全电动+油压</span><span>模流验证</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment 3 -->
+        <div class="cap-equip-card">
+          <div class="cec-visual">
+            <svg viewBox="0 0 280 180" fill="none">
+              <!-- Testing machine -->
+              <rect x="80" y="20" width="120" height="130" rx="10" stroke="rgba(255,107,53,0.25)" stroke-width="1.5" fill="rgba(255,107,53,0.02)"/>
+              <rect x="100" y="40" width="80" height="50" rx="6" stroke="rgba(255,107,53,0.2)" stroke-width="1" fill="none"/>
+              <line x1="120" y1="55" x2="160" y2="55" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
+              <line x1="120" y1="65" x2="155" y2="65" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
+              <line x1="120" y1="75" x2="150" y2="75" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
+              <rect x="110" y="100" width="60" height="35" rx="4" stroke="rgba(255,107,53,0.2)" stroke-width="1" fill="none"/>
+              <circle cx="140" cy="117" r="10" stroke="rgba(255,107,53,0.25)" stroke-width="1" fill="rgba(255,107,53,0.05)"/>
+              <line x1="140" y1="90" x2="140" y2="100" stroke="rgba(255,107,53,0.2)" stroke-width="1"/>
+              <rect x="30" y="50" width="50" height="70" rx="8" stroke="rgba(255,107,53,0.12)" stroke-width="1" fill="none"/>
+              <line x1="200" y1="70" x2="250" y2="70" stroke="rgba(255,107,53,0.12)" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="20" y1="155" x2="260" y2="155" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </svg>
+            <div class="cec-badge" style="background: rgba(255,107,53,.12); color: var(--warm); border-color: rgba(255,107,53,.2);">检测中心</div>
+          </div>
+          <div class="cec-info">
+            <h4>材料检测设备群</h4>
+            <div class="cec-brand">岛津 / 英斯特朗 / TA仪器</div>
+            <p>力学、热学、阻燃、电性能全项检测，CNAS认可实验室</p>
+            <div class="cec-specs">
+              <span>万能试验机</span><span>DSC/TGA</span><span>SEM电镜</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment 4 -->
+        <div class="cap-equip-card">
+          <div class="cec-visual">
+            <svg viewBox="0 0 280 180" fill="none">
+              <!-- Automatic packaging line -->
+              <rect x="20" y="80" width="240" height="50" rx="8" stroke="rgba(168,85,247,0.2)" stroke-width="1.5" fill="rgba(168,85,247,0.02)"/>
+              <line x1="20" y1="105" x2="260" y2="105" stroke="rgba(168,85,247,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+              <rect x="50" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
+              <rect x="110" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
+              <rect x="170" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
+              <circle cx="65" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
+              <circle cx="125" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
+              <circle cx="185" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
+              <rect x="220" y="40" width="30" height="90" rx="6" stroke="rgba(168,85,247,0.15)" stroke-width="1" fill="none"/>
+              <line x1="235" y1="55" x2="235" y2="115" stroke="rgba(168,85,247,0.1)" stroke-width="1"/>
+              <line x1="10" y1="155" x2="270" y2="155" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </svg>
+            <div class="cec-badge" style="background: rgba(168,85,247,.12); color: #a855f7; border-color: rgba(168,85,247,.2);">智能产线</div>
+          </div>
+          <div class="cec-info">
+            <h4>自动化包装产线</h4>
+            <div class="cec-brand">全自动计量 → 包装 → 码垛</div>
+            <p>25kg自动包装，吨袋包装双模式，日出货能力200吨+</p>
+            <div class="cec-specs">
+              <span>自动计量</span><span>25kg/吨袋</span><span>日发200T+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
+      <div class="section-label" style="justify-content: center;">应用领域</div>
+      <h2 class="section-title">赋能多元产业<br><span class="gradient-text">驱动行业变革</span></h2>
+      <p class="section-desc" style="margin: 0 auto;">深耕六大核心行业，以材料创新驱动产品升级，累计服务超2000家客户</p>
+    </div>
+
+    <!-- Top row: 2 large featured cards -->
+    <div class="ind-grid-top">
+      <div class="ind-card ind-card-lg reveal">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(0,212,170,.12), rgba(0,153,255,.06));"></div>
+        <div class="ind-card-svg">
+          <svg viewBox="0 0 320 200" fill="none">
+            <path d="M40 150 Q80 60 160 80 Q240 100 280 50" stroke="rgba(0,212,170,0.2)" stroke-width="1.5" fill="none"/>
+            <rect x="60" y="100" width="200" height="60" rx="12" stroke="rgba(0,212,170,0.15)" stroke-width="1" fill="rgba(0,212,170,0.02)"/>
+            <circle cx="110" cy="160" r="18" stroke="rgba(0,212,170,0.25)" stroke-width="1.5" fill="none"/>
+            <circle cx="110" cy="160" r="10" fill="rgba(0,212,170,0.06)"/>
+            <circle cx="210" cy="160" r="18" stroke="rgba(0,212,170,0.25)" stroke-width="1.5" fill="none"/>
+            <circle cx="210" cy="160" r="10" fill="rgba(0,212,170,0.06)"/>
+            <rect x="100" y="80" width="120" height="25" rx="6" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
+            <line x1="50" y1="160" x2="270" y2="160" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="ind-card-content">
+          <div class="ind-card-num">01</div>
+          <div class="ind-card-icon">🚗</div>
+          <h3>汽车工业</h3>
+          <p>以塑代钢，助力汽车轻量化。从内饰结构件到发动机周边耐热件，为传统燃油车与新能源汽车提供全场景材料方案。</p>
+          <div class="ind-card-tags">
+            <span>仪表板骨架</span><span>发动机罩盖</span><span>保险杠</span><span>电池包壳体</span>
+          </div>
+        </div>
+        <div class="ind-card-stat">
+          <div class="ics-val">38%</div>
+          <div class="ics-label">营收占比</div>
+        </div>
+      </div>
+
+      <div class="ind-card ind-card-lg reveal reveal-delay-1">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(0,153,255,.12), rgba(168,85,247,.06));"></div>
+        <div class="ind-card-svg">
+          <svg viewBox="0 0 320 200" fill="none">
+            <rect x="100" y="30" width="120" height="80" rx="10" stroke="rgba(0,153,255,0.2)" stroke-width="1.5" fill="rgba(0,153,255,0.02)"/>
+            <rect x="120" y="45" width="80" height="50" rx="4" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
+            <circle cx="160" cy="70" r="12" stroke="rgba(0,153,255,0.25)" stroke-width="1" fill="rgba(0,153,255,0.05)"/>
+            <rect x="80" y="130" width="160" height="40" rx="8" stroke="rgba(0,153,255,0.12)" stroke-width="1" fill="none"/>
+            <line x1="120" y1="130" x2="120" y2="110" stroke="rgba(0,153,255,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="200" y1="130" x2="200" y2="110" stroke="rgba(0,153,255,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="60" cy="60" r="4" fill="rgba(0,153,255,0.15)"/>
+            <circle cx="260" cy="40" r="3" fill="rgba(168,85,247,0.15)"/>
+            <circle cx="280" cy="100" r="5" fill="rgba(0,153,255,0.1)"/>
+          </svg>
+        </div>
+        <div class="ind-card-content">
+          <div class="ind-card-num">02</div>
+          <div class="ind-card-icon">📱</div>
+          <h3>电子电器</h3>
+          <p>5G时代对材料提出更高要求。高频低介电、UL94 V0阻燃、高CTI值，为精密电子部件提供可靠材料保障。</p>
+          <div class="ind-card-tags">
+            <span>连接器</span><span>继电器</span><span>手机结构件</span><span>LED散热</span>
+          </div>
+        </div>
+        <div class="ind-card-stat">
+          <div class="ics-val">25%</div>
+          <div class="ics-label">营收占比</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row: 4 smaller cards -->
+    <div class="ind-grid-bottom">
+      <div class="ind-card ind-card-sm reveal">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(255,107,53,.1), rgba(255,51,102,.05));"></div>
+        <div class="ind-card-sm-head">
+          <div class="ind-card-num">03</div>
+          <div class="ind-card-icon-sm">⚡</div>
+        </div>
+        <h3>新能源</h3>
+        <p>光伏、风电、储能、充电桩全覆盖，耐候阻燃绝缘一站式满足</p>
+        <ul>
+          <li>光伏接线盒/连接器</li>
+          <li>储能电池模组支架</li>
+          <li>充电桩壳体</li>
+        </ul>
+      </div>
+      <div class="ind-card ind-card-sm reveal reveal-delay-1">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(168,85,247,.1), rgba(0,153,255,.05));"></div>
+        <div class="ind-card-sm-head">
+          <div class="ind-card-num">04</div>
+          <div class="ind-card-icon-sm">🏠</div>
+        </div>
+        <h3>智能家居</h3>
+        <p>高外观品质、抗菌环保，让每一件智能产品兼具美感与安全</p>
+        <ul>
+          <li>扫地机器人壳体</li>
+          <li>智能门锁面板</li>
+          <li>空气净化器风道</li>
+        </ul>
+      </div>
+      <div class="ind-card ind-card-sm reveal reveal-delay-2">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(0,212,170,.08), rgba(0,153,255,.04));"></div>
+        <div class="ind-card-sm-head">
+          <div class="ind-card-num">05</div>
+          <div class="ind-card-icon-sm">🏥</div>
+        </div>
+        <h3>医疗器械</h3>
+        <p>医疗级认证材料，耐灭菌、生物相容性优异，守护生命健康</p>
+        <ul>
+          <li>手术器械手柄</li>
+          <li>体外诊断设备</li>
+          <li>呼吸机零部件</li>
+        </ul>
+      </div>
+      <div class="ind-card ind-card-sm reveal reveal-delay-3">
+        <div class="ind-card-bg-grad" style="background: linear-gradient(135deg, rgba(255,200,0,.08), rgba(255,107,53,.04));"></div>
+        <div class="ind-card-sm-head">
+          <div class="ind-card-num">06</div>
+          <div class="ind-card-icon-sm">🏗️</div>
+        </div>
+        <h3>工业装备</h3>
+        <p>耐磨耐化学品，高强度改性方案，让工业设备持久可靠运转</p>
+        <ul>
+          <li>齿轮/轴承保持架</li>
+          <li>泵阀叶轮</li>
+          <li>轨道交通内饰件</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="ind-stats-bar reveal">
+      <div class="ind-stat-item">
+        <div class="ind-stat-val">2,000+</div>
+        <div class="ind-stat-label">服务客户</div>
+      </div>
+      <div class="ind-stat-divider"></div>
+      <div class="ind-stat-item">
+        <div class="ind-stat-val">50+</div>
+        <div class="ind-stat-label">覆盖细分行业</div>
+      </div>
+      <div class="ind-stat-divider"></div>
+      <div class="ind-stat-item">
+        <div class="ind-stat-val">3,000+</div>
+        <div class="ind-stat-label">成功案例</div>
+      </div>
+      <div class="ind-stat-divider"></div>
+      <div class="ind-stat-item">
+        <div class="ind-stat-val">98.5%</div>
+        <div class="ind-stat-label">客户续约率</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUALITY -->
-<section class="section-alt" id="quality">
+<!-- Process -->
+<section class="process" id="process">
   <div class="container">
-    <div class="section-header">
-      <span class="overline">Quality</span>
-      <h2>品质控制</h2>
-      <p>全流程质量管控，确保产品一致性与可靠性</p>
+    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
+      <div class="section-label" style="justify-content: center;">服务流程</div>
+      <h2 class="section-title">五步高效协作<br><span class="gradient-text">从需求到交付</span></h2>
+      <p class="section-desc" style="margin: 0 auto;">从需求对接到量产交付，最快仅需15个工作日，全程专属工程师1对1跟进</p>
     </div>
-    <div class="quality-flow">
-      <div class="quality-step reveal">
-        <span class="step-num">1</span>
-        <h4>来料检验</h4>
-        <p>原料入厂全检，确保树脂、助剂品质达标</p>
-      </div>
-      <div class="quality-step reveal">
-        <span class="step-num">2</span>
-        <h4>过程控制</h4>
-        <p>在线监测温度、压力、转速，实时调整工艺参数</p>
-      </div>
-      <div class="quality-step reveal">
-        <span class="step-num">3</span>
-        <h4>物性测试</h4>
-        <p>每批次取样检测拉伸、冲击、熔指等关键指标</p>
-      </div>
-      <div class="quality-step reveal">
-        <span class="step-num">4</span>
-        <h4>出厂全检</h4>
-        <p>外观、包装、标识全面检查，附检测报告出厂</p>
+
+    <div class="proc-h-wrap">
+      <!-- Horizontal connecting line -->
+      <div class="proc-h-line"></div>
+
+      <div class="proc-h-steps">
+        <!-- Step 1 -->
+        <div class="proc-h-step reveal">
+          <div class="proc-h-top">
+            <div class="proc-h-node">
+              <div class="proc-h-dot" style="--dot-color: #00d4aa;"></div>
+              <div class="proc-h-ring" style="--ring-color: #00d4aa;"></div>
+            </div>
+          </div>
+          <div class="proc-h-card">
+            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
+            <div class="proc-h-num">DAY 1-2</div>
+            <div class="proc-h-icon">🎯</div>
+            <h3>需求沟通</h3>
+            <p>深入了解产品应用场景、工况条件、性能指标，明确成本目标与交付周期</p>
+            <div class="proc-h-tags">
+              <span>📋 工况分析</span>
+              <span>📊 指标确认</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="proc-h-arrow reveal">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="proc-h-step reveal reveal-delay-1">
+          <div class="proc-h-top">
+            <div class="proc-h-node">
+              <div class="proc-h-dot" style="--dot-color: #0099ff;"></div>
+              <div class="proc-h-ring" style="--ring-color: #0099ff;"></div>
+            </div>
+          </div>
+          <div class="proc-h-card">
+            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
+            <div class="proc-h-num">DAY 3-5</div>
+            <div class="proc-h-icon">🧪</div>
+            <h3>方案设计</h3>
+            <p>配方工程师基于500+配方数据库，快速匹配并定制最优树脂体系与改性方案</p>
+            <div class="proc-h-tags">
+              <span>🔬 配方筛选</span>
+              <span>📝 方案评审</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="proc-h-arrow reveal reveal-delay-1">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(0,153,255,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="proc-h-step reveal reveal-delay-2">
+          <div class="proc-h-top">
+            <div class="proc-h-node">
+              <div class="proc-h-dot" style="--dot-color: #ff6b35;"></div>
+              <div class="proc-h-ring" style="--ring-color: #ff6b35;"></div>
+            </div>
+          </div>
+          <div class="proc-h-card">
+            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
+            <div class="proc-h-num">DAY 6-10</div>
+            <div class="proc-h-icon">⚗️</div>
+            <h3>样品试制</h3>
+            <p>实验室双螺杆挤出打样，全面力学/热学/阻燃检测，支持多轮迭代优化</p>
+            <div class="proc-h-tags">
+              <span>🏭 实验线打样</span>
+              <span>📈 全项检测</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="proc-h-arrow reveal reveal-delay-2">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(255,107,53,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="proc-h-step reveal reveal-delay-3">
+          <div class="proc-h-top">
+            <div class="proc-h-node">
+              <div class="proc-h-dot" style="--dot-color: #a855f7;"></div>
+              <div class="proc-h-ring" style="--ring-color: #a855f7;"></div>
+            </div>
+          </div>
+          <div class="proc-h-card">
+            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
+            <div class="proc-h-num">DAY 11-15</div>
+            <div class="proc-h-icon">🚀</div>
+            <h3>批量生产</h3>
+            <p>样品验证通过后快速切换量产，20+自动化产线保障品质一致性</p>
+            <div class="proc-h-tags">
+              <span>⚙️ 产线切换</span>
+              <span>📦 批量交付</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="proc-h-arrow reveal reveal-delay-3">
+          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(168,85,247,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="proc-h-step reveal reveal-delay-4">
+          <div class="proc-h-top">
+            <div class="proc-h-node">
+              <div class="proc-h-dot" style="--dot-color: #ffc800;"></div>
+              <div class="proc-h-ring" style="--ring-color: #ffc800;"></div>
+            </div>
+          </div>
+          <div class="proc-h-card">
+            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #ffc800, transparent);"></div>
+            <div class="proc-h-num">长期</div>
+            <div class="proc-h-icon">🤝</div>
+            <h3>持续服务</h3>
+            <p>定期回访跟踪使用情况，主动提供优化建议，48小时内响应</p>
+            <div class="proc-h-tags">
+              <span>📞 定期回访</span>
+              <span>🔧 技术支持</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="cert-badges">
-      <div class="cert-badge">
-        <div class="badge-icon">✓</div>
-        <span>ISO 9001</span>
+
+    <!-- Bottom CTA bar -->
+    <div class="proc-cta-bar reveal">
+      <div class="proc-cta-left">
+        <div class="proc-cta-icon">⚡</div>
+        <div>
+          <div class="proc-cta-title">紧急项目？我们支持加急通道</div>
+          <div class="proc-cta-desc">最快5个工作日完成从打样到小批量交付</div>
+        </div>
       </div>
-      <div class="cert-badge">
-        <div class="badge-icon">✓</div>
-        <span>IATF 16949</span>
+      <a href="#contact" class="btn btn-primary" style="padding: .7rem 1.5rem; font-size: .85rem;">立即咨询 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Quality -->
+<section class="quality" id="quality">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
+      <div class="section-label" style="justify-content: center;">质量体系</div>
+      <h2 class="section-title">严苛品控<br><span class="gradient-text">铸就可靠品质</span></h2>
+      <p class="section-desc" style="margin: 0 auto;">6大国际认证加持，从未发生过批次质量事故，客户投诉48小时闭环</p>
+    </div>
+
+    <!-- Certification showcase: horizontal scrolling ribbon -->
+    <div class="qual-certs-ribbon reveal">
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
+        <div class="qual-cert-badge">🏅</div>
+        <div class="qual-cert-name">ISO 9001</div>
+        <div class="qual-cert-desc">质量管理体系</div>
       </div>
-      <div class="cert-badge">
-        <div class="badge-icon">✓</div>
-        <span>UL 认证</span>
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(0,153,255,.15);"></div>
+        <div class="qual-cert-badge">🚗</div>
+        <div class="qual-cert-name">IATF 16949</div>
+        <div class="qual-cert-desc">汽车行业质量管理</div>
       </div>
-      <div class="cert-badge">
-        <div class="badge-icon">✓</div>
-        <span>RoHS 合规</span>
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
+        <div class="qual-cert-badge">🌿</div>
+        <div class="qual-cert-name">ISO 14001</div>
+        <div class="qual-cert-desc">环境管理体系</div>
+      </div>
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(168,85,247,.15);"></div>
+        <div class="qual-cert-badge">🔬</div>
+        <div class="qual-cert-name">CNAS</div>
+        <div class="qual-cert-desc">国家认可实验室</div>
+      </div>
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(255,107,53,.15);"></div>
+        <div class="qual-cert-badge">🛡️</div>
+        <div class="qual-cert-name">UL 认证</div>
+        <div class="qual-cert-desc">阻燃安全认证</div>
+      </div>
+      <div class="qual-cert-item">
+        <div class="qual-cert-glow" style="--glow: rgba(255,200,0,.15);"></div>
+        <div class="qual-cert-badge">🇪🇺</div>
+        <div class="qual-cert-name">REACH / RoHS</div>
+        <div class="qual-cert-desc">欧盟环保合规</div>
+      </div>
+    </div>
+
+    <!-- Quality process: large horizontal cards -->
+    <div class="qual-process">
+      <div class="qual-proc-title reveal">
+        <span class="qual-proc-line"></span>
+        <h3>全流程质量管理</h3>
+        <span class="qual-proc-line"></span>
+      </div>
+
+      <div class="qual-proc-grid">
+        <div class="qual-proc-card reveal">
+          <div class="qual-proc-num">01</div>
+          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(0,212,170,.1); --icon-border: rgba(0,212,170,.15);">
+            <span>📦</span>
+          </div>
+          <h4>来料检验</h4>
+          <p>原材料入库前100%批次检验，IQC全检+抽检双重保障，从源头杜绝不良</p>
+          <div class="qual-proc-metric">
+            <div class="qpm-val">100%</div>
+            <div class="qpm-label">批次覆盖率</div>
+          </div>
+        </div>
+
+        <div class="qual-proc-card reveal reveal-delay-1">
+          <div class="qual-proc-num">02</div>
+          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(0,153,255,.1); --icon-border: rgba(0,153,255,.15);">
+            <span>⚙️</span>
+          </div>
+          <h4>过程控制</h4>
+          <p>SPC统计过程控制，关键工艺参数实时监控与自动预警，确保制程稳定</p>
+          <div class="qual-proc-metric">
+            <div class="qpm-val">Cpk≥1.67</div>
+            <div class="qpm-label">过程能力指数</div>
+          </div>
+        </div>
+
+        <div class="qual-proc-card reveal reveal-delay-2">
+          <div class="qual-proc-num">03</div>
+          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(255,107,53,.1); --icon-border: rgba(255,107,53,.15);">
+            <span>🔬</span>
+          </div>
+          <h4>成品检测</h4>
+          <p>力学、热学、阻燃、电性能全项检测，每批次附带完整出厂检测报告</p>
+          <div class="qual-proc-metric">
+            <div class="qpm-val">30+</div>
+            <div class="qpm-label">检测项目</div>
+          </div>
+        </div>
+
+        <div class="qual-proc-card reveal reveal-delay-3">
+          <div class="qual-proc-num">04</div>
+          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(168,85,247,.1); --icon-border: rgba(168,85,247,.15);">
+            <span>🔗</span>
+          </div>
+          <h4>全链追溯</h4>
+          <p>从原材料供应商到终端客户，全链路批次追溯系统，问题30分钟内精准定位</p>
+          <div class="qual-proc-metric">
+            <div class="qpm-val">30min</div>
+            <div class="qpm-label">问题定位时效</div>
+          </div>
+        </div>
+
+        <div class="qual-proc-card reveal reveal-delay-4">
+          <div class="qual-proc-num">05</div>
+          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(255,200,0,.1); --icon-border: rgba(255,200,0,.15);">
+            <span>🔄</span>
+          </div>
+          <h4>持续改进</h4>
+          <p>PDCA循环驱动品质螺旋上升，客户投诉48小时内闭环，年度改善项目50+</p>
+          <div class="qual-proc-metric">
+            <div class="qpm-val">48h</div>
+            <div class="qpm-label">投诉闭环时效</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust badges bottom -->
+    <div class="qual-trust-bar reveal">
+      <div class="qual-trust-item">
+        <span class="qt-icon">🏆</span>
+        <span class="qt-text">0起批次质量事故</span>
+      </div>
+      <div class="qual-trust-sep"></div>
+      <div class="qual-trust-item">
+        <span class="qt-icon">📋</span>
+        <span class="qt-text">每年2次第三方审核</span>
+      </div>
+      <div class="qual-trust-sep"></div>
+      <div class="qual-trust-item">
+        <span class="qt-icon">🌍</span>
+        <span class="qt-text">出口20+国家和地区</span>
+      </div>
+      <div class="qual-trust-sep"></div>
+      <div class="qual-trust-item">
+        <span class="qt-icon">⭐</span>
+        <span class="qt-text">98.5% 客户满意度</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NEWS -->
-<section id="news">
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
   <div class="container">
-    <div class="section-header">
-      <span class="overline">News</span>
-      <h2>新闻动态</h2>
-      <p>了解公司最新动态与行业资讯</p>
+    <div class="reveal" style="text-align: center;">
+      <div class="section-label" style="justify-content: center;">客户评价</div>
+      <h2 class="section-title">合作伙伴<br><span class="gradient-text">这样说我们</span></h2>
     </div>
-    <div class="news-grid">
-      <div class="news-card reveal">
-        <div class="news-img">Industry Insight</div>
-        <div class="news-body">
-          <div class="news-date">2026-03-28</div>
-          <h3>公司新增两条高端改性PP生产线正式投产</h3>
-          <p>为满足日益增长的汽车与家电市场需求，公司新增两条Φ75双螺杆挤出线正式投产，年产能提升30%。</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"广俊团队在两周内就帮我们找到了替代进口材料的方案，性能完全达标，成本降低了30%。这种响应速度和专业度令人印象深刻。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">王</div>
+          <div>
+            <div class="testimonial-name">王总监</div>
+            <div class="testimonial-role">某知名汽车零部件企业 · 采购总监</div>
+          </div>
         </div>
       </div>
-      <div class="news-card reveal">
-        <div class="news-img">Industry Insight</div>
-        <div class="news-body">
-          <div class="news-date">2026-03-15</div>
-          <h3>无卤阻燃PA66材料通过UL黄卡认证</h3>
-          <p>公司自主研发的无卤阻燃PA66-GF25材料成功获得UL黄卡认证，阻燃等级达V0 (0.4mm)。</p>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"合作三年来，广俊的材料品质始终稳定，从未发生过批次质量事故。他们不只是供应商，更是我们产品创新的合作伙伴。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">李</div>
+          <div>
+            <div class="testimonial-name">李总工</div>
+            <div class="testimonial-role">某上市电子企业 · 技术总监</div>
+          </div>
         </div>
       </div>
-      <div class="news-card reveal">
-        <div class="news-img">Industry Insight</div>
-        <div class="news-body">
-          <div class="news-date">2026-02-20</div>
-          <h3>荣获"专精特新"企业认定</h3>
-          <p>凭借在改性塑料领域的技术创新与市场表现，公司成功通过省级"专精特新"中小企业认定。</p>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"新能源领域对材料要求极高，广俊的阻燃增强PP帮我们通过了严苛的UL认证，让产品顺利打开了海外市场。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">张</div>
+          <div>
+            <div class="testimonial-name">张经理</div>
+            <div class="testimonial-role">某新能源科技公司 · 研发经理</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section-alt" id="contact">
+<!-- CTA -->
+<section class="cta-section">
   <div class="container">
-    <div class="section-header">
-      <span class="overline">Contact</span>
-      <h2>联系我们</h2>
-      <p>期待与您合作，为您提供专业的改性塑料解决方案</p>
+    <div class="cta-box reveal">
+      <div class="cta-content">
+        <h2>让材料成为您的<span class="gradient-text">竞争优势</span></h2>
+        <p>无论您是寻找替代进口材料的国产方案，还是需要开发全新配方满足特殊工况，广俊塑料的专业团队随时准备为您提供支持。</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">立即咨询 →</a>
+          <a href="#products" class="btn btn-outline">下载产品手册</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <div class="section-label" style="justify-content: center;">联系我们</div>
+      <h2 class="section-title">开启合作<br><span class="gradient-text">从这里开始</span></h2>
     </div>
     <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <h4>公司地址</h4>
-            <p>中国 XX省XX市XX区XX路XX号</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <h4>联系电话</h4>
-            <p>+86-XXX-XXXX-XXXX</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <h4>电子邮箱</h4>
-            <p>info@polytech-example.com</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <h4>工作时间</h4>
-            <p>周一至周五 08:30 - 17:30</p>
-          </div>
-        </div>
+      <div class="reveal">
+        <p class="section-desc">我们的技术团队将在收到咨询后24小时内与您取得联系，为您提供专业建议与报价方案。</p>
+        <ul class="contact-info-list">
+          <li class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div class="contact-info-label">公司地址</div>
+              <div class="contact-info-value">广东省东莞市松山湖高新技术产业开发区</div>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <div class="contact-info-label">服务热线</div>
+              <div class="contact-info-value">400-888-6688</div>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <div class="contact-info-label">商务邮箱</div>
+              <div class="contact-info-value">sales@guangjun-plastic.com</div>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div>
+              <div class="contact-info-label">工作时间</div>
+              <div class="contact-info-value">周一至周五 08:30 - 17:30</div>
+            </div>
+          </li>
+          <li class="contact-info-item">
+            <div class="contact-info-icon">💬</div>
+            <div>
+              <div class="contact-info-label">微信公众号</div>
+              <div class="contact-info-value">广俊塑料（搜索关注获取最新动态）</div>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="contact-form reveal">
-        <form id="contactForm">
+      <div class="contact-form reveal reveal-delay-1">
+        <h3>📋 在线询价</h3>
+        <form onsubmit="event.preventDefault(); alert('感谢您的咨询！我们将尽快与您联系。');">
           <div class="form-row">
             <div class="form-group">
               <label>姓名 *</label>
-              <input type="text" placeholder="您的姓名" required>
+              <input type="text" placeholder="请输入您的姓名" required>
             </div>
             <div class="form-group">
-              <label>电话 *</label>
-              <input type="tel" placeholder="联系电话" required>
+              <label>公司 *</label>
+              <input type="text" placeholder="请输入公司名称" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>公司</label>
-              <input type="text" placeholder="公司名称">
+              <label>电话 *</label>
+              <input type="tel" placeholder="请输入联系电话" required>
             </div>
             <div class="form-group">
-              <label>行业</label>
-              <select>
-                <option value="">请选择行业</option>
-                <option>家电</option>
-                <option>汽车</option>
-                <option>电子电气</option>
-                <option>电动工具</option>
-                <option>智能家居</option>
-                <option>通用工业</option>
-                <option>其他</option>
-              </select>
+              <label>邮箱</label>
+              <input type="email" placeholder="请输入邮箱地址">
             </div>
           </div>
           <div class="form-group">
-            <label>需求描述</label>
-            <textarea placeholder="请描述您的材料需求，如基材、性能要求、应用场景等"></textarea>
+            <label>感兴趣的产品</label>
+            <select>
+              <option value="">请选择产品类别</option>
+              <option>改性PBT（核心产品）</option>
+              <option>改性PET</option>
+              <option>改性聚酰胺 (PA/尼龙)</option>
+              <option>改性聚丙烯 (PP)</option>
+              <option>改性聚碳酸酯 (PC)</option>
+              <option>改性 ABS</option>
+              <option>功能改性材料</option>
+              <option>其他 / 定制开发</option>
+            </select>
           </div>
-          <button type="submit" class="btn-submit">提交咨询</button>
+          <div class="form-group">
+            <label>需求描述</label>
+            <textarea placeholder="请简要描述您的材料需求、应用场景及特殊要求..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">提交询价 →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="nav-logo" style="font-size:1.5rem;">POLY<span>TECH</span></a>
-        <p>专注改性塑料研发、生产、销售，为汽车、家电、电子电气等行业提供高性能材料解决方案。以技术驱动价值，以品质赢得信赖。</p>
+        <a href="#" class="nav-logo" style="margin-bottom: .5rem;">
+          <div class="nav-logo-icon">广</div>
+          <span class="nav-logo-text">广俊塑料</span>
+        </a>
+        <p>广俊塑料——专注改性塑料研发与制造，为全球客户提供高性能材料解决方案。以创新驱动发展，以品质赢得信赖。</p>
       </div>
-      <div>
+      <div class="footer-col">
         <h4>产品中心</h4>
-        <ul class="footer-links">
-          <li><a href="#products">改性PP / PE</a></li>
-          <li><a href="#products">改性ABS</a></li>
-          <li><a href="#products">PA6 / PA66</a></li>
-          <li><a href="#products">PBT / PET</a></li>
-          <li><a href="#products">PC/ABS 合金</a></li>
+        <ul>
+          <li><a href="#products">改性PBT（核心产品）</a></li>
+          <li><a href="#products">改性PET</a></li>
+          <li><a href="#products">改性聚酰胺 (PA/尼龙)</a></li>
+          <li><a href="#products">改性聚丙烯 (PP)</a></li>
+          <li><a href="#products">改性聚碳酸酯 (PC)</a></li>
+          <li><a href="#products">功能改性材料</a></li>
         </ul>
       </div>
-      <div>
+      <div class="footer-col">
+        <h4>应用领域</h4>
+        <ul>
+          <li><a href="#industries">汽车工业</a></li>
+          <li><a href="#industries">电子电器</a></li>
+          <li><a href="#industries">新能源</a></li>
+          <li><a href="#industries">智能家居</a></li>
+          <li><a href="#industries">医疗器械</a></li>
+          <li><a href="#industries">工业装备</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
         <h4>关于我们</h4>
-        <ul class="footer-links">
+        <ul>
           <li><a href="#about">公司简介</a></li>
-          <li><a href="#rd">技术研发</a></li>
-          <li><a href="#production">生产实力</a></li>
-          <li><a href="#quality">品质控制</a></li>
-          <li><a href="#news">新闻动态</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>联系方式</h4>
-        <ul class="footer-links">
-          <li><a href="tel:+86XXXXXXXXXX">+86-XXX-XXXX-XXXX</a></li>
-          <li><a href="mailto:info@polytech-example.com">info@polytech-example.com</a></li>
-          <li><a href="#contact">在线留言</a></li>
+          <li><a href="#capabilities">技术实力</a></li>
+          <li><a href="#quality">质量体系</a></li>
+          <li><a href="#contact">联系我们</a></li>
+          <li><a href="#">人才招聘</a></li>
+          <li><a href="#">新闻动态</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 PolyTech. All Rights Reserved.</span>
-      <span>专注改性塑料 · 驱动工业创新</span>
+      <p>© 2024 广俊塑料科技有限公司 版权所有 · 粤ICP备XXXXXXXX号-1</p>
+      <div class="footer-bottom-links">
+        <a href="#">隐私政策</a>
+        <a href="#">使用条款</a>
+        <a href="#">网站地图</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop" aria-label="返回顶部">↑</button>
-
 <script>
-// Particles
-(function() {
-  const c = document.getElementById('particles');
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 6 + 2;
-    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s;`;
-    c.appendChild(p);
-  }
-})();
+// ====== Particles ======
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let mouse = { x: 0, y: 0 };
 
-// Nav scroll
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+document.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.3 + 0.1;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0, 212, 170, ${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  // draw lines
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0, 212, 170, ${0.03 * (1 - dist / 150)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ====== Nav scroll ======
 const nav = document.getElementById('nav');
-const backTop = document.getElementById('backTop');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
-  backTop.classList.toggle('show', window.scrollY > 400);
-  // Active link
-  const sections = document.querySelectorAll('section[id]');
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.id;
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
 });
 
-// Mobile nav
-document.getElementById('navToggle').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+// ====== Mobile nav ======
+const toggle = document.getElementById('navToggle');
+const links = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.position = 'fixed';
+  links.style.top = '60px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(10,22,40,.98)';
+  links.style.flexDirection = 'column';
+  links.style.padding = '1.5rem 2rem';
+  links.style.gap = '1rem';
+  links.style.backdropFilter = 'blur(20px)';
+  links.style.zIndex = '999';
 });
 
-// Back to top
-backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// Reveal on scroll
+// ====== Scroll reveal ======
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Product filter
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
-    });
+// ====== Counter animation ======
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      if (!target) return;
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current).toLocaleString();
+      }, 25);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ====== Smooth scroll ======
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // close mobile nav
+    if (window.innerWidth < 768) links.style.display = 'none';
   });
 });
-
-// Form
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('感谢您的咨询，我们将尽快与您联系！');
-});
 </script>
-
 </body>
 </html>
