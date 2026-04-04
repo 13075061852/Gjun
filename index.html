@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>广俊塑料 - 专业改性塑料解决方案提供商</title>
 <meta name="description" content="广俊塑料专注于改性塑料研发、生产与销售，为汽车、电子电器、新能源等行业提供高性能材料解决方案。">
 <style>
@@ -1239,9 +1239,8 @@ body {
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
   .about-grid { grid-template-columns: 1fr; }
   .about-visual { min-height: 320px; }
-  .about-float-1 { right: 4%; top: 4%; }
-  .about-float-2 { left: 4%; bottom: 28%; }
-  .about-float-3 { right: 4%; bottom: 4%; }
+  /* Hide floating stat cards on mobile - they overlap text */
+  .about-float-1, .about-float-2, .about-float-3 { display: none; }
   .about-features { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
   .prod-grid { grid-template-columns: 1fr; }
@@ -1273,6 +1272,219 @@ body {
   .qual-cert-desc { font-size: .65rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .section-title { font-size: 1.8rem; }
+
+  /* === Enhanced Mobile Optimizations === */
+
+  /* Better touch targets */
+  .btn { padding: 1rem 2rem; min-height: 48px; }
+  .nav-cta { padding: .7rem 1.5rem; min-height: 44px; }
+  .nav-links a { padding: .5rem 0; min-height: 44px; display: flex; align-items: center; }
+  .prod-card-link, .ind-card-link, a[class*="-link"] {
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+
+  /* Container tighter on mobile */
+  .container { padding: 0 1.25rem; }
+  .nav-inner { padding: 0 1.25rem; }
+
+  /* Hero mobile */
+  .hero { min-height: auto; padding: 6rem 0 3rem; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-bottom: 1rem; }
+  .hero p { font-size: 1rem; margin-bottom: 2rem; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
+  .hero-stats { gap: 1rem; margin-top: 2.5rem; padding-top: 2rem; }
+  .hero-stat-value { font-size: 1.8rem; }
+
+  /* Sections tighter padding */
+  .about, .products, .capabilities, .industries, .process, .quality, .contact-section {
+    padding: 5rem 0;
+  }
+
+  /* About mobile */
+  .about-visual { min-height: 260px; }
+  .about-features { gap: 1rem; }
+  .about-feature { padding: 1rem; }
+  .about-feature-title { font-size: 1.2rem; }
+
+  /* Product cards mobile */
+  .prod-hero-content { padding: 1.5rem 1rem; }
+  .prod-hero-tag { font-size: .7rem; }
+  .prod-hero-name { font-size: 1.3rem; }
+  .prod-hero-desc { font-size: .85rem; }
+  .prod-hero-specs { gap: .75rem; }
+  .phs { padding: .75rem; }
+  .phs-value { font-size: 1rem; }
+  .products-grid { gap: 1rem; }
+  .prod-card { padding: 1.25rem 1rem; }
+  .prod-card-name { font-size: .95rem; }
+  .prod-card-desc { font-size: .78rem; }
+
+  /* Product stats */
+  .prod-stats { gap: 1rem; }
+  .prod-stat-val { font-size: 1.8rem; }
+
+  /* Capabilities mobile */
+  .cap-card { padding: 1.5rem 1rem; }
+  .cap-card-title { font-size: 1.1rem; }
+  .cap-stat-val { font-size: 1.3rem; }
+  .cap-bar-fill { height: 4px; }
+  .cap-equip-card { padding: 1.25rem 1rem; }
+  .cap-equip-name { font-size: .95rem; }
+
+  /* Industries mobile */
+  .ind-card { padding: 1.5rem 1rem; }
+  .ind-card-title { font-size: 1.1rem; }
+  .ind-card-desc { font-size: .82rem; }
+  .ind-stats-bar { gap: 1rem; }
+  .ind-stat-val { font-size: 1.6rem; }
+
+  /* Process mobile */
+  .process-step { padding: 1.5rem 1rem; }
+  .process-step-num { font-size: 2rem; }
+  .process-step-title { font-size: 1rem; }
+  .process-step-desc { font-size: .82rem; }
+
+  /* Quality mobile */
+  .qual-card { padding: 1.5rem 1rem; }
+  .qual-cert-item { min-width: 90px; padding: .75rem .5rem; }
+  .qual-cert-badge { font-size: 1.3rem; }
+  .qual-cert-name { font-size: .72rem; }
+
+  /* Testimonials */
+  .test-card { padding: 1.5rem 1rem; }
+  .test-card-text { font-size: .9rem; }
+
+  /* Contact form mobile */
+  .contact-form { padding: 1.5rem 1rem; }
+  .form-group label { font-size: .82rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    padding: .85rem 1rem; font-size: 16px; /* prevent iOS zoom */
+    min-height: 48px;
+  }
+  .form-group textarea { min-height: 120px; }
+
+  /* CTA section */
+  .cta-box { padding: 2rem 1.25rem; }
+  .cta-title { font-size: 1.5rem; }
+
+  /* Footer mobile */
+  .footer { padding: 3rem 0 2rem; }
+  .footer-col-title { font-size: .9rem; margin-bottom: 1rem; }
+  .footer-col a { padding: .35rem 0; min-height: 36px; display: flex; align-items: center; }
+
+  /* Reduce heavy animations on mobile for perf */
+  .mol-ring { animation-duration: 60s; }
+  .marquee-track { animation-duration: 60s; }
+
+  /* Prevent horizontal overflow */
+  .hero, .about, .products, .capabilities, .industries, .process, .quality {
+    overflow-x: hidden;
+  }
+
+  /* Mobile nav overlay - base */
+  .nav-links.mobile-open {
+    display: flex !important;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,22,40,.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 0;
+    z-index: 998;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .nav-links.mobile-open li { width: 100%; text-align: center; }
+  .nav-links.mobile-open a {
+    font-size: 1.2rem; padding: 1rem;
+    justify-content: center; border-bottom: 1px solid var(--glass-border);
+  }
+  .nav-links.mobile-open a::after { display: none; }
+
+  /* Hamburger -> X animation */
+  .nav-toggle { z-index: 999; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
+  .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* Scroll lock on mobile nav open */
+  body.nav-open { overflow: hidden; position: fixed; width: 100%; }
+}
+
+/* ====== Small phones ====== */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .container { padding: 0 1rem; }
+  .nav-inner { padding: 0 1rem; }
+
+  .hero { padding: 5rem 0 2.5rem; }
+  .hero h1 { font-size: 1.7rem; }
+  .hero-badge { font-size: .7rem; padding: .4rem .8rem; }
+  .hero-stats { flex-direction: column; gap: .75rem; }
+  .hero-stat { padding-bottom: .75rem; border-bottom: 1px solid var(--glass-border); }
+
+  .about, .products, .capabilities, .industries, .process, .quality, .contact-section {
+    padding: 3.5rem 0;
+  }
+
+  .section-label { font-size: .7rem; letter-spacing: 2px; }
+  .section-title { font-size: 1.5rem; }
+  .section-desc { font-size: .9rem; }
+
+  .about-visual { min-height: 200px; }
+  .about-float-1, .about-float-2, .about-float-3 { display: none; }
+
+  .prod-hero-specs { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .prod-stats { flex-direction: column; gap: .75rem; }
+
+  .ind-stats-bar { flex-direction: column; align-items: flex-start; }
+
+  .qual-certs-ribbon { flex-wrap: wrap; justify-content: center; }
+  .qual-cert-item { width: calc(50% - .5rem); }
+
+  .process-steps { grid-template-columns: 1fr; }
+
+  .cta-box { padding: 1.5rem 1rem; }
+  .cta-title { font-size: 1.3rem; }
+  .cta-desc { font-size: .85rem; }
+
+  .contact-form { padding: 1.25rem 1rem; }
+
+  .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
+
+  /* Hide particle canvas on small phones for perf */
+  #particles { display: none; }
+
+  /* Further reduce animations */
+  .mol-ring, .marquee-track { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ====== Touch device hover fix ====== */
+@media (hover: none) {
+  .btn-primary:hover { transform: none; box-shadow: 0 4px 24px rgba(0,212,170,.25); }
+  .btn-outline:hover { border-color: rgba(255,255,255,.15); color: var(--text); }
+  .nav-cta:hover { transform: none; box-shadow: none; }
+  .nav-links a:hover::after { width: 0; }
+  .prod-card:hover { transform: none; }
+  .ind-card:hover { transform: none; }
+}
+
+/* ====== Safe area insets for notch phones ====== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .nav { padding-top: env(safe-area-inset-top); }
+  .nav.scrolled { padding-top: calc(.6rem + env(safe-area-inset-top)); }
+  .footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+}
+
+/* ====== Print ====== */
+@media print {
+  .nav, #particles, .marquee-section, .cta-section { display: none; }
+  body { background: #fff; color: #111; }
+  .hero { min-height: auto; padding: 2rem 0; }
 }
 </style>
 </head>
@@ -2724,18 +2936,34 @@ window.addEventListener('scroll', () => {
 // ====== Mobile nav ======
 const toggle = document.getElementById('navToggle');
 const links = document.querySelector('.nav-links');
+let navOpen = false;
+
+function openNav() {
+  navOpen = true;
+  links.classList.add('mobile-open');
+  toggle.classList.add('active');
+  document.body.classList.add('nav-open');
+}
+
+function closeNav() {
+  navOpen = false;
+  links.classList.remove('mobile-open');
+  toggle.classList.remove('active');
+  document.body.classList.remove('nav-open');
+}
+
 toggle.addEventListener('click', () => {
-  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-  links.style.position = 'fixed';
-  links.style.top = '60px';
-  links.style.left = '0';
-  links.style.right = '0';
-  links.style.background = 'rgba(10,22,40,.98)';
-  links.style.flexDirection = 'column';
-  links.style.padding = '1.5rem 2rem';
-  links.style.gap = '1rem';
-  links.style.backdropFilter = 'blur(20px)';
-  links.style.zIndex = '999';
+  navOpen ? closeNav() : openNav();
+});
+
+// Close on link click
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => { if (navOpen) closeNav(); });
+});
+
+// Close on resize to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 768 && navOpen) closeNav();
 });
 
 // ====== Scroll reveal ======
@@ -2779,8 +3007,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // close mobile nav
-    if (window.innerWidth < 768) links.style.display = 'none';
+    if (navOpen) closeNav();
   });
 });
 </script>
