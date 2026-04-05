@@ -19,6 +19,38 @@
   --text-dim: #8a95a8;
   --gradient-1: linear-gradient(135deg, #00d4aa 0%, #0099ff 100%);
   --gradient-2: linear-gradient(135deg, #ff6b35 0%, #ff3366 100%);
+  --card-bg: rgba(255,255,255,0.03);
+  --card-bg-hover: rgba(255,255,255,0.05);
+  --nav-bg: rgba(10,22,40,.92);
+  --float-card-bg: rgba(10,22,40,.85);
+  --hero-overlay: rgba(10,22,40,.95);
+  --footer-bg: rgba(255,255,255,0.02);
+  --input-bg: rgba(255,255,255,0.05);
+  --shadow-color: rgba(0,0,0,.3);
+  --particle-color: rgba(0, 212, 170, 0.3);
+  --line-color: rgba(0, 212, 170, 0.03);
+  --theme-toggle-bg: rgba(255,255,255,0.08);
+  --theme-toggle-hover: rgba(255,255,255,0.15);
+}
+
+[data-theme="light"] {
+  --primary: #f5f7fa;
+  --glass: rgba(0,0,0,0.03);
+  --glass-border: rgba(0,0,0,0.08);
+  --text: #1a2332;
+  --text-dim: #5a6577;
+  --card-bg: rgba(0,0,0,0.02);
+  --card-bg-hover: rgba(0,0,0,0.04);
+  --nav-bg: rgba(245,247,250,.92);
+  --float-card-bg: rgba(255,255,255,.92);
+  --hero-overlay: rgba(245,247,250,.95);
+  --footer-bg: rgba(0,0,0,0.02);
+  --input-bg: rgba(0,0,0,0.04);
+  --shadow-color: rgba(0,0,0,.08);
+  --particle-color: rgba(0, 180, 140, 0.15);
+  --line-color: rgba(0, 180, 140, 0.02);
+  --theme-toggle-bg: rgba(0,0,0,0.06);
+  --theme-toggle-hover: rgba(0,0,0,0.12);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +71,7 @@ body {
 /* ====== Scrollbar ====== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--primary); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent2); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
 /* ====== Utility ====== */
@@ -93,7 +126,7 @@ body {
   padding: 1rem 0; transition: all .4s ease;
 }
 .nav.scrolled {
-  background: rgba(10,22,40,.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
   padding: .6rem 0;
@@ -136,6 +169,103 @@ body {
 .nav-toggle span {
   display: block; width: 22px; height: 2px; background: var(--text);
   margin: 5px 0; transition: all .3s;
+}
+
+/* ====== Theme Toggle ====== */
+.theme-toggle {
+  position: relative;
+  width: 60px; height: 30px; border-radius: 50px;
+  background: linear-gradient(135deg, #0d1b2a, #1b2d4a);
+  border: 1px solid rgba(255,255,255,.1);
+  cursor: pointer;
+  transition: background .6s ease, border-color .4s ease, box-shadow .4s ease;
+  flex-shrink: 0; padding: 0;
+  outline: none; overflow: hidden;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0,212,170,.12);
+}
+[data-theme="light"] .theme-toggle {
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  border-color: rgba(200,120,50,.15);
+}
+[data-theme="light"] .theme-toggle:hover {
+  border-color: #f5a623;
+  box-shadow: 0 0 20px rgba(245,166,35,.2);
+}
+
+/* SVG icon inside toggle */
+.theme-toggle .toggle-icon {
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 30px;
+  transition: transform .55s cubic-bezier(.68,-.55,.27,1.55);
+  z-index: 2;
+}
+[data-theme="light"] .theme-toggle .toggle-icon {
+  transform: translateX(0);
+}
+
+/* Moon SVG */
+.toggle-icon .icon-moon-wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.toggle-icon .icon-sun-wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(.6);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+}
+[data-theme="light"] .toggle-icon .icon-moon-wrap {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.6) rotate(-90deg);
+}
+[data-theme="light"] .toggle-icon .icon-sun-wrap {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+/* Sun rays rotation */
+.toggle-icon .icon-sun-wrap svg {
+  animation: none;
+}
+[data-theme="light"] .toggle-icon .icon-sun-wrap svg {
+  animation: sunSpin 12s linear infinite;
+}
+@keyframes sunSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Stars floating in dark track */
+.toggle-stars {
+  position: absolute; inset: 0;
+  border-radius: 50px; overflow: hidden;
+  z-index: 1; pointer-events: none;
+  transition: opacity .5s ease;
+}
+.toggle-stars .star {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.8);
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+.toggle-stars .star:nth-child(1) { width: 2px; height: 2px; top: 6px; left: 8px; animation-delay: 0s; }
+.toggle-stars .star:nth-child(2) { width: 1.5px; height: 1.5px; top: 18px; left: 18px; animation-delay: .5s; opacity: .5; }
+.toggle-stars .star:nth-child(3) { width: 2px; height: 2px; top: 8px; left: 38px; animation-delay: 1s; }
+.toggle-stars .star:nth-child(4) { width: 1px; height: 1px; top: 20px; left: 48px; animation-delay: 1.5s; opacity: .4; }
+.toggle-stars .star:nth-child(5) { width: 1.5px; height: 1.5px; top: 10px; left: 28px; animation-delay: .7s; opacity: .6; }
+@keyframes twinkle {
+  0% { opacity: .3; transform: scale(.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+[data-theme="light"] .toggle-stars {
+  opacity: 0;
 }
 
 /* ====== Hero ====== */
@@ -265,14 +395,17 @@ body {
 }
 .about-hero-img {
   position: absolute; inset: 8px; border-radius: 20px;
-  background: linear-gradient(160deg, rgba(10,22,40,.95), rgba(15,30,50,.9));
+  background: linear-gradient(160deg, var(--hero-overlay), rgba(15,30,50,.9));
   border: 1px solid var(--glass-border);
   overflow: hidden; z-index: 0;
+}
+[data-theme="light"] .about-hero-img {
+  background: linear-gradient(160deg, #f0f2f5, #e8ecef);
 }
 .about-img-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 2rem 2rem 1.5rem;
-  background: linear-gradient(to top, rgba(10,22,40,.95) 40%, transparent);
+  background: linear-gradient(to top, var(--primary) 40%, transparent);
   z-index: 2;
 }
 .about-img-tag {
@@ -300,10 +433,10 @@ body {
   position: absolute; z-index: 5;
   display: flex; align-items: center; gap: .75rem;
   padding: .75rem 1.15rem; border-radius: 14px;
-  background: rgba(10,22,40,.85);
+  background: var(--float-card-bg);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+  box-shadow: 0 8px 32px var(--shadow-color);
   animation: floatCard 6s ease-in-out infinite;
   white-space: nowrap;
 }
@@ -368,7 +501,7 @@ body {
 }
 .phs-item {
   padding: 1rem; border-radius: 14px;
-  background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  background: var(--card-bg); border: 1px solid var(--glass-border);
   text-align: center;
 }
 .phs-val {
@@ -382,7 +515,7 @@ body {
 }
 .prod-hero-apps span {
   padding: .3rem .75rem; border-radius: 50px; font-size: .78rem;
-  color: var(--text-dim); background: rgba(255,255,255,.03);
+  color: var(--text-dim); background: var(--card-bg);
   border: 1px solid var(--glass-border);
 }
 
@@ -458,7 +591,7 @@ body {
 /* Specs table */
 .prod-card-specs {
   margin-bottom: 1rem; padding: .75rem;
-  border-radius: 10px; background: rgba(255,255,255,.02);
+  border-radius: 10px; background: var(--card-bg);
   border: 1px solid var(--glass-border);
 }
 .pcs-row {
@@ -546,7 +679,7 @@ body {
 .che-item {
   display: flex; gap: .75rem; align-items: flex-start;
   padding: .75rem; border-radius: 12px;
-  background: rgba(255,255,255,.02); border: 1px solid var(--glass-border);
+  background: var(--card-bg); border: 1px solid var(--glass-border);
 }
 .che-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
 .che-name { font-size: .8rem; font-weight: 600; }
@@ -605,7 +738,7 @@ body {
 }
 .cap-card-detail span {
   padding: .15rem .5rem; border-radius: 50px; font-size: .68rem;
-  color: var(--text-dim); background: rgba(255,255,255,.03);
+  color: var(--text-dim); background: var(--card-bg);
   border: 1px solid var(--glass-border);
 }
 
@@ -665,7 +798,7 @@ body {
 }
 .cec-visual {
   position: relative; width: 100%; aspect-ratio: 280/180;
-  background: rgba(255,255,255,.01);
+  background: var(--card-bg);
   display: flex; align-items: center; justify-content: center;
 }
 .cec-visual svg { width: 100%; height: 100%; }
@@ -691,7 +824,7 @@ body {
 }
 .cec-specs span {
   padding: .15rem .5rem; border-radius: 50px; font-size: .65rem;
-  color: var(--text-dim); background: rgba(255,255,255,.03);
+  color: var(--text-dim); background: var(--card-bg);
   border: 1px solid var(--glass-border);
 }
 
@@ -779,7 +912,7 @@ body {
 }
 .ind-card-icon-sm {
   width: 44px; height: 44px; border-radius: 12px;
-  background: rgba(255,255,255,.04); border: 1px solid var(--glass-border);
+  background: var(--glass); border: 1px solid var(--glass-border);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.3rem;
 }
@@ -916,7 +1049,7 @@ body {
 }
 .proc-h-tags span {
   padding: .15rem .5rem; border-radius: 50px; font-size: .68rem;
-  color: var(--text-dim); background: rgba(255,255,255,.03);
+  color: var(--text-dim); background: var(--card-bg);
   border: 1px solid var(--glass-border);
 }
 
@@ -1144,7 +1277,7 @@ body {
 }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%; padding: .75rem 1rem; border-radius: 12px;
-  background: rgba(255,255,255,.04); border: 1px solid var(--glass-border);
+  background: var(--glass); border: 1px solid var(--glass-border);
   color: var(--text); font-size: .9rem; font-family: inherit;
   transition: border-color .3s; outline: none;
 }
@@ -1196,6 +1329,104 @@ body {
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
+
+/* ====== Light Theme Overrides ====== */
+[data-theme="light"] .hero-bg::before {
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,180,140,.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(0,153,255,.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(255,107,53,.03) 0%, transparent 40%);
+}
+[data-theme="light"] .hero-grid {
+  background-image: linear-gradient(rgba(0,0,0,.02) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(0,0,0,.02) 1px, transparent 1px);
+}
+[data-theme="light"] .hero-badge {
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.08);
+}
+[data-theme="light"] .phs-item,
+[data-theme="light"] .prod-card-specs,
+[data-theme="light"] .che-item,
+[data-theme="light"] .cec-specs span,
+[data-theme="light"] .cap-card-detail span,
+[data-theme="light"] .ind-card-icon-sm {
+  background: var(--card-bg);
+}
+[data-theme="light"] .prod-hero-apps span {
+  background: var(--card-bg);
+  color: var(--text-dim);
+}
+[data-theme="light"] .nav-logo-icon {
+  background: var(--gradient-1);
+}
+[data-theme="light"] .nav.scrolled {
+  border-bottom-color: rgba(0,0,0,.06);
+}
+[data-theme="light"] .cap-hero-glow {
+  background: radial-gradient(ellipse, rgba(0,180,140,.04), transparent 60%);
+}
+[data-theme="light"] .qual-hero-glow {
+  background: radial-gradient(ellipse, rgba(0,180,140,.04), transparent 60%);
+}
+[data-theme="light"] .proc-h-card:hover,
+[data-theme="light"] .cap-equip-card:hover,
+[data-theme="light"] .cap-card:hover,
+[data-theme="light"] .prod-card:hover,
+[data-theme="light"] .ind-card:hover {
+  box-shadow: 0 12px 36px rgba(0,0,0,.08);
+}
+[data-theme="light"] .contact-glow-1 {
+  background: radial-gradient(ellipse, rgba(0,180,140,.06), transparent 60%);
+}
+[data-theme="light"] .contact-glow-2 {
+  background: radial-gradient(ellipse, rgba(0,153,255,.04), transparent 60%);
+}
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea,
+[data-theme="light"] .form-group select {
+  background: var(--card-bg);
+  border-color: rgba(0,0,0,.1);
+  color: var(--text);
+}
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus,
+[data-theme="light"] .form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,170,.1);
+}
+[data-theme="light"] .footer {
+  background: rgba(0,0,0,.03);
+  border-top-color: rgba(0,0,0,.06);
+}
+[data-theme="light"] .scroll-top {
+  background: var(--glass);
+  border-color: rgba(0,0,0,.1);
+  color: var(--text);
+}
+[data-theme="light"] .scroll-top:hover {
+  background: var(--gradient-1);
+  color: #000;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0,180,140,.4);
+}
+[data-theme="light"] .nav-toggle span {
+  background: var(--text);
+}
+[data-theme="light"] .form-group select option {
+  background: var(--primary);
+}
+[data-theme="light"] .proc-h-line {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,180,140,.08) 5%,
+    rgba(0,153,255,.08) 35%,
+    rgba(255,107,53,.08) 55%,
+    rgba(168,85,247,.08) 75%,
+    rgba(255,200,0,.08) 95%,
+    transparent 100%
+  );
+}
 
 /* ====== Responsive ====== */
 @media (max-width: 1024px) {
@@ -1387,7 +1618,7 @@ body {
     display: flex !important;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10,22,40,.98);
+    background: var(--nav-bg);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1510,6 +1741,35 @@ body {
       <li><a href="#contact">联系我们</a></li>
     </ul>
     <a href="#contact" class="nav-cta">获取报价</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换深浅色模式">
+      <div class="toggle-stars">
+        <span class="star"></span><span class="star"></span>
+        <span class="star"></span><span class="star"></span>
+        <span class="star"></span>
+      </div>
+      <div class="toggle-icon">
+        <div class="icon-moon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="#c4d4e8" stroke="#a0b4cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="icon-sun-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="5" fill="#f5a623" stroke="#e8952e" stroke-width="1"/>
+            <g stroke="#f5a623" stroke-width="1.8" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="3.5"/>
+              <line x1="12" y1="20.5" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.99" y2="5.99"/>
+              <line x1="18.01" y1="18.01" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3.5" y2="12"/>
+              <line x1="20.5" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.99" y2="18.01"/>
+              <line x1="18.01" y1="5.99" x2="19.78" y2="4.22"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </button>
     <button class="nav-toggle" id="navToggle" aria-label="菜单">
       <span></span><span></span><span></span>
     </button>
@@ -2721,7 +2981,7 @@ body {
             <div class="contact-info-icon">📍</div>
             <div>
               <div class="contact-info-label">公司地址</div>
-              <div class="contact-info-value">广东省东莞市松山湖高新技术产业开发区</div>
+              <div class="contact-info-value">浙江省慈溪市横河万洋众创城A区28栋1-3</div>
             </div>
           </li>
           <li class="contact-info-item">
@@ -2859,6 +3119,38 @@ body {
 </footer>
 
 <script>
+// ====== Theme Toggle ======
+(function() {
+  const html = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  // Apply saved theme immediately to prevent flash
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') html.setAttribute('data-theme', 'light');
+
+  toggle.addEventListener('click', () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+    // Update particle colors for the new theme
+    updateParticleColors();
+  });
+
+  function updateParticleColors() {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      particles.forEach(p => { p.color = 'rgba(0, 180, 140, 0.15)'; });
+    } else {
+      particles.forEach(p => { p.color = null; }); // use default
+    }
+  }
+})();
+
 // ====== Particles ======
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -2880,6 +3172,7 @@ document.addEventListener('mousemove', e => {
 class Particle {
   constructor() {
     this.reset();
+    this.color = null;
   }
   reset() {
     this.x = Math.random() * canvas.width;
@@ -2897,7 +3190,9 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0, 212, 170, ${this.opacity})`;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const baseColor = isLight ? '0, 180, 140' : '0, 212, 170';
+    ctx.fillStyle = `rgba(${baseColor}, ${this.opacity})`;
     ctx.fill();
   }
 }
@@ -2908,6 +3203,9 @@ function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(p => { p.update(); p.draw(); });
   // draw lines
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const lineBase = isLight ? '0, 180, 140' : '0, 212, 170';
+  const lineOpacity = isLight ? 0.02 : 0.03;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
@@ -2917,7 +3215,7 @@ function animate() {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0, 212, 170, ${0.03 * (1 - dist / 150)})`;
+        ctx.strokeStyle = `rgba(${lineBase}, ${lineOpacity * (1 - dist / 150)})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
