@@ -240,7 +240,7 @@
 
   function initCertMarquee() {
     const track = document.querySelector(".qual-certs-track");
-    if (!track || window.innerWidth > 768) return;
+    if (!track) return;
     const groups = track.querySelectorAll(".qual-certs-group");
     if (groups.length < 2) return;
 
@@ -249,6 +249,19 @@
     let loopDistance = 0;
     const speed = 0.45;
     const hiddenOffset = 1;
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+    function stop() {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      track.style.transform = "";
+    }
+
+    function shouldRun() {
+      return mobileQuery.matches;
+    }
 
     function measureLoopDistance() {
       const currentTransform = track.style.transform;
@@ -263,6 +276,10 @@
     }
 
     function tick() {
+      if (!shouldRun()) {
+        stop();
+        return;
+      }
       pos -= speed;
       if (loopDistance > 0 && pos <= -(loopDistance + hiddenOffset)) {
         pos = -hiddenOffset;
@@ -272,6 +289,10 @@
     }
 
     function init() {
+      if (!shouldRun()) {
+        stop();
+        return;
+      }
       loopDistance = measureLoopDistance();
       pos = -hiddenOffset;
       render();
