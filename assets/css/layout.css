@@ -36,7 +36,9 @@
 .nav-links a {
   color: var(--text-dim); text-decoration: none; font-size: .9rem;
   font-weight: 400; transition: color .3s; position: relative;
+  white-space: nowrap;
 }
+.nav-logo-text { white-space: nowrap; }
 .nav-links a:hover { color: var(--accent); }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -4px; left: 0;

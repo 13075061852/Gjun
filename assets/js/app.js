@@ -155,7 +155,7 @@
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768 && navOpen) closeNav();
+      if (window.innerWidth >= 1024 && navOpen) closeNav();
     });
 
     return {

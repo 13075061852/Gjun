@@ -1,5 +1,8 @@
 ﻿/* ====== Responsive ====== */
 @media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: block; }
   .hero-visual { display: none; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
   .hero-content { max-width: 100%; }
