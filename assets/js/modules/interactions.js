@@ -44,8 +44,13 @@ export function initSmoothScroll(onNavigate) {
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = document.querySelector(a.getAttribute("href"));
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const href = a.getAttribute("href");
+      if (!href || href === "#") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       if (typeof onNavigate === "function") onNavigate();
     });
   });
