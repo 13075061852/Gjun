@@ -1,1391 +1,970 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>广俊塑料 - 专业改性塑料解决方案提供商</title>
-<meta name="description" content="广俊塑料专注于改性塑料研发、生产与销售，为汽车、电子电器、新能源等行业提供高性能材料解决方案。">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23071422'/%3E%3Cstop offset='100%25' stop-color='%230d2a48'/%3E%3C/linearGradient%3E%3ClinearGradient id='ring' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300d4aa'/%3E%3Cstop offset='100%25' stop-color='%230099ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='60' height='60' rx='16' fill='url(%23bg)'/%3E%3Crect x='2' y='2' width='60' height='60' rx='16' fill='none' stroke='url(%23ring)' stroke-width='2.5'/%3E%3Ccircle cx='32' cy='32' r='17' fill='rgba(0,212,170,0.16)'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Microsoft YaHei, Noto Sans SC, sans-serif' font-size='22' font-weight='700' fill='white'%3E%E5%B9%BF%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>广俊新材料 | 专业工程塑料改性制造商</title>
+  <meta name="description" content="广俊新材料专注于PBT、PA、PP等工程塑料改性研发与生产，年产能50000吨，服务汽车、电子、新能源等行业">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/sections.css">
 </head>
 <body>
-
-<!-- Particles -->
-<canvas id="particles"></canvas>
-
-<!-- Navigation -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
-      <div class="nav-logo-icon">广</div>
-      <span class="nav-logo-text">广俊塑料</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">关于我们</a></li>
-      <li><a href="#products">产品中心</a></li>
-      <li><a href="#capabilities">技术实力</a></li>
-      <li><a href="#partners">合作伙伴</a></li>
-      <li><a href="#process">服务流程</a></li>
-      <li><a href="#quality">质量体系</a></li>
-      <li><a href="#contact">联系我们</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">获取报价</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换深浅色模式">
-      <div class="toggle-stars">
-        <span class="star"></span><span class="star"></span>
-        <span class="star"></span><span class="star"></span>
-        <span class="star"></span>
-      </div>
-      <div class="toggle-icon">
-        <div class="icon-moon-wrap">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="#c4d4e8" stroke="#a0b4cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <img src="assets/images/logo.png" alt="广俊新材料" class="nav-logo-img">
+        <span>广俊新材料</span>
+      </a>
+      
+      <div class="nav-menu">
+        <div class="nav-links">
+          <a href="#about">关于我们</a>
+          <a href="#products">产品中心</a>
+          <a href="#applications">应用领域</a>
+          <a href="#cases">成功案例</a>
+          <a href="#tech">技术实力</a>
+          <a href="#news">新闻动态</a>
         </div>
-        <div class="icon-sun-wrap">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="5" fill="#f5a623" stroke="#e8952e" stroke-width="1"/>
-            <g stroke="#f5a623" stroke-width="1.8" stroke-linecap="round">
-              <line x1="12" y1="1" x2="12" y2="3.5"/>
-              <line x1="12" y1="20.5" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.99" y2="5.99"/>
-              <line x1="18.01" y1="18.01" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3.5" y2="12"/>
-              <line x1="20.5" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.99" y2="18.01"/>
-              <line x1="18.01" y1="5.99" x2="19.78" y2="4.22"/>
-            </g>
-          </svg>
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn-primary">获取报价</a>
         </div>
       </div>
-    </button>
-    <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu-backdrop" data-menu-close></div>
-  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="网站导航菜单">
-    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="关闭菜单">
-      <span></span><span></span>
-    </button>
-    <ul class="mobile-menu-links">
-      <li><a href="#about">关于我们</a></li>
-      <li><a href="#products">产品中心</a></li>
-      <li><a href="#capabilities">技术实力</a></li>
-      <li><a href="#partners">合作伙伴</a></li>
-      <li><a href="#process">服务流程</a></li>
-      <li><a href="#quality">质量体系</a></li>
-      <li><a href="#contact">联系我们</a></li>
-    </ul>
-    <a href="#contact" class="mobile-menu-cta">获取报价</a>
-  </div>
-</div>
-
-<!-- Hero -->
-<section class="hero" id="hero">
-  <div class="hero-bg">
-    <div class="hero-grid"></div>
-  </div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        国家高新技术企业 · 专注改性塑料 15 年
-      </div>
-      <h1>以材料创新<br>驱动<span class="gradient-text">产业升级</span></h1>
-      <p>广俊塑料深耕改性塑料领域，为汽车、电子电器、新能源等行业提供高性能材料解决方案。从配方研发到规模化生产，全程赋能客户产品竞争力。</p>
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary">探索产品 →</a>
-        <a href="#contact" class="btn btn-outline">在线咨询</a>
-      </div>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-value" data-count="15">0</div>
-        <div class="hero-stat-label">年行业深耕</div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-backdrop"></div>
+    <div class="mobile-menu-panel">
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="关闭菜单">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="mobile-menu-links">
+        <a href="#about">关于我们</a>
+        <a href="#products">产品中心</a>
+        <a href="#applications">应用领域</a>
+        <a href="#cases">成功案例</a>
+        <a href="#tech">技术实力</a>
+        <a href="#news">新闻动态</a>
+        <a href="#contact">联系我们</a>
       </div>
-      <div>
-        <div class="hero-stat-value" data-count="500">0</div>
-        <div class="hero-stat-label">+ 配方储备</div>
-      </div>
-      <div>
-        <div class="hero-stat-value" data-count="2000">0</div>
-        <div class="hero-stat-label">+ 合作客户</div>
-      </div>
-      <div>
-        <div class="hero-stat-value" data-count="50000">0</div>
-        <div class="hero-stat-label">吨 年产能</div>
+      <div class="mobile-menu-cta">
+        <a href="#contact" class="btn btn-primary btn-full">获取报价</a>
       </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-molecule">
-      <div class="mol-ring"></div>
-      <div class="mol-ring"></div>
-      <div class="mol-ring"></div>
-      <div class="mol-node"></div>
-      <div class="mol-node"></div>
-      <div class="mol-node"></div>
-      <div class="mol-node"></div>
-      <div class="mol-node"></div>
-      <div class="mol-center"></div>
-    </div>
-  </div>
-</section>
 
-<!-- Marquee -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>改性PBT（核心产品）</span>
-    <span class="marquee-item"><span class="dot"></span>改性PET</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚酰胺 PA6/PA66</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚丙烯 (PP)</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚碳酸酯 (PC)</span>
-    <span class="marquee-item"><span class="dot"></span>改性 ABS</span>
-    <span class="marquee-item"><span class="dot"></span>PC/ABS合金</span>
-    <span class="marquee-item"><span class="dot"></span>阻燃增强材料</span>
-    <span class="marquee-item"><span class="dot"></span>导电/抗静电材料</span>
-    <span class="marquee-item"><span class="dot"></span>导热材料</span>
-    <span class="marquee-item"><span class="dot"></span>特种工程塑料</span>
-    <span class="marquee-item"><span class="dot"></span>功能改性材料</span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item"><span class="dot"></span>改性PBT（核心产品）</span>
-    <span class="marquee-item"><span class="dot"></span>改性PET</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚酰胺 PA6/PA66</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚丙烯 (PP)</span>
-    <span class="marquee-item"><span class="dot"></span>改性聚碳酸酯 (PC)</span>
-    <span class="marquee-item"><span class="dot"></span>改性 ABS</span>
-    <span class="marquee-item"><span class="dot"></span>PC/ABS合金</span>
-    <span class="marquee-item"><span class="dot"></span>阻燃增强材料</span>
-    <span class="marquee-item"><span class="dot"></span>导电/抗静电材料</span>
-    <span class="marquee-item"><span class="dot"></span>导热材料</span>
-    <span class="marquee-item"><span class="dot"></span>特种工程塑料</span>
-    <span class="marquee-item"><span class="dot"></span>功能改性材料</span>
-  </div>
-</div>
+  <!-- Side Navigation (Desktop) -->
+  <nav class="side-nav" id="sideNav" aria-label="页面导航">
+    <a href="#hero" class="side-nav-dot active" data-label="首页"></a>
+    <a href="#about" class="side-nav-dot" data-label="关于"></a>
+    <a href="#products" class="side-nav-dot" data-label="产品"></a>
+    <a href="#applications" class="side-nav-dot" data-label="应用"></a>
+    <a href="#cases" class="side-nav-dot" data-label="案例"></a>
+    <a href="#tech" class="side-nav-dot" data-label="技术"></a>
+    <a href="#certifications" class="side-nav-dot" data-label="认证"></a>
+    <a href="#news" class="side-nav-dot" data-label="新闻"></a>
+    <a href="#contact" class="side-nav-dot" data-label="联系"></a>
+    <a href="#cta" class="side-nav-dot" data-label=""></a>
+  </nav>
 
-<!-- About -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <div class="about-visual-bg"></div>
-        <!-- Hero image area -->
-        <div class="about-hero-img">
-          <div class="about-img-overlay">
-            <div class="about-img-tag">SINCE 2011</div>
-            <div class="about-img-title">30,000 m²</div>
-            <div class="about-img-sub">现代化生产基地</div>
-          </div>
-          <div class="about-img-decor">
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Abstract factory / molecular structure -->
-              <rect x="40" y="120" width="120" height="80" rx="8" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="none"/>
-              <rect x="60" y="100" width="80" height="100" rx="6" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="rgba(0,212,170,0.03)"/>
-              <circle cx="100" cy="85" r="15" stroke="rgba(0,212,170,0.4)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
-              <line x1="100" y1="100" x2="100" y2="85" stroke="rgba(0,212,170,0.3)" stroke-width="1"/>
-              <rect x="200" y="80" width="160" height="120" rx="10" stroke="rgba(0,153,255,0.25)" stroke-width="1.5" fill="rgba(0,153,255,0.02)"/>
-              <rect x="220" y="100" width="50" height="35" rx="4" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
-              <rect x="285" y="100" width="50" height="35" rx="4" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
-              <rect x="220" y="150" width="120" height="30" rx="4" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
-              <!-- Conveyor -->
-              <line x1="160" y1="200" x2="200" y2="200" stroke="rgba(0,212,170,0.4)" stroke-width="2" stroke-dasharray="4 3"/>
-              <circle cx="160" cy="200" r="4" fill="rgba(0,212,170,0.3)"/>
-              <circle cx="200" cy="200" r="4" fill="rgba(0,153,255,0.3)"/>
-              <!-- Molecular chain -->
-              <circle cx="300" cy="50" r="6" fill="rgba(0,212,170,0.2)" stroke="rgba(0,212,170,0.4)" stroke-width="1"/>
-              <circle cx="340" cy="35" r="5" fill="rgba(0,153,255,0.2)" stroke="rgba(0,153,255,0.4)" stroke-width="1"/>
-              <circle cx="320" cy="65" r="4" fill="rgba(255,107,53,0.2)" stroke="rgba(255,107,53,0.3)" stroke-width="1"/>
-              <line x1="300" y1="50" x2="340" y2="35" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
-              <line x1="300" y1="50" x2="320" y2="65" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
-              <!-- Ground -->
-              <line x1="20" y1="220" x2="380" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <!-- Data bars -->
-              <rect x="30" y="240" width="8" height="30" rx="2" fill="rgba(0,212,170,0.15)"/>
-              <rect x="45" y="235" width="8" height="35" rx="2" fill="rgba(0,212,170,0.2)"/>
-              <rect x="60" y="245" width="8" height="25" rx="2" fill="rgba(0,212,170,0.12)"/>
-              <rect x="75" y="230" width="8" height="40" rx="2" fill="rgba(0,153,255,0.2)"/>
-              <rect x="90" y="238" width="8" height="32" rx="2" fill="rgba(0,153,255,0.15)"/>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 12 2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
             </svg>
+            ISO 9001 & IATF 16949 认证企业
+          </div>
+          <h1 class="hero-title">
+            专业工程塑料<br>
+            <span>改性解决方案</span>
+          </h1>
+          <p class="hero-desc">
+            专注于PBT、PA、PP等工程塑料的研发与生产，年产能50000吨，
+            为汽车、电子、新能源等行业提供高品质改性塑料材料。
+          </p>
+          <div class="hero-cta">
+            <a href="#products" class="btn btn-primary btn-lg">
+              浏览产品
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary btn-lg">获取报价</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-value">15<span>+</span></div>
+              <div class="hero-stat-label">年行业经验</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">50000<span>吨</span></div>
+              <div class="hero-stat-label">年产能</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">2000<span>+</span></div>
+              <div class="hero-stat-label">合作客户</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">50<span>+</span></div>
+              <div class="hero-stat-label">专利配方</div>
+            </div>
           </div>
         </div>
-        <!-- Floating stat cards -->
-        <div class="about-float-card about-float-1">
-          <div class="afc-icon">🔬</div>
-          <div class="afc-text">
-            <div class="afc-val">60+</div>
-            <div class="afc-label">研发团队</div>
+        <div class="hero-image">
+          <div class="hero-image-main">
+            <img src="assets/images/hero-factory.png" alt="塑料生产车间">
           </div>
-        </div>
-        <div class="about-float-card about-float-2">
-          <div class="afc-icon">⚙️</div>
-          <div class="afc-text">
-            <div class="afc-val">20+</div>
-            <div class="afc-label">生产线</div>
+          <div class="hero-floating-card top-right">
+            <div class="stat-card" style="padding: 0;">
+              <div class="stat-value" style="font-size: 32px;">99.8%</div>
+              <div class="stat-label">产品合格率</div>
+            </div>
           </div>
-        </div>
-        <div class="about-float-card about-float-3">
-          <div class="afc-icon">🏆</div>
-          <div class="afc-text">
-            <div class="afc-val">国家高新</div>
-            <div class="afc-label">技术企业</div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="section-label">关于我们</div>
-        <h2 class="section-title">深耕改性塑料<br><span class="gradient-text">十五载匠心铸品质</span></h2>
-        <p class="section-desc">
-          广俊塑料成立于2011年，是一家集改性塑料研发、生产、销售及技术服务于一体的国家高新技术企业。公司坐落于珠三角核心区域，拥有现代化生产基地30,000余平方米，配备国际先进的双螺杆挤出生产线20余条。
-        </p>
-        <p class="section-desc" style="margin-top: 1rem;">
-          我们以"材料赋能制造"为使命，与多所高校及科研院所建立产学研合作关系，持续推动改性塑料技术革新，为客户提供从概念验证到量产交付的一站式材料解决方案。
-        </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-num">30,000+</div>
-            <div class="about-feature-text">平方米生产基地</div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-num">20+</div>
-            <div class="about-feature-text">先进生产线</div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-num">98.5%</div>
-            <div class="about-feature-text">客户满意度</div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-num">48h</div>
-            <div class="about-feature-text">快速响应服务</div>
+          <div class="hero-floating-card bottom-left">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; background: var(--primary-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-heading);">质量认证</div>
+                <div style="font-size: 12px; color: var(--text-muted);">ISO 9001 / IATF 16949</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Products -->
-<section class="products" id="products">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
-      <div class="section-label" style="justify-content: center;">产品中心</div>
-      <h2 class="section-title">高性能改性塑料<br><span class="gradient-text">全品类覆盖</span></h2>
-      <p class="section-desc" style="margin: 0 auto;">覆盖通用塑料到特种工程塑料全产品线，500+成熟配方库，为不同工况和行业提供精准材料方案</p>
+  <!-- Trust Section -->
+  <section class="trust-section">
+    <div class="container">
+      <p class="trust-label">服务全球知名企业</p>
+      <div class="logo-grid">
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">比亚迪</span>
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">宁德时代</span>
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">美的集团</span>
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">格力电器</span>
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">海尔集团</span>
+        <span style="font-size: 20px; font-weight: 600; color: var(--text-muted);">海信集团</span>
+      </div>
     </div>
+  </section>
 
-    <!-- Featured product: large hero card -->
-    <div class="prod-hero reveal">
-      <div class="prod-hero-bg">
-        <svg viewBox="0 0 800 400" fill="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.5;">
-          <circle cx="650" cy="80" r="120" stroke="rgba(0,212,170,0.08)" stroke-width="1"/>
-          <circle cx="650" cy="80" r="80" stroke="rgba(0,212,170,0.06)" stroke-width="1"/>
-          <circle cx="650" cy="80" r="40" stroke="rgba(0,212,170,0.1)" stroke-width="1"/>
-          <circle cx="100" cy="350" r="60" stroke="rgba(0,153,255,0.06)" stroke-width="1"/>
-          <path d="M200 380 Q400 300 600 340" stroke="rgba(0,212,170,0.05)" stroke-width="1" fill="none"/>
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-image-main">
+            <img src="assets/images/about-factory.jpg" alt="工厂外景">
+          </div>
+          <div class="about-image-secondary">
+            <img src="assets/images/about-workshop.jpg" alt="生产车间">
+          </div>
+        </div>
+        <div class="about-content">
+          <h2>关于广俊新材料</h2>
+          <p>广俊新材料科技有限公司成立于2011年，是一家专业从事高性能工程塑料改性研发、生产和销售的高新技术企业。公司总部位于广东省东莞市，占地面积50000平方米。</p>
+          
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>先进研发能力</h4>
+                <p>拥有专业研发团队30余人，配备完善的材料检测实验室</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>品质保证体系</h4>
+                <p>通过ISO 9001、IATF 16949质量管理体系认证</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div>
+                <h4>定制化服务</h4>
+                <p>根据客户需求提供个性化配方开发和配色服务</p>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#contact" class="btn btn-primary">
+            了解更多
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="section bg-slate-50" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>产品中心</h2>
+        <p>提供PBT、PA、PP、PC/ABS等多种工程塑料改性产品，满足不同行业应用需求</p>
+      </div>
+
+      <div class="products-scroll-wrapper">
+        <div class="products-scroll">
+          <!-- Product 1 - PBT -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/product-pbt.jpg" alt="改性PBT材料">
+            </div>
+            <div class="product-content">
+              <span class="product-category">明星产品</span>
+              <h3 class="product-title">改性PBT工程塑料</h3>
+              <p class="product-desc">优异的电气绝缘性、耐热性和机械强度，广泛应用于汽车电子、连接器等领域。</p>
+              <div class="product-specs">
+                <span class="product-spec">玻纤增强10-50%</span>
+                <span class="product-spec">阻燃V0级</span>
+                <span class="product-spec">耐高温150°C</span>
+              </div>
+              <a href="#contact" class="product-link">
+                咨询详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 2 - PA66 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/product-pa66.jpg" alt="改性PA66">
+            </div>
+            <div class="product-content">
+              <span class="product-category">尼龙系列</span>
+              <h3 class="product-title">改性PA66</h3>
+              <p class="product-desc">高强度、高刚性、耐磨损，适用于汽车零部件、机械配件等</p>
+              <div class="product-specs">
+                <span class="product-spec">玻纤增强</span>
+                <span class="product-spec">阻燃</span>
+              </div>
+              <a href="#contact" class="product-link">
+                咨询详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 3 - PP -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/product-pp.jpg" alt="改性PP">
+            </div>
+            <div class="product-content">
+              <span class="product-category">聚烯烃系列</span>
+              <h3 class="product-title">改性PP</h3>
+              <p class="product-desc">轻量化、低成本、易加工，适用于家电外壳、日用品等</p>
+              <div class="product-specs">
+                <span class="product-spec">增韧</span>
+                <span class="product-spec">填充</span>
+              </div>
+              <a href="#contact" class="product-link">
+                咨询详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 4 - PC/ABS -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/product-pcabs.jpg" alt="PC/ABS合金">
+            </div>
+            <div class="product-content">
+              <span class="product-category">合金系列</span>
+              <h3 class="product-title">PC/ABS合金</h3>
+              <p class="product-desc">兼具PC的高强度和ABS的易加工性，适用于电子产品外壳</p>
+              <div class="product-specs">
+                <span class="product-spec">高冲击</span>
+                <span class="product-spec">阻燃</span>
+              </div>
+              <a href="#contact" class="product-link">
+                咨询详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Product 5 - POM -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/product-pom.jpg" alt="改性POM">
+            </div>
+            <div class="product-content">
+              <span class="product-category">工程塑料</span>
+              <h3 class="product-title">改性POM</h3>
+              <p class="product-desc">优异的耐磨性和自润滑性，适用于齿轮、轴承等精密零件</p>
+              <div class="product-specs">
+                <span class="product-spec">耐磨</span>
+                <span class="product-spec">增强</span>
+              </div>
+              <a href="#contact" class="product-link">
+                咨询详情
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 产品滚动提示 -->
+      <div class="products-hint">
+        <span>左右滑动查看更多产品</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </div>
-      <div class="prod-hero-content">
-        <div class="prod-hero-left">
-          <div class="prod-hero-badge">🔥 明星产品</div>
-          <h3>改性聚对苯二甲酸丁二醇酯 (PBT) 系列</h3>
-          <p>PBT是广俊塑料的核心优势产品。凭借优异的电气绝缘性、尺寸稳定性、耐化学性和快速结晶成型特性，广泛应用于电子连接器、汽车零部件、家电等领域。年出货量超20,000吨，是国内PBT改性领域的领先供应商。</p>
-          <div class="prod-hero-specs">
-            <div class="phs-item">
-              <div class="phs-val">250°C</div>
-              <div class="phs-label">热变形温度</div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  <section class="section" id="applications">
+    <div class="container">
+      <div class="section-header">
+        <h2>应用领域</h2>
+        <p>产品广泛应用于汽车、电子电器、新能源、家用电器等多个行业</p>
+      </div>
+      
+      <div class="applications-grid">
+        <div class="application-card">
+          <img src="assets/images/app-auto.jpg" alt="汽车行业">
+          <div class="application-overlay">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                <circle cx="7" cy="17" r="2"/>
+                <circle cx="17" cy="17" r="2"/>
+              </svg>
             </div>
-            <div class="phs-item">
-              <div class="phs-val">V-0</div>
-              <div class="phs-label">阻燃等级 (0.8mm)</div>
-            </div>
-            <div class="phs-item">
-              <div class="phs-val">≥60</div>
-              <div class="phs-label">MPa 拉伸强度</div>
-            </div>
-            <div class="phs-item">
-              <div class="phs-val">CTI≥600V</div>
-              <div class="phs-label">耐漏电起痕</div>
-            </div>
-          </div>
-          <div class="prod-hero-apps">
-            <span>🔌 电子连接器</span>
-            <span>🚗 汽车接插件</span>
-            <span>💡 LED灯座</span>
-            <span>🏠 继电器外壳</span>
+            <h3 class="application-title">汽车行业</h3>
+            <p class="application-desc">连接器、传感器、开关、内饰件等</p>
           </div>
         </div>
-        <div class="prod-hero-right">
-          <div class="prod-hero-model">
-            <div class="phm-circle phm-1"></div>
-            <div class="phm-circle phm-2"></div>
-            <div class="phm-circle phm-3"></div>
-            <div class="phm-center">PBT</div>
-            <div class="phm-label phm-l1">玻纤增强</div>
-            <div class="phm-label phm-l2">阻燃体系</div>
-            <div class="phm-label phm-l3">耐水解</div>
-            <div class="phm-label phm-l4">低翘曲</div>
+        
+        <div class="application-card">
+          <img src="assets/images/app-electronics.jpg" alt="电子电器">
+          <div class="application-overlay">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="14" x="2" y="3" rx="2"/>
+                <line x1="8" x2="16" y1="21" y2="21"/>
+                <line x1="12" x2="12" y1="17" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="application-title">电子电器</h3>
+            <p class="application-desc">接插件、线圈骨架、断路器等</p>
+          </div>
+        </div>
+        
+        <div class="application-card">
+          <img src="assets/images/app-energy.jpg" alt="新能源">
+          <div class="application-overlay">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22v-5"/>
+                <path d="M9 12V7a3 3 0 0 1 6 0v5"/>
+                <path d="M12 12v10"/>
+                <path d="M7 12h10"/>
+                <path d="M12 7V2"/>
+              </svg>
+            </div>
+            <h3 class="application-title">新能源</h3>
+            <p class="application-desc">电池组件、充电桩、光伏配件等</p>
+          </div>
+        </div>
+        
+        <div class="application-card">
+          <img src="assets/images/app-homeappliance.jpg" alt="家用电器">
+          <div class="application-overlay">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 7h18M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/>
+                <path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </div>
+            <h3 class="application-title">家用电器</h3>
+            <p class="application-desc">外壳、内部结构件、功能件等</p>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Product grid -->
-    <div class="prod-grid">
-      <!-- PET -->
-      <div class="prod-card reveal">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">🧬</div>
-          <div class="prod-card-series">PET / PET+GF</div>
-        </div>
-        <h3>改性聚对苯二甲酸乙二醇酯 (PET)</h3>
-        <p>与PBT同属聚酯家族，耐热性更优，尺寸精度出色，是电子电器和汽车领域的高性价比之选</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">60-160 MPa</span></div>
-          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥220°C</span></div>
-          <div class="pcs-row"><span class="pcs-key">玻纤含量</span><span class="pcs-val">15%-45%</span></div>
-        </div>
-        <div class="prod-card-tags">
-          <span>耐热</span><span>尺寸稳定</span><span>高光泽</span><span>阻燃</span>
-        </div>
-        <div class="prod-card-app">典型应用：线圈骨架、开关壳体、汽车灯座、变压器骨架</div>
+  <!-- Cases Section -->
+  <section class="section bg-slate-50" id="cases">
+    <div class="container">
+      <div class="section-header">
+        <h2>成功案例</h2>
+        <p>与众多知名企业建立长期合作关系，为客户创造持续价值</p>
       </div>
-
-      <!-- PA 尼龙 -->
-      <div class="prod-card reveal reveal-delay-1">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">🔧</div>
-          <div class="prod-card-series">PA6 / PA66 / PA46</div>
+      
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-image">
+            <img src="assets/images/case-auto.jpg" alt="汽车零部件案例">
+          </div>
+          <div class="case-content">
+            <span class="case-industry">汽车行业</span>
+            <h3 class="case-title">某知名车企连接器材料供应</h3>
+            <p class="case-desc">为某知名车企提供改性PBT材料，用于新能源汽车高压连接器，满足耐高温、阻燃V0要求。</p>
+            <div class="case-result">
+              <div class="case-result-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <span class="case-result-text">材料成本降低15%，通过IATF认证</span>
+            </div>
+          </div>
         </div>
-        <h3>改性聚酰胺 (PA/尼龙)</h3>
-        <p>卓越的耐磨性、耐化学性和韧性，以塑代钢的首选材料</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">80-200 MPa</span></div>
-          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥200°C</span></div>
-          <div class="pcs-row"><span class="pcs-key">玻纤含量</span><span class="pcs-val">15%-50%</span></div>
+        
+        <div class="case-card">
+          <div class="case-image">
+            <img src="assets/images/case-electronics.jpg" alt="电子连接器案例">
+          </div>
+          <div class="case-content">
+            <span class="case-industry">电子电器</span>
+            <h3 class="case-title">电子连接器厂商材料定制</h3>
+            <p class="case-desc">根据客户需求定制开发高流动性改性PA66，用于精密电子连接器生产。</p>
+            <div class="case-result">
+              <div class="case-result-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <span class="case-result-text">成型周期缩短20%，良品率提升至99.5%</span>
+            </div>
+          </div>
         </div>
-        <div class="prod-card-tags">
-          <span>耐磨</span><span>高流动</span><span>增韧</span><span>阻燃</span>
+        
+        <div class="case-card">
+          <div class="case-image">
+            <img src="assets/images/case-energy.jpg" alt="新能源案例">
+          </div>
+          <div class="case-content">
+            <span class="case-industry">新能源</span>
+            <h3 class="case-title">电池包结构件材料供应</h3>
+            <p class="case-desc">为新能源电池厂商提供阻燃增强PP材料，用于电池包结构件，满足UL94 V0阻燃要求。</p>
+            <div class="case-result">
+              <div class="case-result-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <span class="case-result-text">通过UL认证，年供应量达5000吨</span>
+            </div>
+          </div>
         </div>
-        <div class="prod-card-app">典型应用：齿轮、轴承、发动机罩盖、扎带、线圈骨架</div>
-      </div>
-
-      <!-- PP -->
-      <div class="prod-card reveal reveal-delay-2">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">⚡</div>
-          <div class="prod-card-series">PP / PP+GF</div>
-        </div>
-        <h3>改性聚丙烯 (PP)</h3>
-        <p>性价比之王，通过改性实现高抗冲、耐热、阻燃，覆盖汽车与家电主流需求</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">拉伸强度</span><span class="pcs-val">30-120 MPa</span></div>
-          <div class="pcs-row"><span class="pcs-key">热变形温度</span><span class="pcs-val">≥150°C</span></div>
-          <div class="pcs-row"><span class="pcs-key">缺口冲击</span><span class="pcs-val">≥45 kJ/m²</span></div>
-        </div>
-        <div class="prod-card-tags">
-          <span>高抗冲</span><span>矿物填充</span><span>耐热</span><span>低VOC</span>
-        </div>
-        <div class="prod-card-app">典型应用：保险杠、仪表板、电池包壳体、家电外壳</div>
-      </div>
-
-      <!-- PC -->
-      <div class="prod-card reveal">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">💎</div>
-          <div class="prod-card-series">PC / PC+ABS</div>
-        </div>
-        <h3>改性聚碳酸酯 (PC)</h3>
-        <p>高透光、高抗冲、优异阻燃性，精密电子部件首选</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">透光率</span><span class="pcs-val">≥88%</span></div>
-          <div class="pcs-row"><span class="pcs-key">冲击强度</span><span class="pcs-val">≥60 kJ/m²</span></div>
-          <div class="pcs-row"><span class="pcs-key">阻燃等级</span><span class="pcs-val">V-0 (0.8mm)</span></div>
-        </div>
-        <div class="prod-card-tags">
-          <span>高透光</span><span>阻燃V0</span><span>抗UV</span><span>薄壁</span>
-        </div>
-        <div class="prod-card-app">典型应用：LED灯罩、充电器外壳、仪表盘面罩</div>
-      </div>
-
-      <!-- ABS -->
-      <div class="prod-card reveal reveal-delay-1">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ffc800, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">🛡️</div>
-          <div class="prod-card-series">ABS / AES</div>
-        </div>
-        <h3>改性 ABS</h3>
-        <p>高光泽、高抗冲、电镀级，外观件品质之选</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">光泽度</span><span class="pcs-val">≥95 GU</span></div>
-          <div class="pcs-row"><span class="pcs-key">冲击强度</span><span class="pcs-val">≥25 kJ/m²</span></div>
-          <div class="pcs-row"><span class="pcs-key">耐候性</span><span class="pcs-val">AES级可达</span></div>
-        </div>
-        <div class="prod-card-tags">
-          <span>高光泽</span><span>电镀级</span><span>消光</span><span>耐候</span>
-        </div>
-        <div class="prod-card-app">典型应用：汽车格栅、家电面板、遥控器外壳</div>
-      </div>
-
-      <!-- Functional -->
-      <div class="prod-card reveal reveal-delay-2">
-        <div class="prod-card-bar" style="background: linear-gradient(90deg, #ec4899, transparent);"></div>
-        <div class="prod-card-head">
-          <div class="prod-card-emoji">🔌</div>
-          <div class="prod-card-series">定制开发</div>
-        </div>
-        <h3>功能改性材料</h3>
-        <p>导电、抗静电、电磁屏蔽、导热，为新兴产业量身定制</p>
-        <div class="prod-card-specs">
-          <div class="pcs-row"><span class="pcs-key">表面电阻</span><span class="pcs-val">10⁶-10⁹ Ω</span></div>
-          <div class="pcs-row"><span class="pcs-key">导热系数</span><span class="pcs-val">1-5 W/m·K</span></div>
-          <div class="pcs-row"><span class="pcs-key">EMI屏蔽</span><span class="pcs-val">60-80 dB</span></div>
-        </div>
-        <div class="prod-card-tags">
-          <span>导电</span><span>抗静电</span><span>导热</span><span>EMI屏蔽</span>
-        </div>
-        <div class="prod-card-app">典型应用：芯片托盘、5G天线罩、充电桩散热件</div>
       </div>
     </div>
+  </section>
 
-    <!-- Bottom stats -->
-    <div class="prod-stats reveal">
-      <div class="prod-stat">
-        <div class="prod-stat-val">500+</div>
-        <div class="prod-stat-label">成熟配方</div>
-      </div>
-      <div class="prod-stat-sep"></div>
-      <div class="prod-stat">
-        <div class="prod-stat-val">200+</div>
-        <div class="prod-stat-label">常备牌号</div>
-      </div>
-      <div class="prod-stat-sep"></div>
-      <div class="prod-stat">
-        <div class="prod-stat-val">7天</div>
-        <div class="prod-stat-label">最快打样周期</div>
-      </div>
-      <div class="prod-stat-sep"></div>
-      <div class="prod-stat">
-        <div class="prod-stat-val">50,000吨</div>
-        <div class="prod-stat-label">年产能</div>
-      </div>
-    </div>
-  </div>
-</section>
-</section>
-
-<!-- Capabilities -->
-<section class="capabilities" id="capabilities">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
-      <div class="section-label" style="justify-content: center;">技术实力</div>
-      <h2 class="section-title">从配方到产品<br><span class="gradient-text">全链路技术覆盖</span></h2>
-      <p class="section-desc" style="margin: 0 auto;">
-        拥有60余人的研发团队与CNAS认可实验室，从分子设计到终端应用实现全链路技术自主可控
-      </p>
-    </div>
-
-    <!-- Core area: left hero + right capabilities -->
-    <div class="cap-core">
-      <!-- Left: R&D center showcase -->
-      <div class="cap-hero reveal">
-        <div class="cap-hero-glow"></div>
-        <div class="cap-hero-inner">
-          <div class="cap-hero-tag">R&D CENTER</div>
-          <h3>省级工程技术研究中心</h3>
-          <p>占地3,000m² 独立研发中心，配备国际一流材料分析与测试设备，60余位工程师组成的研发团队年均开发新配方80+。</p>
-          <div class="cap-hero-equip">
-            <div class="che-item">
-              <div class="che-icon">🔬</div>
-              <div class="che-text">
-                <div class="che-name">DSC / TGA 热分析仪</div>
-                <div class="che-desc">差示扫描量热 / 热重分析</div>
+  <!-- Tech Section -->
+  <section class="section" id="tech">
+    <div class="container">
+      <div class="tech-grid">
+        <div class="tech-image">
+          <img src="assets/images/tech-rd.jpg" alt="研发中心">
+        </div>
+        <div class="tech-content">
+          <h2>技术实力</h2>
+          <p>拥有先进的研发设备和检测仪器，建立了完善的技术创新体系，持续为客户提供高性能材料解决方案。</p>
+          
+          <div class="tech-stats">
+            <div class="tech-stat">
+              <div class="tech-stat-value">30+</div>
+              <div class="tech-stat-label">研发人员</div>
+            </div>
+            <div class="tech-stat">
+              <div class="tech-stat-value">50+</div>
+              <div class="tech-stat-label">专利配方</div>
+            </div>
+            <div class="tech-stat">
+              <div class="tech-stat-value">2000㎡</div>
+              <div class="tech-stat-label">研发中心</div>
+            </div>
+          </div>
+          
+          <div class="tech-equipment">
+            <div class="tech-equipment-item">
+              <div class="tech-equipment-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div class="tech-equipment-info">
+                <h4>双螺杆挤出机</h4>
+                <p>科倍隆、莱斯特瑞兹等进口设备，年产能50000吨</p>
               </div>
             </div>
-            <div class="che-item">
-              <div class="che-icon">📐</div>
-              <div class="che-text">
-                <div class="che-name">万能材料试验机</div>
-                <div class="che-desc">拉伸 / 弯曲 / 冲击 / 压缩</div>
+            <div class="tech-equipment-item">
+              <div class="tech-equipment-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 12h20"/>
+                  <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/>
+                  <path d="m12 12 4-8"/>
+                  <path d="m12 12-4-8"/>
+                </svg>
+              </div>
+              <div class="tech-equipment-info">
+                <h4>材料检测设备</h4>
+                <p>万能试验机、熔融指数仪、热变形温度仪等全套检测设备</p>
               </div>
             </div>
-            <div class="che-item">
-              <div class="che-icon">🔥</div>
-              <div class="che-text">
-                <div class="che-name">锥形量热仪 / UL94</div>
-                <div class="che-desc">阻燃性能全面表征</div>
+            <div class="tech-equipment-item">
+              <div class="tech-equipment-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="16" height="20" x="4" y="2" rx="2"/>
+                  <path d="M12 18h.01"/>
+                </svg>
               </div>
-            </div>
-            <div class="che-item">
-              <div class="che-icon">🧬</div>
-              <div class="che-text">
-                <div class="che-name">SEM 扫描电镜</div>
-                <div class="che-desc">微观形貌与断面分析</div>
+              <div class="tech-equipment-info">
+                <h4>注塑成型设备</h4>
+                <p>配备多台精密注塑机，可进行材料试制和样件生产</p>
               </div>
             </div>
           </div>
-          <div class="cap-hero-stats">
-            <div class="chs-item"><div class="chs-val">60+</div><div class="chs-label">研发工程师</div></div>
-            <div class="chs-item"><div class="chs-val">80+</div><div class="chs-label">年新增配方</div></div>
-            <div class="chs-item"><div class="chs-val">15+</div><div class="chs-label">发明专利</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: 4 core capabilities -->
-      <div class="cap-right-grid">
-        <div class="cap-card reveal">
-          <div class="cap-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
-          <div class="cap-card-top">
-            <div class="cap-icon">🧪</div>
-            <div class="cap-card-metric">500+</div>
-          </div>
-          <h4>配方研发</h4>
-          <p>成熟配方数据库快速匹配，新配方开发周期最短7个工作日</p>
-          <div class="cap-card-detail">
-            <span>树脂选型</span><span>助剂复配</span><span>工艺窗口优化</span>
-          </div>
-        </div>
-        <div class="cap-card reveal reveal-delay-1">
-          <div class="cap-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
-          <div class="cap-card-top">
-            <div class="cap-icon">⚙️</div>
-            <div class="cap-card-metric">20+</div>
-          </div>
-          <h4>共混改性</h4>
-          <p>双螺杆/三螺杆挤出工艺精准控制，实现多维度改性</p>
-          <div class="cap-card-detail">
-            <span>玻纤增强</span><span>增韧改性</span><span>阻燃体系</span>
-          </div>
-        </div>
-        <div class="cap-card reveal reveal-delay-2">
-          <div class="cap-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
-          <div class="cap-card-top">
-            <div class="cap-icon">📊</div>
-            <div class="cap-card-metric">30+</div>
-          </div>
-          <h4>检测分析</h4>
-          <p>DSC、TGA、SEM、力学、阻燃等全套材料表征能力</p>
-          <div class="cap-card-detail">
-            <span>力学性能</span><span>热学分析</span><span>阻燃测试</span>
-          </div>
-        </div>
-        <div class="cap-card reveal reveal-delay-3">
-          <div class="cap-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
-          <div class="cap-card-top">
-            <div class="cap-icon">🎯</div>
-            <div class="cap-card-metric">全链</div>
-          </div>
-          <h4>应用工程</h4>
-          <p>Moldflow模流分析、注塑工艺优化、失效分析全程技术支持</p>
-          <div class="cap-card-detail">
-            <span>模流分析</span><span>注塑优化</span><span>失效分析</span>
-          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Bottom row: 4 extended capabilities -->
-    <div class="cap-extended">
-      <div class="cap-ext-card reveal">
-        <div class="cap-ext-num">05</div>
-        <div class="cap-ext-icon">📐</div>
-        <div class="cap-ext-body">
-          <h4>定制开发</h4>
-          <p>根据产品工况（温度、载荷、化学环境等）量身定制材料方案</p>
-        </div>
-      </div>
-      <div class="cap-ext-card reveal reveal-delay-1">
-        <div class="cap-ext-num">06</div>
-        <div class="cap-ext-icon">🔄</div>
-        <div class="cap-ext-body">
-          <h4>快速打样</h4>
-          <p>需求确认到样品交付5-10个工作日，小批量试产灵活响应</p>
-        </div>
-      </div>
-      <div class="cap-ext-card reveal reveal-delay-2">
-        <div class="cap-ext-num">07</div>
-        <div class="cap-ext-icon">📦</div>
-        <div class="cap-ext-body">
-          <h4>规模化生产</h4>
-          <p>年产能50,000+吨，20余条自动化产线，保障大批量稳定交付</p>
-        </div>
-      </div>
-      <div class="cap-ext-card reveal reveal-delay-3">
-        <div class="cap-ext-num">08</div>
-        <div class="cap-ext-icon">🌱</div>
-        <div class="cap-ext-body">
-          <h4>可持续方案</h4>
-          <p>生物基/再生塑料改性技术，助力客户碳减排与ESG目标</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Equipment & Workshop Showcase -->
-    <div class="cap-equip-section reveal">
-      <div class="cap-equip-title">
-        <span class="cap-equip-line"></span>
-        <h3>核心生产设备</h3>
-        <span class="cap-equip-line"></span>
-      </div>
-      <div class="cap-equip-grid">
-        <!-- Equipment 1 -->
-        <div class="cap-equip-card">
-          <div class="cec-visual">
-            <svg viewBox="0 0 280 180" fill="none">
-              <!-- Twin-screw extruder -->
-              <rect x="30" y="60" width="220" height="80" rx="10" stroke="rgba(0,212,170,0.25)" stroke-width="1.5" fill="rgba(0,212,170,0.03)"/>
-              <rect x="50" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
-              <rect x="110" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
-              <rect x="170" y="45" width="40" height="15" rx="4" stroke="rgba(0,212,170,0.2)" stroke-width="1" fill="none"/>
-              <circle cx="70" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
-              <circle cx="130" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
-              <circle cx="190" cy="100" r="20" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="rgba(0,212,170,0.05)"/>
-              <line x1="250" y1="100" x2="270" y2="100" stroke="rgba(0,212,170,0.3)" stroke-width="2" stroke-dasharray="3 3"/>
-              <rect x="5" y="80" width="25" height="40" rx="5" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="rgba(0,153,255,0.03)"/>
-              <line x1="5" y1="145" x2="275" y2="145" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            </svg>
-            <div class="cec-badge">主力设备</div>
-          </div>
-          <div class="cec-info">
-            <h4>双螺杆挤出机组</h4>
-            <div class="cec-brand">科倍隆 / 南京创博</div>
-            <p>20余条产线，螺杆直径Φ35-Φ95mm，年产能50,000+吨</p>
-            <div class="cec-specs">
-              <span>Φ35-95mm</span><span>300-1200kg/h</span><span>L/D 40-52</span>
+  <!-- Certifications Section -->
+  <section class="section bg-slate-50" id="certifications">
+    <div class="container">
+      <div class="cert-layout">
+        <!-- Left: Quality Promise Visual -->
+        <div class="cert-hero">
+          <div class="cert-badge-ring">
+            <div class="cert-badge-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
             </div>
           </div>
-        </div>
-
-        <!-- Equipment 2 -->
-        <div class="cap-equip-card">
-          <div class="cec-visual">
-            <svg viewBox="0 0 280 180" fill="none">
-              <!-- Injection molding -->
-              <rect x="60" y="30" width="160" height="110" rx="12" stroke="rgba(0,153,255,0.25)" stroke-width="1.5" fill="rgba(0,153,255,0.03)"/>
-              <rect x="80" y="50" width="50" height="70" rx="6" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
-              <rect x="150" y="50" width="50" height="70" rx="6" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="none"/>
-              <line x1="130" y1="85" x2="150" y2="85" stroke="rgba(0,153,255,0.3)" stroke-width="2"/>
-              <rect x="20" y="60" width="40" height="50" rx="8" stroke="rgba(0,153,255,0.2)" stroke-width="1" fill="rgba(0,153,255,0.02)"/>
-              <circle cx="40" cy="85" r="8" stroke="rgba(0,153,255,0.3)" stroke-width="1" fill="none"/>
-              <line x1="220" y1="85" x2="265" y2="85" stroke="rgba(0,153,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <rect x="240" y="70" width="25" height="30" rx="4" stroke="rgba(0,153,255,0.15)" stroke-width="1" fill="none"/>
-              <line x1="10" y1="145" x2="270" y2="145" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            </svg>
-            <div class="cec-badge" style="background: rgba(0,153,255,.12); color: var(--accent2); border-color: rgba(0,153,255,.2);">试模中心</div>
-          </div>
-          <div class="cec-info">
-            <h4>精密注塑成型机</h4>
-            <div class="cec-brand">海天 / 震雄 / 住友</div>
-            <p>80T-2000T全系列，为客户提供注塑工艺验证与小批量生产</p>
-            <div class="cec-specs">
-              <span>80-2000T</span><span>全电动+油压</span><span>模流验证</span>
+          <h3>品质承诺</h3>
+          <p>通过多项国际权威认证，<br>从原料到成品全程质量可追溯</p>
+          
+          <div class="cert-stats-row">
+            <div class="cert-stat-mini">
+              <span class="cert-stat-num">6</span>
+              <span class="cert-stat-txt">项国际认证</span>
+            </div>
+            <div class="cert-stat-divider"></div>
+            <div class="cert-stat-mini">
+              <span class="cert-stat-num">100%</span>
+              <span class="cert-stat-txt">产品合规</span>
+            </div>
+            <div class="cert-stat-divider"></div>
+            <div class="cert-stat-mini">
+              <span class="cert-stat-num">15+</span>
+              <span class="cert-stat-txt">年认证历史</span>
             </div>
           </div>
+
+          <div class="cert-quality-tags">
+            <span class="cert-quality-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+              全流程质检
+            </span>
+            <span class="cert-quality-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+              年审持续通过
+            </span>
+            <span class="cert-quality-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+              第三方权威机构
+            </span>
+          </div>
         </div>
 
-        <!-- Equipment 3 -->
-        <div class="cap-equip-card">
-          <div class="cec-visual">
-            <svg viewBox="0 0 280 180" fill="none">
-              <!-- Testing machine -->
-              <rect x="80" y="20" width="120" height="130" rx="10" stroke="rgba(255,107,53,0.25)" stroke-width="1.5" fill="rgba(255,107,53,0.02)"/>
-              <rect x="100" y="40" width="80" height="50" rx="6" stroke="rgba(255,107,53,0.2)" stroke-width="1" fill="none"/>
-              <line x1="120" y1="55" x2="160" y2="55" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
-              <line x1="120" y1="65" x2="155" y2="65" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
-              <line x1="120" y1="75" x2="150" y2="75" stroke="rgba(255,107,53,0.15)" stroke-width="1"/>
-              <rect x="110" y="100" width="60" height="35" rx="4" stroke="rgba(255,107,53,0.2)" stroke-width="1" fill="none"/>
-              <circle cx="140" cy="117" r="10" stroke="rgba(255,107,53,0.25)" stroke-width="1" fill="rgba(255,107,53,0.05)"/>
-              <line x1="140" y1="90" x2="140" y2="100" stroke="rgba(255,107,53,0.2)" stroke-width="1"/>
-              <rect x="30" y="50" width="50" height="70" rx="8" stroke="rgba(255,107,53,0.12)" stroke-width="1" fill="none"/>
-              <line x1="200" y1="70" x2="250" y2="70" stroke="rgba(255,107,53,0.12)" stroke-width="1" stroke-dasharray="3 3"/>
-              <line x1="20" y1="155" x2="260" y2="155" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            </svg>
-            <div class="cec-badge" style="background: rgba(255,107,53,.12); color: var(--warm); border-color: rgba(255,107,53,.2);">检测中心</div>
-          </div>
-          <div class="cec-info">
-            <h4>材料检测设备群</h4>
-            <div class="cec-brand">岛津 / 英斯特朗 / TA仪器</div>
-            <p>力学、热学、阻燃、电性能全项检测，CNAS认可实验室</p>
-            <div class="cec-specs">
-              <span>万能试验机</span><span>DSC/TGA</span><span>SEM电镜</span>
+        <!-- Right: Certification Cards -->
+        <div class="cert-cards-grid">
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(234, 88, 12, 0.08); color: #ea580c;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>ISO 9001</h4>
+              <p>质量管理体系认证 — 建立完善的全过程质量控制体系</p>
+              <span class="cert-status">有效期内</span>
             </div>
           </div>
-        </div>
 
-        <!-- Equipment 4 -->
-        <div class="cap-equip-card">
-          <div class="cec-visual">
-            <svg viewBox="0 0 280 180" fill="none">
-              <!-- Automatic packaging line -->
-              <rect x="20" y="80" width="240" height="50" rx="8" stroke="rgba(168,85,247,0.2)" stroke-width="1.5" fill="rgba(168,85,247,0.02)"/>
-              <line x1="20" y1="105" x2="260" y2="105" stroke="rgba(168,85,247,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
-              <rect x="50" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
-              <rect x="110" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
-              <rect x="170" y="50" width="30" height="30" rx="4" stroke="rgba(168,85,247,0.25)" stroke-width="1" fill="rgba(168,85,247,0.05)"/>
-              <circle cx="65" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
-              <circle cx="125" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
-              <circle cx="185" cy="40" r="5" fill="rgba(168,85,247,0.2)"/>
-              <rect x="220" y="40" width="30" height="90" rx="6" stroke="rgba(168,85,247,0.15)" stroke-width="1" fill="none"/>
-              <line x1="235" y1="55" x2="235" y2="115" stroke="rgba(168,85,247,0.1)" stroke-width="1"/>
-              <line x1="10" y1="155" x2="270" y2="155" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            </svg>
-            <div class="cec-badge" style="background: rgba(168,85,247,.12); color: #a855f7; border-color: rgba(168,85,247,.2);">智能产线</div>
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(59, 130, 246, 0.08); color: #2563eb;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                <circle cx="7" cy="17" r="2"/>
+                <circle cx="17" cy="17" r="2"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>IATF 16949</h4>
+              <p>汽车行业质量管理 — 符合全球汽车供应链标准</p>
+              <span class="cert-status">有效期内</span>
+            </div>
           </div>
-          <div class="cec-info">
-            <h4>自动化包装产线</h4>
-            <div class="cec-brand">全自动计量 → 包装 → 码垛</div>
-            <p>25kg自动包装，吨袋包装双模式，日出货能力200吨+</p>
-            <div class="cec-specs">
-              <span>自动计量</span><span>25kg/吨袋</span><span>日发200T+</span>
+
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(34, 197, 94, 0.08); color: #16a34a;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                <path d="M19 3v4"/>
+                <path d="M21 5h-4"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>ISO 14001</h4>
+              <p>环境管理体系 — 绿色生产、节能减排、可持续发展</p>
+              <span class="cert-status">有效期内</span>
+            </div>
+          </div>
+
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(168, 85, 247, 0.08); color: #9333ea;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <path d="M9 12h6"/>
+                <path d="M12 9v6"/>
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v.01"/>
+                <path d="M12 18v.01"/>
+                <path d="M6 12H6.01"/>
+                <path d="M18 12h-.01"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>ROHS</h4>
+              <p>欧盟有害物质限制指令 — 产品符合环保安全标准</p>
+              <span class="cert-status">符合要求</span>
+            </div>
+          </div>
+
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(245, 158, 11, 0.08); color: #d97706;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>REACH</h4>
+              <p>欧盟化学品注册法规 — 材料成分全链路可追溯</p>
+              <span class="cert-status">已注册</span>
+            </div>
+          </div>
+
+          <div class="cert-card-item">
+            <div class="cert-card-icon" style="background-color: rgba(220, 38, 38, 0.08); color: #dc2626;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26">
+                <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <div class="cert-card-body">
+              <h4>UL 认证</h4>
+              <p>美国安全认证 — 阻燃材料通过UL实验室检测</p>
+              <span class="cert-status">已认证</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- Partners -->
-<section class="industries partners" id="partners">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
-      <div class="section-label" style="justify-content: center;">合作伙伴</div>
-      <h2 class="section-title">携手全球材料品牌<br><span class="gradient-text">共建稳定供应体系</span></h2>
-      <p class="section-desc" style="margin: 0 auto;">我们与多家国际知名改性塑料及工程塑料企业保持长期合作，代理销售其核心牌号产品，并结合本土技术服务能力，为客户提供更快交付与更稳供应。</p>
-    </div>
-
-    <div class="partners-overview reveal">
-      <div class="partners-overview-item">
-        <div class="poi-val">20+</div>
-        <div class="poi-label">合作品牌与供应商</div>
+  <!-- News Section -->
+  <section class="section" id="news">
+    <div class="container">
+      <div class="section-header">
+        <h2>新闻动态</h2>
+        <p>了解广俊新材料的最新动态和行业资讯</p>
       </div>
-      <div class="partners-overview-item">
-        <div class="poi-val">300+</div>
-        <div class="poi-label">可选牌号资源</div>
-      </div>
-      <div class="partners-overview-item">
-        <div class="poi-val">48h</div>
-        <div class="poi-label">样品响应周期</div>
-      </div>
-      <div class="partners-overview-item">
-        <div class="poi-val">7x12</div>
-        <div class="poi-label">技术支持服务</div>
-      </div>
-    </div>
-
-    <div class="partners-grid">
-      <article class="partner-card reveal">
-        <div class="partner-brand">BASF</div>
-        <h3>巴斯夫</h3>
-        <p>重点代理工程塑料及特种材料系列，覆盖汽车、电气和工业应用。</p>
-        <div class="partner-tags"><span>PBT/PA</span><span>阻燃</span><span>高流动</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-1">
-        <div class="partner-brand">CCP</div>
-        <h3>长春化工</h3>
-        <p>提供工程塑料与特化树脂解决方案，适配电子电器、汽车及工业部件应用。</p>
-        <div class="partner-tags"><span>PBT/PA</span><span>电器级</span><span>稳定供货</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-2">
-        <div class="partner-brand">Covestro</div>
-        <h3>科思创</h3>
-        <p>聚碳酸酯及改性系列资源稳定，支持电子电器与新能源终端应用。</p>
-        <div class="partner-tags"><span>PC</span><span>透明级</span><span>高韧性</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-3">
-        <div class="partner-brand">DuPont</div>
-        <h3>杜邦</h3>
-        <p>工程聚合物平台牌号丰富，可满足精密连接器与结构件性能目标。</p>
-        <div class="partner-tags"><span>PA/POM</span><span>耐化学</span><span>尺寸稳定</span></div>
-      </article>
-      <article class="partner-card reveal">
-        <div class="partner-brand">Celanese</div>
-        <h3>塞拉尼斯</h3>
-        <p>高结晶工程塑料体系成熟，适配高强度、耐疲劳等严苛工况。</p>
-        <div class="partner-tags"><span>PBT/POM</span><span>耐磨</span><span>高刚性</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-1">
-        <div class="partner-brand">LG Chem</div>
-        <h3>LG 化学</h3>
-        <p>多系列改性塑料产品线可覆盖家电、消费电子与汽车部件应用。</p>
-        <div class="partner-tags"><span>ABS/PC</span><span>外观级</span><span>家电级</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-2">
-        <div class="partner-brand">Toray</div>
-        <h3>东丽</h3>
-        <p>在高性能尼龙与复合材料领域经验丰富，支持轻量化结构升级。</p>
-        <div class="partner-tags"><span>PA</span><span>增强</span><span>轻量化</span></div>
-      </article>
-      <article class="partner-card reveal reveal-delay-3">
-        <div class="partner-brand">LyondellBasell</div>
-        <h3>利安德巴赛尔</h3>
-        <p>聚烯烃平台资源稳定，兼顾成本效率与批量供货可靠性。</p>
-        <div class="partner-tags"><span>PP</span><span>高抗冲</span><span>通用改性</span></div>
-      </article>
-    </div>
-
-    <div class="partners-note reveal">
-      * 合作品牌与牌号以实际商务确认为准，可按项目需求提供等效替代与联合选型建议。
-    </div>
-  </div>
-</section>
-
-<!-- Process -->
-<section class="process" id="process">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
-      <div class="section-label" style="justify-content: center;">服务流程</div>
-      <h2 class="section-title">五步高效协作<br><span class="gradient-text">从需求到交付</span></h2>
-      <p class="section-desc" style="margin: 0 auto;">从需求对接到量产交付，最快仅需15个工作日，全程专属工程师1对1跟进</p>
-    </div>
-
-    <div class="proc-h-wrap">
-      <!-- Horizontal connecting line -->
-      <div class="proc-h-line"></div>
-
-      <div class="proc-h-steps">
-        <!-- Step 1 -->
-        <div class="proc-h-step reveal">
-          <div class="proc-h-top">
-            <div class="proc-h-node">
-              <div class="proc-h-dot" style="--dot-color: #00d4aa;"></div>
-              <div class="proc-h-ring" style="--ring-color: #00d4aa;"></div>
-            </div>
+      
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-company.jpg" alt="公司新闻">
           </div>
-          <div class="proc-h-card">
-            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #00d4aa, transparent);"></div>
-            <div class="proc-h-num">DAY 1-2</div>
-            <div class="proc-h-icon">🎯</div>
-            <h3>需求沟通</h3>
-            <p>深入了解产品应用场景、工况条件、性能指标，明确成本目标与交付周期</p>
-            <div class="proc-h-tags">
-              <span>📋 工况分析</span>
-              <span>📊 指标确认</span>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">公司动态</span>
+              <span class="news-date">2024.12.15</span>
             </div>
+            <h3 class="news-title">广俊新材料完成二期厂房扩建，年产能提升至50000吨</h3>
+            <p class="news-excerpt">公司投资建设的二期厂房正式投产，引进多条先进生产线，年产能从30000吨提升至50000吨...</p>
           </div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="proc-h-arrow reveal">
-          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(0,212,170,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="proc-h-step reveal reveal-delay-1">
-          <div class="proc-h-top">
-            <div class="proc-h-node">
-              <div class="proc-h-dot" style="--dot-color: #0099ff;"></div>
-              <div class="proc-h-ring" style="--ring-color: #0099ff;"></div>
+        </article>
+        
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-industry.jpg" alt="行业资讯">
+          </div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">行业资讯</span>
+              <span class="news-date">2024.12.10</span>
             </div>
+            <h3 class="news-title">工程塑料行业发展趋势分析：新能源汽车带动需求增长</h3>
+            <p class="news-excerpt">随着新能源汽车市场的快速发展，工程塑料在汽车轻量化和电气化的应用需求持续增长...</p>
           </div>
-          <div class="proc-h-card">
-            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #0099ff, transparent);"></div>
-            <div class="proc-h-num">DAY 3-5</div>
-            <div class="proc-h-icon">🧪</div>
-            <h3>方案设计</h3>
-            <p>配方工程师基于500+配方数据库，快速匹配并定制最优树脂体系与改性方案</p>
-            <div class="proc-h-tags">
-              <span>🔬 配方筛选</span>
-              <span>📝 方案评审</span>
+        </article>
+        
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-tech.jpg" alt="技术文章">
+          </div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">技术文章</span>
+              <span class="news-date">2024.12.05</span>
             </div>
+            <h3 class="news-title">改性PBT材料在汽车连接器中的应用研究</h3>
+            <p class="news-excerpt">本文分析了改性PBT材料在汽车高压连接器中的应用，探讨了材料配方对性能的影响...</p>
           </div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="proc-h-arrow reveal reveal-delay-1">
-          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(0,153,255,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="proc-h-step reveal reveal-delay-2">
-          <div class="proc-h-top">
-            <div class="proc-h-node">
-              <div class="proc-h-dot" style="--dot-color: #ff6b35;"></div>
-              <div class="proc-h-ring" style="--ring-color: #ff6b35;"></div>
-            </div>
-          </div>
-          <div class="proc-h-card">
-            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #ff6b35, transparent);"></div>
-            <div class="proc-h-num">DAY 6-10</div>
-            <div class="proc-h-icon">⚗️</div>
-            <h3>样品试制</h3>
-            <p>实验室双螺杆挤出打样，全面力学/热学/阻燃检测，支持多轮迭代优化</p>
-            <div class="proc-h-tags">
-              <span>🏭 实验线打样</span>
-              <span>📈 全项检测</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="proc-h-arrow reveal reveal-delay-2">
-          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(255,107,53,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="proc-h-step reveal reveal-delay-3">
-          <div class="proc-h-top">
-            <div class="proc-h-node">
-              <div class="proc-h-dot" style="--dot-color: #a855f7;"></div>
-              <div class="proc-h-ring" style="--ring-color: #a855f7;"></div>
-            </div>
-          </div>
-          <div class="proc-h-card">
-            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #a855f7, transparent);"></div>
-            <div class="proc-h-num">DAY 11-15</div>
-            <div class="proc-h-icon">🚀</div>
-            <h3>批量生产</h3>
-            <p>样品验证通过后快速切换量产，20+自动化产线保障品质一致性</p>
-            <div class="proc-h-tags">
-              <span>⚙️ 产线切换</span>
-              <span>📦 批量交付</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="proc-h-arrow reveal reveal-delay-3">
-          <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h32m0 0l-6-5m6 5l-6 5" stroke="rgba(168,85,247,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="proc-h-step reveal reveal-delay-4">
-          <div class="proc-h-top">
-            <div class="proc-h-node">
-              <div class="proc-h-dot" style="--dot-color: #ffc800;"></div>
-              <div class="proc-h-ring" style="--ring-color: #ffc800;"></div>
-            </div>
-          </div>
-          <div class="proc-h-card">
-            <div class="proc-h-card-bar" style="background: linear-gradient(90deg, #ffc800, transparent);"></div>
-            <div class="proc-h-num">长期</div>
-            <div class="proc-h-icon">🤝</div>
-            <h3>持续服务</h3>
-            <p>定期回访跟踪使用情况，主动提供优化建议，48小时内响应</p>
-            <div class="proc-h-tags">
-              <span>📞 定期回访</span>
-              <span>🔧 技术支持</span>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
+  </section>
 
-    <!-- Bottom CTA bar -->
-    <div class="proc-cta-bar reveal">
-      <div class="proc-cta-left">
-        <div class="proc-cta-icon">⚡</div>
-        <div>
-          <div class="proc-cta-title">紧急项目？我们支持加急通道</div>
-          <div class="proc-cta-desc">最快5个工作日完成从打样到小批量交付</div>
-        </div>
-      </div>
-      <a href="#contact" class="btn btn-primary" style="padding: .7rem 1.5rem; font-size: .85rem;">立即咨询 →</a>
-    </div>
-  </div>
-</section>
-
-<!-- Quality -->
-<section class="quality" id="quality">
-  <div class="container">
-    <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
-      <div class="section-label" style="justify-content: center;">质量体系</div>
-      <h2 class="section-title">严苛品控<br><span class="gradient-text">铸就可靠品质</span></h2>
-      <p class="section-desc" style="margin: 0 auto;">6大国际认证加持，从未发生过批次质量事故，客户投诉48小时闭环</p>
-    </div>
-
-    <!-- Certification showcase: horizontal scrolling ribbon -->
-    <div class="qual-certs-ribbon">
-      <div class="qual-certs-track">
-        <div class="qual-certs-group">
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
-            <div class="qual-cert-badge">🏅</div>
-            <div class="qual-cert-name">ISO 9001</div>
-            <div class="qual-cert-desc">质量管理体系</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,153,255,.15);"></div>
-            <div class="qual-cert-badge">🚗</div>
-            <div class="qual-cert-name">IATF 16949</div>
-            <div class="qual-cert-desc">汽车行业质量管理</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
-            <div class="qual-cert-badge">🌿</div>
-            <div class="qual-cert-name">ISO 14001</div>
-            <div class="qual-cert-desc">环境管理体系</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(168,85,247,.15);"></div>
-            <div class="qual-cert-badge">🔬</div>
-            <div class="qual-cert-name">CNAS</div>
-            <div class="qual-cert-desc">国家认可实验室</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(255,107,53,.15);"></div>
-            <div class="qual-cert-badge">🛡️</div>
-            <div class="qual-cert-name">UL 认证</div>
-            <div class="qual-cert-desc">阻燃安全认证</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(255,200,0,.15);"></div>
-            <div class="qual-cert-badge">🇪🇺</div>
-            <div class="qual-cert-name">REACH / RoHS</div>
-            <div class="qual-cert-desc">欧盟环保合规</div>
-          </div>
-        </div>
-        <div class="qual-certs-group qual-certs-group--clone" aria-hidden="true">
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
-            <div class="qual-cert-badge">🏅</div>
-            <div class="qual-cert-name">ISO 9001</div>
-            <div class="qual-cert-desc">质量管理体系</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,153,255,.15);"></div>
-            <div class="qual-cert-badge">🚗</div>
-            <div class="qual-cert-name">IATF 16949</div>
-            <div class="qual-cert-desc">汽车行业质量管理</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(0,212,170,.15);"></div>
-            <div class="qual-cert-badge">🌿</div>
-            <div class="qual-cert-name">ISO 14001</div>
-            <div class="qual-cert-desc">环境管理体系</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(168,85,247,.15);"></div>
-            <div class="qual-cert-badge">🔬</div>
-            <div class="qual-cert-name">CNAS</div>
-            <div class="qual-cert-desc">国家认可实验室</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(255,107,53,.15);"></div>
-            <div class="qual-cert-badge">🛡️</div>
-            <div class="qual-cert-name">UL 认证</div>
-            <div class="qual-cert-desc">阻燃安全认证</div>
-          </div>
-          <div class="qual-cert-item">
-            <div class="qual-cert-glow" style="--glow: rgba(255,200,0,.15);"></div>
-            <div class="qual-cert-badge">🇪🇺</div>
-            <div class="qual-cert-name">REACH / RoHS</div>
-            <div class="qual-cert-desc">欧盟环保合规</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quality process: large horizontal cards -->
-    <div class="qual-process">
-      <div class="qual-proc-title reveal">
-        <span class="qual-proc-line"></span>
-        <h3>全流程质量管理</h3>
-        <span class="qual-proc-line"></span>
-      </div>
-
-      <div class="qual-proc-grid">
-        <div class="qual-proc-card reveal">
-          <div class="qual-proc-num">01</div>
-          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(0,212,170,.1); --icon-border: rgba(0,212,170,.15);">
-            <span>📦</span>
-          </div>
-          <h4>来料检验</h4>
-          <p>原材料入库前100%批次检验，IQC全检+抽检双重保障，从源头杜绝不良</p>
-          <div class="qual-proc-metric">
-            <div class="qpm-val">100%</div>
-            <div class="qpm-label">批次覆盖率</div>
-          </div>
-        </div>
-
-        <div class="qual-proc-card reveal reveal-delay-1">
-          <div class="qual-proc-num">02</div>
-          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(0,153,255,.1); --icon-border: rgba(0,153,255,.15);">
-            <span>⚙️</span>
-          </div>
-          <h4>过程控制</h4>
-          <p>SPC统计过程控制，关键工艺参数实时监控与自动预警，确保制程稳定</p>
-          <div class="qual-proc-metric">
-            <div class="qpm-val">Cpk≥1.67</div>
-            <div class="qpm-label">过程能力指数</div>
-          </div>
-        </div>
-
-        <div class="qual-proc-card reveal reveal-delay-2">
-          <div class="qual-proc-num">03</div>
-          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(255,107,53,.1); --icon-border: rgba(255,107,53,.15);">
-            <span>🔬</span>
-          </div>
-          <h4>成品检测</h4>
-          <p>力学、热学、阻燃、电性能全项检测，每批次附带完整出厂检测报告</p>
-          <div class="qual-proc-metric">
-            <div class="qpm-val">30+</div>
-            <div class="qpm-label">检测项目</div>
-          </div>
-        </div>
-
-        <div class="qual-proc-card reveal reveal-delay-3">
-          <div class="qual-proc-num">04</div>
-          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(168,85,247,.1); --icon-border: rgba(168,85,247,.15);">
-            <span>🔗</span>
-          </div>
-          <h4>全链追溯</h4>
-          <p>从原材料供应商到终端客户，全链路批次追溯系统，问题30分钟内精准定位</p>
-          <div class="qual-proc-metric">
-            <div class="qpm-val">30min</div>
-            <div class="qpm-label">问题定位时效</div>
-          </div>
-        </div>
-
-        <div class="qual-proc-card reveal reveal-delay-4">
-          <div class="qual-proc-num">05</div>
-          <div class="qual-proc-icon-wrap" style="--icon-bg: rgba(255,200,0,.1); --icon-border: rgba(255,200,0,.15);">
-            <span>🔄</span>
-          </div>
-          <h4>持续改进</h4>
-          <p>PDCA循环驱动品质螺旋上升，客户投诉48小时内闭环，年度改善项目50+</p>
-          <div class="qual-proc-metric">
-            <div class="qpm-val">48h</div>
-            <div class="qpm-label">投诉闭环时效</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Trust badges bottom -->
-    <div class="qual-trust-bar reveal">
-      <div class="qual-trust-item">
-        <span class="qt-icon">🏆</span>
-        <span class="qt-text">0起批次质量事故</span>
-      </div>
-      <div class="qual-trust-sep"></div>
-      <div class="qual-trust-item">
-        <span class="qt-icon">📋</span>
-        <span class="qt-text">每年2次第三方审核</span>
-      </div>
-      <div class="qual-trust-sep"></div>
-      <div class="qual-trust-item">
-        <span class="qt-icon">🌍</span>
-        <span class="qt-text">出口20+国家和地区</span>
-      </div>
-      <div class="qual-trust-sep"></div>
-      <div class="qual-trust-item">
-        <span class="qt-icon">⭐</span>
-        <span class="qt-text">98.5% 客户满意度</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials" id="testimonials">
-  <div class="container">
-    <div class="reveal" style="text-align: center;">
-      <div class="section-label" style="justify-content: center;">客户评价</div>
-      <h2 class="section-title">合作伙伴<br><span class="gradient-text">这样说我们</span></h2>
-    </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"广俊团队在两周内就帮我们找到了替代进口材料的方案，性能完全达标，成本降低了30%。这种响应速度和专业度令人印象深刻。"</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">王</div>
-          <div>
-            <div class="testimonial-name">王总监</div>
-            <div class="testimonial-role">某知名汽车零部件企业 · 采购总监</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"合作三年来，广俊的材料品质始终稳定，从未发生过批次质量事故。他们不只是供应商，更是我们产品创新的合作伙伴。"</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">李</div>
-          <div>
-            <div class="testimonial-name">李总工</div>
-            <div class="testimonial-role">某上市电子企业 · 技术总监</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"新能源领域对材料要求极高，广俊的阻燃增强PP帮我们通过了严苛的UL认证，让产品顺利打开了海外市场。"</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">张</div>
-          <div>
-            <div class="testimonial-name">张经理</div>
-            <div class="testimonial-role">某新能源科技公司 · 研发经理</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="reveal" style="text-align: center;">
-      <div class="section-label" style="justify-content: center;">联系我们</div>
-      <h2 class="section-title">开启合作<br><span class="gradient-text">从这里开始</span></h2>
-    </div>
-    <div class="contact-grid">
-      <div class="reveal">
-        <p class="section-desc">我们的技术团队将在收到咨询后24小时内与您取得联系，为您提供专业建议与报价方案。</p>
-        <ul class="contact-info-list">
-          <li class="contact-info-item">
-            <div class="contact-info-icon">📍</div>
-            <div>
-              <div class="contact-info-label">公司地址</div>
-              <div class="contact-info-value">浙江省慈溪市横河万洋众创城A区28栋1-3</div>
+  <!-- Contact Section -->
+  <section class="section bg-slate-50" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>联系我们</h2>
+          <p>如果您有任何产品咨询或合作意向，欢迎与我们联系，我们将竭诚为您服务。</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-method-info">
+                <h4>公司地址</h4>
+                <p>广东省东莞市松山湖高新技术产业开发区</p>
+              </div>
             </div>
-          </li>
-          <li class="contact-info-item">
-            <div class="contact-info-icon">📞</div>
-            <div>
-              <div class="contact-info-label">服务热线</div>
-              <div class="contact-info-value">400-888-6688</div>
+            <div class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-method-info">
+                <h4>联系电话</h4>
+                <p>400-888-8888 / 0769-88888888</p>
+              </div>
             </div>
-          </li>
-          <li class="contact-info-item">
-            <div class="contact-info-icon">✉️</div>
-            <div>
-              <div class="contact-info-label">商务邮箱</div>
-              <div class="contact-info-value">sales@guangjun-plastic.com</div>
+            <div class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="contact-method-info">
+                <h4>电子邮箱</h4>
+                <p>sales@jujun-materials.com</p>
+              </div>
             </div>
-          </li>
-          <li class="contact-info-item">
-            <div class="contact-info-icon">🕐</div>
-            <div>
-              <div class="contact-info-label">工作时间</div>
-              <div class="contact-info-value">周一至周五 08:30 - 17:30</div>
-            </div>
-          </li>
-          <li class="contact-info-item">
-            <div class="contact-info-icon">💬</div>
-            <div>
-              <div class="contact-info-label">微信公众号</div>
-              <div class="contact-info-value">广俊塑料（搜索关注获取最新动态）</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="contact-form reveal reveal-delay-1">
-        <h3>📋 在线询价</h3>
-        <form onsubmit="event.preventDefault(); alert('感谢您的咨询！我们将尽快与您联系。');">
-          <div class="form-row">
-            <div class="form-group">
-              <label>姓名 *</label>
-              <input type="text" placeholder="请输入您的姓名" required>
+          </div>
+          
+          <div class="contact-hours">
+            <h4>工作时间</h4>
+            <p>周一至周五：8:30 - 17:30<br>周六：8:30 - 12:00</p>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper">
+          <h3>在线咨询</h3>
+          <form id="contactForm">
+            <div class="grid-2" style="gap: 16px;">
+              <div class="form-group">
+                <label class="form-label form-label-required">您的姓名</label>
+                <input type="text" class="form-input" placeholder="请输入姓名" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label-required">联系电话</label>
+                <input type="tel" class="form-input" placeholder="请输入电话" required>
+              </div>
             </div>
             <div class="form-group">
-              <label>公司 *</label>
-              <input type="text" placeholder="请输入公司名称" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>电话 *</label>
-              <input type="tel" placeholder="请输入联系电话" required>
+              <label class="form-label">公司名称</label>
+              <input type="text" class="form-input" placeholder="请输入公司名称">
             </div>
             <div class="form-group">
-              <label>邮箱</label>
-              <input type="email" placeholder="请输入邮箱地址">
+              <label class="form-label">咨询产品</label>
+              <select class="form-select">
+                <option value="">请选择咨询产品</option>
+                <option value="pbt">改性PBT</option>
+                <option value="pa">改性PA</option>
+                <option value="pp">改性PP</option>
+                <option value="pcabs">PC/ABS合金</option>
+                <option value="other">其他产品</option>
+              </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label>感兴趣的产品</label>
-            <select>
-              <option value="">请选择产品类别</option>
-              <option>改性PBT（核心产品）</option>
-              <option>改性PET</option>
-              <option>改性聚酰胺 (PA/尼龙)</option>
-              <option>改性聚丙烯 (PP)</option>
-              <option>改性聚碳酸酯 (PC)</option>
-              <option>改性 ABS</option>
-              <option>功能改性材料</option>
-              <option>其他 / 定制开发</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>需求描述</label>
-            <textarea placeholder="请简要描述您的材料需求、应用场景及特殊要求..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">提交询价 →</button>
-        </form>
+            <div class="form-group">
+              <label class="form-label">咨询内容</label>
+              <textarea class="form-textarea" placeholder="请描述您的需求..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">提交咨询</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="nav-logo" style="margin-bottom: .5rem;">
-          <div class="nav-logo-icon">广</div>
-          <span class="nav-logo-text">广俊塑料</span>
+  <!-- CTA Section -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <h2>开启您的材料解决方案之旅</h2>
+      <p>立即联系我们，获取专业的产品咨询和定制化材料方案</p>
+      <div class="cta-buttons">
+        <a href="tel:400-888-8888" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          电话咨询
         </a>
-        <p>广俊塑料——专注改性塑料研发与制造，为全球客户提供高性能材料解决方案。以创新驱动发展，以品质赢得信赖。</p>
-      </div>
-      <div class="footer-col">
-        <h4>产品中心</h4>
-        <ul>
-          <li><a href="#products">改性PBT（核心产品）</a></li>
-          <li><a href="#products">改性PET</a></li>
-          <li><a href="#products">改性聚酰胺 (PA/尼龙)</a></li>
-          <li><a href="#products">改性聚丙烯 (PP)</a></li>
-          <li><a href="#products">改性聚碳酸酯 (PC)</a></li>
-          <li><a href="#products">功能改性材料</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>合作伙伴</h4>
-        <ul>
-          <li><a href="#partners">BASF（巴斯夫）</a></li>
-          <li><a href="#partners">SABIC</a></li>
-          <li><a href="#partners">Covestro（科思创）</a></li>
-          <li><a href="#partners">DuPont（杜邦）</a></li>
-          <li><a href="#partners">Celanese（塞拉尼斯）</a></li>
-          <li><a href="#partners">LyondellBasell</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>关于我们</h4>
-        <ul>
-          <li><a href="#about">公司简介</a></li>
-          <li><a href="#capabilities">技术实力</a></li>
-          <li><a href="#quality">质量体系</a></li>
-          <li><a href="#contact">联系我们</a></li>
-          <li><a href="#">人才招聘</a></li>
-          <li><a href="#">新闻动态</a></li>
-        </ul>
+        <a href="#contact" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          在线咨询
+        </a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 广俊塑料科技有限公司 版权所有 · 粤ICP备XXXXXXXX号-1</p>
-      <div class="footer-bottom-links">
-        <a href="#">隐私政策</a>
-        <a href="#">使用条款</a>
-        <a href="#">网站地图</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-brand-logo">
+            <img src="assets/images/logo.png" alt="广俊新材料" class="nav-logo-img">
+            <span>广俊新材料</span>
+          </a>
+          <p>专注于高性能工程塑料改性研发与生产，为汽车、电子、新能源等行业提供高品质材料解决方案。</p>
+        </div>
+        <div class="footer-column">
+          <h4>产品中心</h4>
+          <div class="footer-links">
+            <a href="#products">改性PBT</a>
+            <a href="#products">改性PA</a>
+            <a href="#products">改性PP</a>
+            <a href="#products">PC/ABS合金</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>关于我们</h4>
+          <div class="footer-links">
+            <a href="#about">公司简介</a>
+            <a href="#tech">技术实力</a>
+            <a href="#cases">成功案例</a>
+            <a href="#news">新闻动态</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>联系方式</h4>
+          <div class="footer-links">
+            <a href="tel:400-888-8888">400-888-8888</a>
+            <a href="mailto:sales@guangjun-materials.com">sales@guangjun-materials.com</a>
+            <span style="color: var(--text-subtle); font-size: 14px;">广东省东莞市松山湖高新区</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 广俊新材料科技有限公司 版权所有 | 粤ICP备XXXXXXXX号</p>
+        <div class="footer-social">
+          <a href="#" aria-label="微信">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/>
+              <path d="M15 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/>
+              <path d="M5 16v4"/>
+              <path d="M9 16v4"/>
+              <path d="M15 16v4"/>
+              <path d="M19 16v4"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="邮箱">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="电话">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<button class="scroll-top" id="scrollTopBtn" aria-label="回到顶部" title="回到顶部">↑</button>
-
-<script src="assets/js/app.js"></script>
+  <!-- Scripts -->
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
-
