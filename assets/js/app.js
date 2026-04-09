@@ -1,4 +1,23 @@
 (function () {
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function runWhenPageIsIdle(callback) {
+    const schedule = () => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(callback, { timeout: 1500 });
+      } else {
+        window.setTimeout(callback, 300);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      schedule();
+      return;
+    }
+
+    window.addEventListener("load", schedule, { once: true });
+  }
+
   function initThemeToggle() {
     const html = document.documentElement;
     const toggle = document.getElementById("themeToggle");
@@ -20,6 +39,8 @@
   }
 
   function initParticles() {
+    if (reducedMotionQuery.matches || window.innerWidth < 1024) return;
+
     const canvas = document.getElementById("particles");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -32,7 +53,7 @@
       canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas, { passive: true });
 
     class Particle {
       constructor() {
@@ -65,6 +86,8 @@
 
     for (let i = 0; i < 60; i++) particles.push(new Particle());
 
+    let rafId = null;
+
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p) => {
@@ -92,10 +115,19 @@
         }
       }
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     }
 
-    animate();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      } else if (!document.hidden && !rafId) {
+        rafId = requestAnimationFrame(animate);
+      }
+    });
+
+    rafId = requestAnimationFrame(animate);
   }
 
   function initNav() {
@@ -103,7 +135,7 @@
     if (nav) {
       window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 50);
-      });
+      }, { passive: true });
     }
 
     const toggle = document.getElementById("navToggle");
@@ -156,7 +188,7 @@
 
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024 && navOpen) closeNav();
-    });
+    }, { passive: true });
 
     return {
       isOpen: () => navOpen,
@@ -300,8 +332,8 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    window.addEventListener("resize", init);
-    window.addEventListener("load", init);
+    window.addEventListener("resize", init, { passive: true });
+    window.addEventListener("load", init, { once: true });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(init);
     }
@@ -310,7 +342,7 @@
   }
 
   initThemeToggle();
-  initParticles();
+  runWhenPageIsIdle(initParticles);
   const nav = initNav();
   initReveal();
   initCounters();

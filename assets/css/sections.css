@@ -4,6 +4,18 @@
   display: flex; align-items: center; padding-top: 6.5rem;
   overflow: hidden;
 }
+
+#about,
+#products,
+#capabilities,
+#partners,
+#process,
+#quality,
+#contact,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
 }
