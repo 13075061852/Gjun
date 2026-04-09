@@ -1,149 +1,14 @@
-<<<<<<< HEAD
 /* ============================================
    广俊新材料 - 应用脚本
    ============================================ */
 
 (function() {
   'use strict';
-=======
-(function () {
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  function runWhenPageIsIdle(callback) {
-    const schedule = () => {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(callback, { timeout: 1500 });
-      } else {
-        window.setTimeout(callback, 300);
-      }
-    };
-
-    if (document.readyState === "complete") {
-      schedule();
-      return;
-    }
-
-    window.addEventListener("load", schedule, { once: true });
-  }
-
-  function initThemeToggle() {
-    const html = document.documentElement;
-    const toggle = document.getElementById("themeToggle");
-    if (!toggle) return;
-
-    const saved = localStorage.getItem("theme");
-    if (saved === "light") html.setAttribute("data-theme", "light");
-
-    toggle.addEventListener("click", () => {
-      const isLight = html.getAttribute("data-theme") === "light";
-      if (isLight) {
-        html.removeAttribute("data-theme");
-        localStorage.setItem("theme", "dark");
-      } else {
-        html.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-      }
-    });
-  }
-
-  function initParticles() {
-    if (reducedMotionQuery.matches || window.innerWidth < 1024) return;
-
-    const canvas = document.getElementById("particles");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas, { passive: true });
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.3 + 0.1;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-          this.reset();
-        }
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        const isLight = document.documentElement.getAttribute("data-theme") === "light";
-        const baseColor = isLight ? "0, 180, 140" : "0, 212, 170";
-        ctx.fillStyle = `rgba(${baseColor}, ${this.opacity})`;
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 60; i++) particles.push(new Particle());
-
-    let rafId = null;
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.update();
-        p.draw();
-      });
-
-      const isLight = document.documentElement.getAttribute("data-theme") === "light";
-      const lineBase = isLight ? "0, 180, 140" : "0, 212, 170";
-      const lineOpacity = isLight ? 0.02 : 0.03;
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(${lineBase}, ${lineOpacity * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-
-      rafId = requestAnimationFrame(animate);
-    }
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden && rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      } else if (!document.hidden && !rafId) {
-        rafId = requestAnimationFrame(animate);
-      }
-    });
-
-    rafId = requestAnimationFrame(animate);
-  }
->>>>>>> a1ab6637f98de689bf114f71fd7d9a6cb10f08d6
 
   // ============================================
   // Navigation
   // ============================================
   function initNav() {
-<<<<<<< HEAD
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -157,13 +22,6 @@
       } else {
         nav?.classList.remove('scrolled');
       }
-=======
-    const nav = document.getElementById("nav");
-    if (nav) {
-      window.addEventListener("scroll", () => {
-        nav.classList.toggle("scrolled", window.scrollY > 50);
-      }, { passive: true });
->>>>>>> a1ab6637f98de689bf114f71fd7d9a6cb10f08d6
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -210,18 +68,6 @@
         closeMenu();
       }
     });
-<<<<<<< HEAD
-=======
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 1024 && navOpen) closeNav();
-    }, { passive: true });
-
-    return {
-      isOpen: () => navOpen,
-      close: closeNav
-    };
->>>>>>> a1ab6637f98de689bf114f71fd7d9a6cb10f08d6
   }
 
   // ============================================
@@ -235,7 +81,7 @@
 
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
-        
+
         e.preventDefault();
 
         // Use fullpage scroll if available
@@ -260,7 +106,9 @@
   // ============================================
   function initScrollReveal() {
     const revealElements = document.querySelectorAll(
-      '.section-header, .product-card, .case-card, .news-card, .cert-item, .application-card, .about-feature, .tech-equipment-item, .contact-method'
+      '.section-header, .product-card, .case-card, .news-card, '
+      + '.cert-card-item, .application-card, .about-feature, '
+      + '.tech-equipment-item, .contact-method'
     );
 
     const observerOptions = {
@@ -348,7 +196,6 @@
     contactForm?.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Show success message
       const btn = this.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
@@ -497,7 +344,6 @@
       }
     }
 
-<<<<<<< HEAD
     // Keyboard navigation
     function handleKeydown(e) {
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
@@ -513,12 +359,6 @@
         e.preventDefault();
         scrollToPage(pages.length - 1);
       }
-=======
-    window.addEventListener("resize", init, { passive: true });
-    window.addEventListener("load", init, { once: true });
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(init);
->>>>>>> a1ab6637f98de689bf114f71fd7d9a6cb10f08d6
     }
 
     // Update initial page from scroll position on load
@@ -565,18 +405,4 @@
   } else {
     init();
   }
-<<<<<<< HEAD
-=======
-
-  initThemeToggle();
-  runWhenPageIsIdle(initParticles);
-  const nav = initNav();
-  initReveal();
-  initCounters();
-  initSmoothScroll(() => {
-    if (nav.isOpen()) nav.close();
-  });
-  initScrollTopButton();
-  initCertMarquee();
->>>>>>> a1ab6637f98de689bf114f71fd7d9a6cb10f08d6
 })();
