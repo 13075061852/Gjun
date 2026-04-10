@@ -249,6 +249,58 @@
     delete window.fullpageGetPages;
   }
 
+  // ============================================
+  // AMap (Gaode) Company Location
+  // ============================================
+  function loadAmapScript(key) {
+    if (window.AMap) return Promise.resolve(window.AMap);
+
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(key)}`;
+      script.async = true;
+      script.onload = () => resolve(window.AMap);
+      script.onerror = () => reject(new Error('Failed to load AMap script.'));
+      document.head.appendChild(script);
+    });
+  }
+
+  function initAmap() {
+    const mapContainer = document.getElementById('amapContainer');
+    if (!mapContainer) return;
+
+    const amapKey = 'cb678c3199d62cf74118060f5be7ac38';
+    const companyName = '广俊新材料科技有限公司';
+    const companyAddress = '浙江省宁波市慈溪市(横河)万洋众创城A区-北门28栋1-3';
+    const exactLngLat = [121.279998, 30.138057];
+
+    loadAmapScript(amapKey)
+      .then((AMap) => {
+        const map = new AMap.Map('amapContainer', {
+          zoom: 15,
+          center: exactLngLat,
+          resizeEnable: true
+        });
+
+        const marker = new AMap.Marker({
+          position: exactLngLat,
+          title: companyName
+        });
+        map.add(marker);
+
+        const infoWindow = new AMap.InfoWindow({
+          offset: new AMap.Pixel(0, -24),
+          content: `<div style="padding:6px 8px;line-height:1.5;"><strong>${companyName}</strong><br>${companyAddress}</div>`
+        });
+
+        marker.on('click', () => infoWindow.open(map, marker.getPosition()));
+        infoWindow.open(map, exactLngLat);
+      })
+      .catch(() => {
+        mapContainer.innerHTML = '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:14px;">地图加载失败，请刷新页面重试。</div>';
+      });
+  }
+
   function createFullPageScroll() {
     const pages = [];
     let currentPage = 0;
@@ -435,6 +487,7 @@
     initStatsCounter();
     initSideNav();
     initForms();
+    initAmap();
   }
 
   // Run on DOM ready
