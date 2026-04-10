@@ -138,7 +138,7 @@
   .grid-2 { grid-template-columns: 1fr; }
 
   /* CTA mobile */
-  .cta-section { min-height: auto; padding: var(--space-16) 0; }
+  .cta-section { min-height: auto; padding: calc(72px + var(--space-8)) 0 var(--space-12); }
   .cta-section h2 { font-size: clamp(24px, 5vw, 28px); }
   .cta-buttons .btn { width: 100%; max-width: 280px; }
 

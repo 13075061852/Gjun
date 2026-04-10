@@ -10,6 +10,7 @@
   // ============================================
   function initNav() {
     const nav = document.getElementById('nav');
+    const ctaSection = document.getElementById('cta');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
@@ -26,6 +27,33 @@
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+
+    // Switch nav theme when the final CTA screen is active.
+    function setCtaNavTheme(isOnCta) {
+      nav?.classList.toggle('nav-on-cta', Boolean(isOnCta));
+    }
+
+    if (ctaSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          setCtaNavTheme(entry.isIntersecting && entry.intersectionRatio > 0.45);
+        });
+      }, {
+        threshold: [0.2, 0.45, 0.7],
+        rootMargin: '-72px 0px -20% 0px'
+      });
+
+      observer.observe(ctaSection);
+    } else if (ctaSection) {
+      const fallbackSyncTheme = () => {
+        const rect = ctaSection.getBoundingClientRect();
+        const visible = rect.top <= 72 && rect.bottom > window.innerHeight * 0.45;
+        setCtaNavTheme(visible);
+      };
+
+      window.addEventListener('scroll', fallbackSyncTheme, { passive: true });
+      fallbackSyncTheme();
+    }
 
     // Mobile menu toggle
     function openMenu() {
