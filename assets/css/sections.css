@@ -8,15 +8,16 @@
    ============================================ */
 
 .trust-section {
-  padding: var(--space-6) 0;
+  padding: var(--space-5) 0 var(--space-6);
   border-bottom: 1px solid var(--border-light);
+  background: var(--bg-white);
 }
 
 .trust-label {
   text-align: center;
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 /* ============================================
@@ -38,6 +39,7 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(16, 24, 23, 0.08);
 }
 
 .about-image-main img {
@@ -82,6 +84,14 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+.about-feature:hover {
+  background-color: var(--bg-slate-50);
+  transform: translateX(4px);
 }
 
 .about-feature-icon {
@@ -189,7 +199,8 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all var(--transition-base);
+  box-shadow: 0 1px 0 rgba(16, 24, 23, 0.04);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
@@ -197,8 +208,8 @@
 }
 
 .product-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(16, 24, 23, 0.12);
+  transform: translateY(-6px);
   border-color: var(--primary-border);
 }
 
@@ -234,7 +245,7 @@
   font-weight: 500;
   color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   margin-bottom: var(--space-1);
 }
 
@@ -366,7 +377,7 @@
 .application-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.3) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(16, 24, 23, 0.9) 0%, rgba(16, 24, 23, 0.38) 54%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -375,7 +386,7 @@
 }
 
 .application-card:hover .application-overlay {
-  background: linear-gradient(to top, rgba(234, 88, 12, 0.9) 0%, rgba(234, 88, 12, 0.4) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(216, 79, 10, 0.88) 0%, rgba(15, 118, 110, 0.36) 55%, transparent 100%);
 }
 
 .application-icon {
@@ -457,6 +468,7 @@
   background-color: var(--bg-white);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(16, 24, 23, 0.06);
   position: relative;
   overflow: hidden;
 }
@@ -479,7 +491,7 @@
   height: 100px;
   margin: 0 auto var(--space-5);
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), #f97316);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -726,12 +738,13 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .case-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(16, 24, 23, 0.12);
+  transform: translateY(-6px);
+  border-color: var(--primary-border);
 }
 
 .case-image {
@@ -868,6 +881,7 @@
   padding: var(--space-4);
   background-color: var(--bg-slate-50);
   border-radius: var(--radius-lg);
+  border: 1px solid rgba(16, 24, 23, 0.06);
 }
 
 .tech-stat-value {
@@ -897,6 +911,12 @@
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.tech-equipment-item:hover {
+  transform: translateX(4px);
+  border-color: var(--primary-border);
 }
 
 .tech-equipment-icon {
@@ -959,12 +979,13 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .news-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(16, 24, 23, 0.12);
+  transform: translateY(-6px);
+  border-color: var(--primary-border);
 }
 
 .news-image {
@@ -1125,6 +1146,16 @@
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .contact-form-wrapper h3 {
@@ -1148,16 +1179,28 @@
 .cta-section {
   background-color: var(--bg-dark);
   color: #ffffff;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-8);
   text-align: center;
   overflow: hidden;
+  position: relative;
+}
+
+.cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(216, 79, 10, 0.18), transparent 38%),
+    linear-gradient(300deg, rgba(15, 118, 110, 0.16), transparent 42%);
+  pointer-events: none;
 }
 
 .cta-section h2 {
+  position: relative;
   color: #ffffff;
   font-size: 40px;
   margin-bottom: var(--space-4);

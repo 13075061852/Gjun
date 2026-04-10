@@ -139,7 +139,7 @@
   // Stats Counter Animation
   // ============================================
   function initStatsCounter() {
-    const stats = document.querySelectorAll('.hero-stat-value, .tech-stat-value');
+    const stats = document.querySelectorAll('.tech-stat-value');
 
     const observerOptions = {
       threshold: 0.5
