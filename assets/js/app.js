@@ -5,11 +5,26 @@
 (function() {
   'use strict';
 
+  // Always start from top on refresh/reopen.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  window.addEventListener('pageshow', () => {
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  });
+
   // ============================================
   // Navigation
   // ============================================
   function initNav() {
     const nav = document.getElementById('nav');
+    const heroSection = document.getElementById('hero');
     const ctaSection = document.getElementById('cta');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -28,27 +43,37 @@
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // Switch nav theme when the final CTA screen is active.
-    function setCtaNavTheme(isOnCta) {
-      nav?.classList.toggle('nav-on-cta', Boolean(isOnCta));
+    // Switch nav theme when hero or final CTA screen is active.
+    function setDarkNavTheme(isOnDarkSection) {
+      nav?.classList.toggle('nav-on-cta', Boolean(isOnDarkSection));
     }
 
-    if (ctaSection && 'IntersectionObserver' in window) {
+    const darkSections = [heroSection, ctaSection].filter(Boolean);
+
+    if (darkSections.length > 0 && 'IntersectionObserver' in window) {
+      const activeDarkSections = new Set();
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          setCtaNavTheme(entry.isIntersecting && entry.intersectionRatio > 0.45);
+          const isActive = entry.isIntersecting && entry.intersectionRatio > 0.45;
+          if (isActive) activeDarkSections.add(entry.target.id);
+          else activeDarkSections.delete(entry.target.id);
         });
+
+        setDarkNavTheme(activeDarkSections.size > 0);
       }, {
         threshold: [0.2, 0.45, 0.7],
         rootMargin: '-72px 0px -20% 0px'
       });
 
-      observer.observe(ctaSection);
-    } else if (ctaSection) {
+      darkSections.forEach((section) => observer.observe(section));
+    } else if (darkSections.length > 0) {
       const fallbackSyncTheme = () => {
-        const rect = ctaSection.getBoundingClientRect();
-        const visible = rect.top <= 72 && rect.bottom > window.innerHeight * 0.45;
-        setCtaNavTheme(visible);
+        const viewportGate = window.innerHeight * 0.45;
+        const visible = darkSections.some((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= 72 && rect.bottom > viewportGate;
+        });
+        setDarkNavTheme(visible);
       };
 
       window.addEventListener('scroll', fallbackSyncTheme, { passive: true });
@@ -473,8 +498,9 @@
 
     // Update initial page from scroll position on load
     syncPageOverflowMode();
-    currentPage = getPageIndexFromScroll();
-    window.scrollTo(0, pages[currentPage].offsetTop);
+    currentPage = 0;
+    window.scrollTo(0, pages[0].offsetTop);
+    updateSideNavDots(currentPage);
 
     // Event listeners
     window.addEventListener('wheel', handleWheel, { passive: false });
