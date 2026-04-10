@@ -93,7 +93,7 @@
 
   /* Hero mobile */
   .hero {
-    min-height: 92svh;
+    min-height: 100svh;
     padding-top: calc(72px + var(--space-12));
     padding-bottom: var(--space-12);
     overflow: visible;

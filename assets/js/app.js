@@ -77,7 +77,10 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (targetId === '#') {
+          e.preventDefault();
+          return;
+        }
 
         const targetElement = document.querySelector(targetId);
         if (!targetElement) return;
@@ -221,12 +224,14 @@
 
     const dots = sideNav.querySelectorAll('.side-nav-dot');
 
-    dots.forEach((dot, index) => {
+    dots.forEach((dot) => {
       dot.addEventListener('click', function(e) {
         e.preventDefault();
-        if (window.fullpageScrollTo) {
-          window.fullpageScrollTo(index);
-        }
+        const target = document.querySelector(dot.getAttribute('href'));
+        if (!target || !window.fullpageScrollTo || !window.fullpageGetPages) return;
+
+        const pageIndex = window.fullpageGetPages().indexOf(target);
+        if (pageIndex >= 0) window.fullpageScrollTo(pageIndex);
       });
     });
 
@@ -246,7 +251,9 @@
     let currentPage = 0;
     let isAnimating = false;
     let touchStartY = 0;
-    let scrollTimeout = null;
+    let wheelDelta = 0;
+    let lastWheelAt = 0;
+    const wheelThreshold = 70;
 
     // Collect all full-screen sections in order
     document.querySelectorAll('.hero, .section, .cta-section').forEach((el, index) => {
@@ -272,7 +279,7 @@
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
-    function scrollToPage(targetIndex, duration = 900) {
+    function scrollToPage(targetIndex, duration = 760) {
       if (isAnimating || targetIndex < 0 || targetIndex >= pages.length) return;
       if (targetIndex === currentPage && Math.abs(window.scrollY - pages[currentPage].offsetTop) < 5) return;
 
@@ -312,21 +319,23 @@
       scrollToPage(currentPage - 1);
     }
 
-    // Mouse wheel handler with debouncing
+    // Mouse wheel handler with immediate interception to avoid native scroll jitter.
     function handleWheel(e) {
-      if (isAnimating) { e.preventDefault(); return; }
+      if (e.ctrlKey) return;
+      e.preventDefault();
+      if (isAnimating) return;
 
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const delta = e.deltaY;
-        if (delta > 0) {
-          e.preventDefault();
-          goToNext();
-        } else if (delta < 0) {
-          e.preventDefault();
-          goToPrev();
-        }
-      }, 50); // small debounce to prevent rapid fire
+      const now = performance.now();
+      if (now - lastWheelAt > 180) wheelDelta = 0;
+      lastWheelAt = now;
+
+      wheelDelta += e.deltaY;
+      if (Math.abs(wheelDelta) < wheelThreshold) return;
+
+      if (wheelDelta > 0) goToNext();
+      else goToPrev();
+
+      wheelDelta = 0;
     }
 
     // Touch handlers for trackpad/mobile
@@ -380,10 +389,19 @@
   // Side Nav dot updater (used by fullpage scroll)
   function updateSideNavDots(pageIndex) {
     const sideNav = document.getElementById('sideNav');
-    if (!sideNav) return;
-    const dots = sideNav.querySelectorAll('.side-nav-dot');
-    dots.forEach(dot => dot.classList.remove('active'));
-    if (dots[pageIndex]) dots[pageIndex].classList.add('active');
+    const pages = window.fullpageGetPages ? window.fullpageGetPages() : [];
+    const activeId = pages[pageIndex]?.id;
+
+    if (sideNav) {
+      const dots = sideNav.querySelectorAll('.side-nav-dot');
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[pageIndex]) dots[pageIndex].classList.add('active');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const targetId = link.getAttribute('href')?.slice(1);
+      link.classList.toggle('active', Boolean(activeId && targetId === activeId));
+    });
   }
 
   // ============================================

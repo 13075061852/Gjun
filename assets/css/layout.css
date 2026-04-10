@@ -99,8 +99,13 @@
   color: var(--text-heading);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--text-heading);
 }
 
 .nav-cta {
@@ -262,7 +267,7 @@
 
 .hero {
   position: relative;
-  min-height: 92svh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background: var(--bg-dark);
@@ -285,7 +290,7 @@
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 28%;
+  height: 20%;
   z-index: -1;
   background: linear-gradient(180deg, transparent, var(--bg-white));
 }
@@ -437,9 +442,50 @@
   right: min(14vw, 180px);
 }
 
+.hero-trust {
+  position: relative;
+  width: min(720px, 100%);
+  z-index: 2;
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.hero-trust-label {
+  margin: 0 0 var(--space-2);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.hero-trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: nowrap;
+}
+
+.hero-trust-logos span {
+  min-width: 88px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   .hero {
-    min-height: 92svh;
+    min-height: 100svh;
     padding-top: calc(72px + var(--space-12));
     padding-bottom: var(--space-12);
   }
@@ -469,6 +515,10 @@
   .hero-floating-card {
     display: none;
   }
+
+  .hero-trust {
+    width: min(720px, calc(100% - 32px));
+  }
 }
 
 @media (max-width: 640px) {
@@ -491,6 +541,36 @@
 
   .hero-cta .btn {
     width: 100%;
+  }
+
+  .hero-trust {
+    width: 100%;
+    margin-top: var(--space-5);
+    padding: var(--space-3);
+  }
+
+  .hero-trust-label {
+    margin-bottom: var(--space-2);
+    font-size: 12px;
+  }
+
+  .hero-trust-logos {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .hero-trust-logos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-trust-logos span {
+    flex: 0 0 auto;
+    min-width: 86px;
+    padding: 5px 10px;
+    font-size: 12px;
   }
 }
 
