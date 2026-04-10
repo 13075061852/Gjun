@@ -39,8 +39,9 @@
   .tech-image { order: -1; max-height: 400px; }
 
   /* Certifications */
-  .cert-layout { grid-template-columns: 280px 1fr; gap: var(--space-6); }
-  .cert-hero { padding: var(--space-6) var(--space-5); }
+  .cert-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+  .cert-hero { padding: var(--space-6) var(--space-5); max-width: 100%; }
+  .cert-process-strip { grid-template-columns: repeat(2, 1fr); }
 
   /* News — 2 columns */
   .news-grid { grid-template-columns: repeat(2, 1fr); }
@@ -125,10 +126,10 @@
   .tech-stat-value { font-size: 24px; }
 
   /* Certifications mobile — stack vertically */
-  .cert-layout { grid-template-columns: 1fr; gap: var(--space-8); }
-  .cert-hero { max-width: 400px; margin: 0 auto; }
-  .cert-cards-grid { grid-template-columns: repeat(2, 1fr); }
-  .cert-quality-tags { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .cert-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+  .cert-hero { max-width: 100%; margin: 0; }
+  .cert-cards-grid { grid-template-columns: 1fr; }
+  .cert-process-strip { grid-template-columns: 1fr; }
 
   /* News mobile */
   .news-grid { grid-template-columns: 1fr; }
@@ -183,8 +184,6 @@
 
   /* Certifications single column cards */
   .cert-cards-grid { grid-template-columns: 1fr; }
-  .cert-badge-ring { width: 80px; height: 80px; }
-  .cert-badge-inner svg { width: 36px; height: 36px; }
 
   .section-header h2 { font-size: 22px; margin-bottom: var(--space-3); }
   .section-header p { font-size: 14px; }
