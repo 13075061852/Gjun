@@ -21,7 +21,7 @@
 
 .nav.scrolled {
   border-bottom-color: var(--border-light);
-  box-shadow: 0 14px 40px rgba(16, 24, 23, 0.08);
+  box-shadow: none;
 }
 
 .nav-container {

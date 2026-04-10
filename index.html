@@ -167,16 +167,21 @@
   <section class="section" id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-images">
+        <div class="about-visual">
           <div class="about-image-main">
             <img src="assets/images/about-factory.jpg" alt="工厂外景">
           </div>
           <div class="about-image-secondary">
             <img src="assets/images/about-workshop.jpg" alt="生产车间">
           </div>
+          <div class="about-visual-note">
+            <span>宁波·慈溪生产基地</span>
+            <span>研发 / 生产 / 质控一体化</span>
+          </div>
         </div>
+
         <div class="about-content">
-          <span class="badge badge-primary about-badge">About Us</span>
+          <span class="badge badge-primary about-badge">关于我们</span>
           <h2>从材料配方到批量交付，打造可落地的改性塑料解决方案</h2>
           <p class="about-lead">广俊新材料成立于2011年，专注高性能工程塑料改性研发、生产与应用支持。我们以“材料性能 + 工艺稳定 + 快速交付”三位一体的服务模式，帮助客户缩短选材验证周期，稳定量产质量。</p>
 
@@ -199,28 +204,30 @@
             </div>
           </div>
 
-          <div class="about-capabilities">
-            <div class="about-capability">
-              <h4>材料开发能力</h4>
-              <p>覆盖增强、阻燃、耐候、导热、低VOC等方向，支持按应用场景定制改性配方。</p>
+          <div class="about-detail-grid">
+            <div class="about-capabilities">
+              <div class="about-capability">
+                <h4>材料开发能力</h4>
+                <p>覆盖增强、阻燃、耐候、导热、低VOC等方向，支持按应用场景定制改性配方。</p>
+              </div>
+              <div class="about-capability">
+                <h4>质量与合规体系</h4>
+                <p>通过ISO 9001、IATF 16949质量管理体系认证，建立全流程可追溯管控机制。</p>
+              </div>
+              <div class="about-capability">
+                <h4>应用协同服务</h4>
+                <p>提供选材建议、试模跟进、失效分析与工艺优化，提升项目导入效率与稳定性。</p>
+              </div>
             </div>
-            <div class="about-capability">
-              <h4>质量与合规体系</h4>
-              <p>通过ISO 9001、IATF 16949质量管理体系认证，建立全流程可追溯管控机制。</p>
-            </div>
-            <div class="about-capability">
-              <h4>应用协同服务</h4>
-              <p>提供选材建议、试模跟进、失效分析与工艺优化，提升项目导入效率与稳定性。</p>
-            </div>
-          </div>
 
-          <div class="about-process">
-            <h4>合作流程</h4>
-            <div class="about-process-steps">
-              <span>需求沟通</span>
-              <span>方案设计</span>
-              <span>样品验证</span>
-              <span>量产交付</span>
+            <div class="about-process">
+              <h4>合作流程</h4>
+              <div class="about-process-steps">
+                <span>01 需求沟通</span>
+                <span>02 方案设计</span>
+                <span>03 样品验证</span>
+                <span>04 量产交付</span>
+              </div>
             </div>
           </div>
 
@@ -787,7 +794,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="section bg-slate-50" id="contact">
+  <section class="section bg-slate-50 section-contact" id="contact">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
@@ -853,8 +860,9 @@
         
         <div class="contact-form-wrapper">
           <h3>在线咨询</h3>
+          <p class="contact-form-intro">提交需求后，工程师将在一个工作日内与您联系。</p>
           <form id="contactForm">
-            <div class="grid-2" style="gap: 16px;">
+            <div class="grid-2 contact-form-grid">
               <div class="form-group">
                 <label class="form-label form-label-required">您的姓名</label>
                 <input type="text" class="form-input" placeholder="请输入姓名" required>
@@ -864,9 +872,15 @@
                 <input type="tel" class="form-input" placeholder="请输入电话" required>
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">公司名称</label>
-              <input type="text" class="form-input" placeholder="请输入公司名称">
+            <div class="grid-2 contact-form-grid">
+              <div class="form-group">
+                <label class="form-label">公司名称</label>
+                <input type="text" class="form-input" placeholder="请输入公司名称">
+              </div>
+              <div class="form-group">
+                <label class="form-label">邮箱（选填）</label>
+                <input type="email" class="form-input" placeholder="请输入邮箱">
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">咨询产品</label>
@@ -879,7 +893,7 @@
                 <option value="other">其他产品</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="form-group form-group-message">
               <label class="form-label">咨询内容</label>
               <textarea class="form-textarea" placeholder="请描述您的需求..."></textarea>
             </div>

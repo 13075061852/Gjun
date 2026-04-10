@@ -110,7 +110,7 @@
   function initScrollReveal() {
     const revealElements = document.querySelectorAll(
       '.section-header, .product-card, .case-card, .news-card, '
-      + '.cert-card-item, .application-card, .about-feature, '
+      + '.cert-card-item, .application-card, .about-capability, .about-process, '
       + '.tech-equipment-item, .contact-method'
     );
 
@@ -317,6 +317,23 @@
 
     if (pages.length === 0) return null;
 
+    function syncPageOverflowMode() {
+      const viewportHeight = window.innerHeight;
+      pages.forEach((page) => {
+        const isOverflowing = page.scrollHeight > viewportHeight + 4;
+        if (isOverflowing) {
+          page.style.overflowY = 'auto';
+          page.style.overscrollBehavior = 'contain';
+          page.style.webkitOverflowScrolling = 'touch';
+        } else {
+          page.style.overflowY = '';
+          page.style.overscrollBehavior = '';
+          page.style.webkitOverflowScrolling = '';
+          page.scrollTop = 0;
+        }
+      });
+    }
+
     function getPageIndexFromScroll() {
       const scrollY = window.scrollY;
       const halfViewport = window.innerHeight / 2;
@@ -376,8 +393,22 @@
     // Mouse wheel handler with immediate interception to avoid native scroll jitter.
     function handleWheel(e) {
       if (e.ctrlKey) return;
-      e.preventDefault();
       if (isAnimating) return;
+
+      const activePage = pages[currentPage];
+      if (activePage) {
+        const canScrollDown = activePage.scrollTop + activePage.clientHeight < activePage.scrollHeight - 1;
+        const canScrollUp = activePage.scrollTop > 0;
+        const goingDown = e.deltaY > 0;
+        const goingUp = e.deltaY < 0;
+
+        // If the current section has its own scroll space, let it consume wheel first.
+        if ((goingDown && canScrollDown) || (goingUp && canScrollUp)) {
+          return;
+        }
+      }
+
+      e.preventDefault();
 
       const now = performance.now();
       if (now - lastWheelAt > 180) wheelDelta = 0;
@@ -413,6 +444,7 @@
     // This keeps tablet/phone behavior as natural scrolling.
 
     // Update initial page from scroll position on load
+    syncPageOverflowMode();
     currentPage = getPageIndexFromScroll();
     window.scrollTo(0, pages[currentPage].offsetTop);
 
@@ -424,10 +456,17 @@
     window.fullpageScrollTo = scrollToPage;
     window.fullpageGetPageIndex = () => currentPage;
     window.fullpageGetPages = () => pages;
+    window.fullpageSyncOverflow = syncPageOverflowMode;
 
     return function destroy() {
       window.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleKeydown);
+      pages.forEach((page) => {
+        page.style.overflowY = '';
+        page.style.overscrollBehavior = '';
+        page.style.webkitOverflowScrolling = '';
+        page.scrollTop = 0;
+      });
       clearFullPageApi();
     };
   }
@@ -437,10 +476,15 @@
     // Tablets/phones (touch-first devices) always use native scrolling.
     const desktopQuery = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)');
     let destroyFullPage = null;
+    let resizeTicking = false;
 
     function syncMode() {
       if (desktopQuery.matches) {
-        if (!destroyFullPage) destroyFullPage = createFullPageScroll();
+        if (!destroyFullPage) {
+          destroyFullPage = createFullPageScroll();
+        } else if (window.fullpageSyncOverflow) {
+          window.fullpageSyncOverflow();
+        }
       } else if (destroyFullPage) {
         destroyFullPage();
         destroyFullPage = null;
@@ -449,7 +493,17 @@
       }
     }
 
+    function handleResize() {
+      if (resizeTicking) return;
+      resizeTicking = true;
+      requestAnimationFrame(() => {
+        syncMode();
+        resizeTicking = false;
+      });
+    }
+
     syncMode();
+    window.addEventListener('resize', handleResize, { passive: true });
 
     if (desktopQuery.addEventListener) {
       desktopQuery.addEventListener('change', syncMode);

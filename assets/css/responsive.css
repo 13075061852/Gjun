@@ -21,9 +21,9 @@
   .hero-floating-card { display: none; }
 
   /* About */
-  .about-grid { grid-template-columns: 1fr; gap: var(--space-10); }
-  .about-images { order: -1; }
-  .about-image-secondary { width: 200px; bottom: -20px; right: 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .about-visual { order: -1; }
+  .about-detail-grid { grid-template-columns: 1fr; }
 
   /* Products */
   .products-scroll { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -106,9 +106,8 @@
   .hero-cta .btn { width: 100%; max-width: 320px; }
 
   /* About mobile */
-  .about-grid { gap: var(--space-8); }
-  .about-feature { flex-direction: column; text-align: center; align-items: center; }
-  .about-feature-icon { margin-bottom: var(--space-2); }
+  .about-grid { gap: var(--space-6); }
+  .about-visual-note { flex-direction: column; gap: var(--space-1); }
 
   /* Products mobile */
   .products-scroll { grid-template-columns: 1fr; }
