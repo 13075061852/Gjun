@@ -243,14 +243,16 @@
   // Full-Page Scroll with Smooth Easing Animation
   // ============================================
 
-  function initFullPageScroll() {
-    const isMobile = window.innerWidth <= 1024;
-    if (isMobile) return;
+  function clearFullPageApi() {
+    delete window.fullpageScrollTo;
+    delete window.fullpageGetPageIndex;
+    delete window.fullpageGetPages;
+  }
 
+  function createFullPageScroll() {
     const pages = [];
     let currentPage = 0;
     let isAnimating = false;
-    let touchStartY = 0;
     let wheelDelta = 0;
     let lastWheelAt = 0;
     const wheelThreshold = 70;
@@ -261,7 +263,7 @@
       el.dataset.pageIndex = index;
     });
 
-    if (pages.length === 0) return;
+    if (pages.length === 0) return null;
 
     function getPageIndexFromScroll() {
       const scrollY = window.scrollY;
@@ -338,21 +340,6 @@
       wheelDelta = 0;
     }
 
-    // Touch handlers for trackpad/mobile
-    function handleTouchStart(e) {
-      touchStartY = e.touches[0].clientY;
-    }
-
-    function handleTouchEnd(e) {
-      if (isAnimating) return;
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchStartY - touchEndY;
-      if (Math.abs(diff) > 60) { // threshold
-        if (diff > 0) goToNext();
-        else goToPrev();
-      }
-    }
-
     // Keyboard navigation
     function handleKeydown(e) {
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
@@ -370,20 +357,53 @@
       }
     }
 
+    // Touch swipe is intentionally disabled for fullpage mode.
+    // This keeps tablet/phone behavior as natural scrolling.
+
     // Update initial page from scroll position on load
     currentPage = getPageIndexFromScroll();
     window.scrollTo(0, pages[currentPage].offsetTop);
 
     // Event listeners
     window.addEventListener('wheel', handleWheel, { passive: false });
-    document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    document.addEventListener('touchend', handleTouchEnd, { passive: true });
     document.addEventListener('keydown', handleKeydown);
 
     // Expose scrollToPage for other components (side nav, anchor links)
     window.fullpageScrollTo = scrollToPage;
     window.fullpageGetPageIndex = () => currentPage;
     window.fullpageGetPages = () => pages;
+
+    return function destroy() {
+      window.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('keydown', handleKeydown);
+      clearFullPageApi();
+    };
+  }
+
+  function initFullPageScroll() {
+    // Desktop only: large viewport + precise pointer + hover support.
+    // Tablets/phones (touch-first devices) always use native scrolling.
+    const desktopQuery = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)');
+    let destroyFullPage = null;
+
+    function syncMode() {
+      if (desktopQuery.matches) {
+        if (!destroyFullPage) destroyFullPage = createFullPageScroll();
+      } else if (destroyFullPage) {
+        destroyFullPage();
+        destroyFullPage = null;
+      } else {
+        clearFullPageApi();
+      }
+    }
+
+    syncMode();
+
+    if (desktopQuery.addEventListener) {
+      desktopQuery.addEventListener('change', syncMode);
+    } else if (desktopQuery.addListener) {
+      desktopQuery.addListener(syncMode);
+    }
   }
 
   // Side Nav dot updater (used by fullpage scroll)
