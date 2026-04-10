@@ -210,7 +210,16 @@ input, textarea, select {
 
 /* Container inside a full-snap section — constrain height */
 .section > .container {
-  max-height: 100%;
+  max-height: none;
+  min-height: calc(100svh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-lg > .container {
+  max-height: none;
+  min-height: calc(100svh - 72px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -229,14 +238,14 @@ input, textarea, select {
 /* Section Spacing - Full Screen Snap Sections */
 /* All snap control handled by JS fullpage-scroll */
 .section {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: clip;
   position: relative;
-  padding: var(--section-pad-y) 0;
+  padding: 72px 0 0;
 }
 
 .section-sm {
@@ -247,14 +256,14 @@ input, textarea, select {
 }
 
 .section-lg {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: clip;
   position: relative;
-  padding: var(--section-pad-y) 0;
+  padding: 72px 0 0;
 }
 
 @media (max-width: 768px) {
