@@ -473,12 +473,21 @@
       return methodMap[label] || '按项目评估';
     }
 
+    function getNavCopy(item) {
+      const intro = (item?.intro || '').trim();
+      const parts = intro.split(/[，,。]/).map((part) => part.trim()).filter(Boolean);
+      const focus = parts[0] || item?.name || '重点性能';
+      const support = parts.slice(1).join('，') || '查看该等级的典型性能、适配方向与测试参考。';
+      return { focus, support };
+    }
+
     function renderNav() {
       const { current } = getCurrentState();
       if (!current) return;
 
       nav.innerHTML = current.products.map((item, idx) => {
         const active = idx === activeProductIndex ? ' active' : '';
+        const { focus, support } = getNavCopy(item);
         return `
           <button
             type="button"
@@ -486,8 +495,13 @@
             data-product-index="${idx}"
             aria-pressed="${idx === activeProductIndex ? 'true' : 'false'}"
           >
-            <span>${item.name}</span>
-            <small>${item.intro}</small>
+            <span class="product-detail-nav-accent" aria-hidden="true"></span>
+            <span class="product-detail-nav-head">
+              <span class="product-detail-nav-name">${item.name}</span>
+              ${idx === activeProductIndex ? '<span class="product-detail-nav-state">当前</span>' : ''}
+            </span>
+            <strong class="product-detail-nav-focus">${focus}</strong>
+            <small>${support}</small>
           </button>
         `;
       }).join('');
@@ -527,10 +541,6 @@
 
       content.innerHTML = `
         <section class="product-detail-overview">
-          <div class="product-detail-hero-media">
-            <img src="${meta.heroImage}" alt="${current.categoryName}">
-            <span class="product-detail-hero-badge">${meta.heroBadge}</span>
-          </div>
           <article class="product-detail-card product-detail-card--overview">
             <div class="product-detail-card-head">
               <p class="product-detail-kicker">${current.categoryName}</p>
