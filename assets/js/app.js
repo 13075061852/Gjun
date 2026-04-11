@@ -312,8 +312,8 @@
     const content = document.getElementById('productDetailContent');
     const headerTitle = document.getElementById('productDetailHeaderTitle');
     const backBtn = document.getElementById('productDetailBack');
-    const triggers = Array.from(document.querySelectorAll('.product-detail-trigger[data-product]'));
-    if (!page || !nav || !content || !headerTitle || triggers.length === 0) return;
+    const cards = Array.from(document.querySelectorAll('.product-card'));
+    if (!page || !nav || !content || !headerTitle || cards.length === 0) return;
 
     const categoryData = {
       pbt: {
@@ -333,56 +333,257 @@
       abs: { categoryName: '改性ABS', products: [{ name: 'ABS-HG', intro: '高光外观，适合可视面板。', props: [['密度', '1.05 g/cm3'], ['拉伸强度', '46 MPa'], ['弯曲模量', '2200 MPa'], ['缺口冲击', '18 kJ/m2'], ['表面效果', '高光']], grades: ['GJ-ABS-HG', 'GJ-ABS-HG-UV'] }, { name: 'ABS-HI', intro: '高冲击级别，结构件更稳。', props: [['密度', '1.04 g/cm3'], ['拉伸强度', '43 MPa'], ['弯曲模量', '2050 MPa'], ['缺口冲击', '30 kJ/m2'], ['表面效果', '哑光/细纹']], grades: ['GJ-ABS-HI', 'GJ-ABS-HI-NT'] }, { name: 'ABS-FR', intro: '阻燃外壳方案，适合电器。', props: [['密度', '1.10 g/cm3'], ['拉伸强度', '48 MPa'], ['弯曲模量', '2400 MPa'], ['缺口冲击', '20 kJ/m2'], ['阻燃等级', 'V0']], grades: ['GJ-ABS-FR', 'GJ-ABS-FR-HF'] }] }
     };
 
+    const detailMeta = {
+      pbt: {
+        heroImage: 'assets/images/product-pbt.jpg',
+        heroBadge: '连接器与绝缘件',
+        summary: '兼顾高绝缘、耐热与尺寸稳定性，适合电气连接器、线圈骨架和车载电器部件。',
+        tags: ['阻燃等级', '尺寸稳定', '耐热'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '汽车电气件', desc: '连接器、继电器外壳、线束骨架', image: 'assets/images/app-auto.jpg' },
+          { title: '电子电器部件', desc: '开关、插座、端子壳体', image: 'assets/images/app-electronics.jpg' },
+          { title: '精密结构件', desc: '需要低翘曲和高尺寸稳定的零件', image: 'assets/images/about-workshop.jpg' }
+        ],
+        note: '更适合对电气安全和热稳定性要求较高的结构件。'
+      },
+      pa66: {
+        heroImage: 'assets/images/product-pa66.jpg',
+        heroBadge: '高强度结构件',
+        summary: '高刚性、耐磨损、耐热性好，适合汽车零部件与机械结构件。',
+        tags: ['高刚性', '耐磨', '耐热'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '汽车结构件', desc: '支架、卡扣、传动与连接部件', image: 'assets/images/case-auto.jpg' },
+          { title: '工业机械件', desc: '齿轮、壳体、支撑件', image: 'assets/images/about-factory.jpg' },
+          { title: '电气辅助件', desc: '线圈骨架、绝缘支架、接插件', image: 'assets/images/app-electronics.jpg' }
+        ],
+        note: '适合长期受力和中高温环境下工作的零部件。'
+      },
+      pp: {
+        heroImage: 'assets/images/product-pp.jpg',
+        heroBadge: '轻量化外壳',
+        summary: '轻量化、低成本、易加工，适用于家电外壳、日用品和薄壁制件。',
+        tags: ['轻量化', '低成本', '易加工'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '家电外壳', desc: '微波炉、洗衣机、厨房电器外壳', image: 'assets/images/app-homeappliance.jpg' },
+          { title: '日用消费品', desc: '收纳件、容器、功能型外壳', image: 'assets/images/case-energy.jpg' },
+          { title: '薄壁制品', desc: '需要快速成型与成本控制的零件', image: 'assets/images/app-energy.jpg' }
+        ],
+        note: '适合追求重量、成本与加工效率平衡的场景。'
+      },
+      pcabs: {
+        heroImage: 'assets/images/product-pcabs.jpg',
+        heroBadge: '消费电子外壳',
+        summary: '兼具 PC 强度和 ABS 成型性，适用于电子产品外壳和高冲击部件。',
+        tags: ['高冲击', '外观好', '易成型'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '消费电子', desc: '显示器外壳、设备面板、前壳', image: 'assets/images/app-electronics.jpg' },
+          { title: '家电面板', desc: '控制面板、装饰件、视窗件', image: 'assets/images/app-homeappliance.jpg' },
+          { title: '高强度外壳', desc: '需要兼顾强度和外观的壳体', image: 'assets/images/case-electronics.jpg' }
+        ],
+        note: '适合外观要求较高，同时需要抗冲击的产品。'
+      },
+      pom: {
+        heroImage: 'assets/images/product-pom.jpg',
+        heroBadge: '耐磨传动件',
+        summary: '低摩擦、耐磨和尺寸稳定，适合齿轮、滑块和精密传动机构。',
+        tags: ['低摩擦', '耐磨', '精密传动'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '齿轮机构', desc: '微型齿轮、传动轮、滑块', image: 'assets/images/tech-rd.jpg' },
+          { title: '汽车运动部件', desc: '扣件、卡扣、运动结构件', image: 'assets/images/case-auto.jpg' },
+          { title: '精密装配件', desc: '对摩擦和尺寸稳定有要求的零件', image: 'assets/images/about-workshop.jpg' }
+        ],
+        note: '适合需要稳定摩擦系数和长寿命的运动部件。'
+      },
+      pa6: {
+        heroImage: 'assets/images/app-auto.jpg',
+        heroBadge: '韧性与耐热平衡',
+        summary: '兼具韧性、耐热与加工稳定性，适合汽车结构件、连接件和工业部件。',
+        tags: ['韧性好', '耐热', '加工稳定'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '汽车结构件', desc: '支架、导向件、承载件', image: 'assets/images/case-auto.jpg' },
+          { title: '连接与固定件', desc: '卡扣、固定座、连接支架', image: 'assets/images/app-auto.jpg' },
+          { title: '工业耐热件', desc: '需要韧性和耐热性的工作零件', image: 'assets/images/about-factory.jpg' }
+        ],
+        note: '更适合需要强度、韧性和耐热综合表现的工况。'
+      },
+      pet: {
+        heroImage: 'assets/images/app-electronics.jpg',
+        heroBadge: '绝缘与稳定性',
+        summary: '尺寸稳定、绝缘性能好，适合电子电气部件、线圈骨架和精密壳体。',
+        tags: ['尺寸稳定', '绝缘', '低翘曲'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '电子电气部件', desc: '线圈骨架、端子座、绝缘支撑件', image: 'assets/images/app-electronics.jpg' },
+          { title: '精密壳体', desc: '对尺寸和外观稳定性要求高的外壳', image: 'assets/images/case-electronics.jpg' },
+          { title: '功能性结构件', desc: '需要稳定加工窗口的薄壁零件', image: 'assets/images/app-energy.jpg' }
+        ],
+        note: '适合对绝缘、尺寸稳定与加工精度要求较高的场景。'
+      },
+      abs: {
+        heroImage: 'assets/images/app-homeappliance.jpg',
+        heroBadge: '外观型壳体',
+        summary: '外观性好、冲击韧性高，适合家电外壳、消费电子和可视面板。',
+        tags: ['外观好', '高冲击', '易喷涂'],
+        applicationTitle: '典型应用领域',
+        applications: [
+          { title: '家电外壳', desc: '小家电、面板、装饰壳体', image: 'assets/images/app-homeappliance.jpg' },
+          { title: '消费电子', desc: '可视面板、手持设备壳体', image: 'assets/images/app-electronics.jpg' },
+          { title: '展示与装饰件', desc: '对表面效果要求更高的部件', image: 'assets/images/case-electronics.jpg' }
+        ],
+        note: '适合兼顾外观、冲击与加工性的终端产品。'
+      }
+    };
+
     const categoryKeys = Object.keys(categoryData);
     let activeCategoryKey = categoryKeys[0];
     let activeProductIndex = 0;
+    let lastFocusedElement = null;
+
+    page.setAttribute('role', 'dialog');
+    page.setAttribute('aria-modal', 'true');
+    page.setAttribute('aria-labelledby', 'productDetailHeaderTitle');
+
+    function getCurrentState() {
+      const current = categoryData[activeCategoryKey];
+      const meta = detailMeta[activeCategoryKey] || detailMeta[categoryKeys[0]];
+      const item = current?.products?.[activeProductIndex];
+      return { current, meta, item };
+    }
+
+    function getTestMethod(label) {
+      const methodMap = {
+        '密度': 'ISO 1183-1',
+        '拉伸强度': 'ISO 527-1 / ISO 527-2',
+        '弯曲模量': 'ISO 178',
+        '热变形温度': 'ISO 75-2',
+        '阻燃等级': 'UL 94',
+        '缺口冲击': 'ISO 180',
+        '摩擦系数': 'ASTM D1894',
+        '长期耐温': 'UL 746B (RTI)',
+        '吸水率': 'ISO 62',
+        '表面效果': '目视评估'
+      };
+
+      return methodMap[label] || '按项目评估';
+    }
 
     function renderNav() {
-      const current = categoryData[activeCategoryKey];
+      const { current } = getCurrentState();
       if (!current) return;
+
       nav.innerHTML = current.products.map((item, idx) => {
         const active = idx === activeProductIndex ? ' active' : '';
-        return `<button type="button" class="product-detail-nav-item${active}" data-product-index="${idx}">${item.name}</button>`;
+        return `
+          <button
+            type="button"
+            class="product-detail-nav-item${active}"
+            data-product-index="${idx}"
+            aria-pressed="${idx === activeProductIndex ? 'true' : 'false'}"
+          >
+            <span>${item.name}</span>
+            <small>${item.intro}</small>
+          </button>
+        `;
       }).join('');
     }
 
     function renderContent() {
-      const current = categoryData[activeCategoryKey];
-      const item = current?.products?.[activeProductIndex];
-      if (!current || !item) return;
+      const { current, meta, item } = getCurrentState();
+      if (!current || !item || !meta) return;
+
+      const propRows = item.props.map(([k, v]) => `
+        <tr>
+          <th>${k}</th>
+          <td class="product-props-value">${v}</td>
+          <td class="product-props-method">${getTestMethod(k)}</td>
+        </tr>
+      `).join('');
+      const tagMarkup = (meta.tags || []).map((tag) => `
+        <span class="product-detail-pill">${tag}</span>
+      `).join('');
+      const applicationMarkup = (meta.applications || []).map((app, idx) => `
+        <article class="product-application-card">
+          <div class="product-application-image">
+            <img src="${app.image}" alt="${app.title}">
+          </div>
+          <div class="product-application-body">
+            <div class="product-application-meta">
+              <span class="product-application-index">0${idx + 1}</span>
+              <span class="product-application-tag">${current.categoryName}</span>
+            </div>
+            <h4>${app.title}</h4>
+            <p>${app.desc}</p>
+          </div>
+        </article>
+      `).join('');
 
       headerTitle.textContent = `${current.categoryName} · 产品详情`;
-      const propRows = item.props.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('');
-      const gradeRows = item.grades.map((grade) => `<li>${grade}</li>`).join('');
+
       content.innerHTML = `
-        <div class="product-detail-hero">
-          <h2>${current.categoryName} / ${item.name}</h2>
-          <p>${item.intro}</p>
-        </div>
-        <div class="product-detail-panels">
-          <article class="product-detail-card">
-            <h3>物性参数</h3>
+        <section class="product-detail-overview">
+          <div class="product-detail-hero-media">
+            <img src="${meta.heroImage}" alt="${current.categoryName}">
+            <span class="product-detail-hero-badge">${meta.heroBadge}</span>
+          </div>
+          <article class="product-detail-card product-detail-card--overview">
+            <div class="product-detail-card-head">
+              <p class="product-detail-kicker">${current.categoryName}</p>
+              <h2>${item.name}</h2>
+              <p class="product-detail-summary">${meta.summary || item.intro}</p>
+              <div class="product-detail-pill-row">${tagMarkup}</div>
+              <div class="product-detail-highlight-grid">
+                <div class="product-detail-highlight product-detail-highlight--accent">
+                  <span>核心卖点</span>
+                  <strong>${item.intro}</strong>
+                </div>
+                <div class="product-detail-highlight">
+                  <span>重点提醒</span>
+                  <strong>${meta.note || '可结合结构部位、耐热等级和外观要求进一步选型。'}</strong>
+                </div>
+              </div>
+            </div>
             <table class="product-props">
+              <thead>
+                <tr>
+                  <th>项目</th>
+                  <th>参考值</th>
+                  <th>测试方法</th>
+                </tr>
+              </thead>
               <tbody>${propRows}</tbody>
             </table>
+            <p class="product-props-note">以上数据为典型参考值，实际方案可根据结构、阻燃、外观和加工窗口进行定制。</p>
           </article>
-          <article class="product-detail-card">
-            <h3>对应产品列表</h3>
-            <ul class="product-grade-list">${gradeRows}</ul>
+        </section>
+
+        <section class="product-detail-grid product-detail-grid--single">
+          <article class="product-detail-card product-detail-card--applications" id="productDetailApplications">
+            <div class="product-detail-card-head">
+              <h3>${meta.applicationTitle || '应用领域'}</h3>
+            </div>
+            <div class="product-application-list">${applicationMarkup}</div>
           </article>
-        </div>
+        </section>
       `;
     }
 
     function openDetail(categoryKey) {
       activeCategoryKey = categoryData[categoryKey] ? categoryKey : categoryKeys[0];
       activeProductIndex = 0;
+      lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       renderNav();
       renderContent();
       page.classList.add('open');
       page.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       window.__productDetailOpen = true;
+      requestAnimationFrame(() => backBtn?.focus());
     }
 
     function closeDetail() {
@@ -390,12 +591,31 @@
       page.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       window.__productDetailOpen = false;
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     }
 
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('click', (e) => {
+    cards.forEach((card) => {
+      const trigger = card.querySelector('.product-detail-trigger[data-product]');
+      const productKey = trigger?.dataset.product || card.dataset.product;
+      if (!productKey) return;
+
+      card.dataset.product = productKey;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', '查看详情');
+
+      card.addEventListener('click', (e) => {
         e.preventDefault();
-        openDetail(trigger.dataset.product || categoryKeys[0]);
+        openDetail(card.dataset.product || categoryKeys[0]);
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        openDetail(card.dataset.product || categoryKeys[0]);
       });
     });
 
